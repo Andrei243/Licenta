@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug-ATI|Win32">
+      <Configuration>Debug-ATI</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug-Nvidia|Win32">
+      <Configuration>Debug-Nvidia</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-ATI|Win32">
+      <Configuration>Release-ATI</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-Nvidia|Win32">
+      <Configuration>Release-Nvidia</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}</ProjectGuid>
+    <RootNamespace>NewTrainingFramework</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-ATI|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-ATI|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-Nvidia|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-Nvidia|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-ATI|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug-ATI|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-Nvidia|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug-Nvidia|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug-Nvidia|Win32'">$(SolutionDir)\BIN-Nvidia\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug-Nvidia|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug-Nvidia|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release-Nvidia|Win32'">$(SolutionDir)\BIN-Nvidia\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release-Nvidia|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release-Nvidia|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug-ATI|Win32'">$(SolutionDir)\BIN-ATI\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug-ATI|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug-ATI|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release-ATI|Win32'">$(SolutionDir)\BIN-ATI\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release-ATI|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release-ATI|Win32'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-Nvidia|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Include\Nvidia;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Lib\Nvidia;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-Nvidia|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Include\Nvidia;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Lib\Nvidia;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-ATI|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Include\ATI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Lib\ATI;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-ATI|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Include\ATI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Lib\ATI;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Utilities\Model.cpp" />
+    <ClCompile Include="..\Utilities\Shader.cpp" />
+    <ClCompile Include="..\Utilities\Texture.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="NewTrainingFramework.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Shaders.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug-ATI|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug-Nvidia|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release-ATI|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release-Nvidia|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Utilities\Model.h" />
+    <ClInclude Include="..\Utilities\Shader.h" />
+    <ClInclude Include="..\Utilities\Texture.h" />
+    <ClInclude Include="Globals.h" />
+    <ClInclude Include="Camera.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-Nvidia|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Shaders.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Vertex.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\Modele\Bila.nfg" />
+    <None Include="..\Resources\Modele\bus.nfg" />
+    <None Include="..\Resources\Modele\Croco.nfg" />
+    <None Include="..\Resources\Modele\Exemplu.nfg" />
+    <None Include="..\Resources\Modele\fire.nfg" />
+    <None Include="..\Resources\Modele\Goliath.nfg" />
+    <None Include="..\Resources\Modele\House.nfg" />
+    <None Include="..\Resources\Modele\Marine.nfg" />
+    <None Include="..\Resources\Modele\Radar.nfg" />
+    <None Include="..\Resources\Modele\SCV.nfg" />
+    <None Include="..\Resources\Modele\SkyBox.nfg" />
+    <None Include="..\Resources\Modele\Teran_Command_Center.nfg" />
+    <None Include="..\Resources\Modele\Terrain.nfg" />
+    <None Include="..\Resources\Modele\train.nfg" />
+    <None Include="..\Resources\Modele\water.nfg" />
+    <None Include="..\Resources\Modele\witch.nfg" />
+    <None Include="..\Resources\Modele\Woman1.nfg" />
+    <None Include="..\Resources\Modele\Woman2.nfg" />
+    <None Include="..\Resources\Shaders\TriangleShaderFS.fs" />
+    <None Include="..\Resources\Shaders\TriangleShaderVS.vs" />
+    <None Include="..\..\Readme.doc" />
+    <None Include="..\Resources\Texturi\heightmap.raw" />
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utilities\Utilities.vcxproj">
+      <Project>{0d44529e-f7dd-4454-8ead-9afd857f53b4}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\Texturi\Bus.tga" />
+    <Image Include="..\Resources\Texturi\Croco.tga" />
+    <Image Include="..\Resources\Texturi\Dirt.tga" />
+    <Image Include="..\Resources\Texturi\DisplacementMap.tga" />
+    <Image Include="..\Resources\Texturi\envMap.tga" />
+    <Image Include="..\Resources\Texturi\fire3.tga" />
+    <Image Include="..\Resources\Texturi\fire_mask.tga" />
+    <Image Include="..\Resources\Texturi\Golitah.tga" />
+    <Image Include="..\Resources\Texturi\Grass.tga" />
+    <Image Include="..\Resources\Texturi\House.tga" />
+    <Image Include="..\Resources\Texturi\Marine.tga" />
+    <Image Include="..\Resources\Texturi\NormalMap.tga" />
+    <Image Include="..\Resources\Texturi\radar.tga" />
+    <Image Include="..\Resources\Texturi\Rock.tga" />
+    <Image Include="..\Resources\Texturi\SCV.tga" />
+    <Image Include="..\Resources\Texturi\Terrain_blend_map.tga" />
+    <Image Include="..\Resources\Texturi\Terran_Command_Center.tga" />
+    <Image Include="..\Resources\Texturi\Train.tga" />
+    <Image Include="..\Resources\Texturi\WaterNormal.tga" />
+    <Image Include="..\Resources\Texturi\Witch.tga" />
+    <Image Include="..\Resources\Texturi\Woman1.tga" />
+    <Image Include="..\Resources\Texturi\Woman2.tga" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\Resources\XML\resourceManager.xml" />
+    <Xml Include="..\Resources\XML\sceneManager.xml" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

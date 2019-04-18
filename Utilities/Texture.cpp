@@ -3,6 +3,10 @@
 #include "stdafx.h"
 #include "Texture.h"
 
+GLuint Texture::getid() {
+	return id;
+}
+
 GLint procesare_stringuri(std::string nume) {
 	if (nume == "GL_NEAREST")return GL_NEAREST;
 	else if (nume == "GL_LINEAR")return GL_LINEAR;

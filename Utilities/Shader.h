@@ -7,6 +7,7 @@ class Shader {
 	
 public:
 	void Load();
+	GLint getid();
 	Shader(ShaderResource* resursa);
 	~Shader();
 };

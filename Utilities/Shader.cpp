@@ -4,6 +4,10 @@
 #include "Shader.h"
 #include "ShaderResource.h"
 
+GLint Shader::getid() {
+	return id_prog;
+}
+
 void Shader::Load() {
 
 	std::string vs = mr->vs;

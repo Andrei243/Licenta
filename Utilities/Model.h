@@ -10,6 +10,12 @@ class Model {
 	GLint nrindici, nrindiciWired;
 	
 public:
+	GLuint getid();
+	GLuint getwiredid();
+	GLuint getindid();
+	GLint getnrIndici();
+	GLint getnrIndiciWired();
+
 	void Load();
 	Model(ModelResource* resursa);
 	~Model() {};

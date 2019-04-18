@@ -8,6 +8,7 @@ class Texture {
 	
 public:
 	void Load();
+	GLuint getid();
 	Texture(TextureResource* tr);
 	~Texture() {};
 };

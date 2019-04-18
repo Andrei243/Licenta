@@ -11,18 +11,9 @@ class ResourceManager {
 private:
 	static ResourceManager* resourceManager;
 	//ResourceManager() {};
-
-
-public:
-	void Init(std::string xmlpath);
-	static ResourceManager* getresourceManager();
-	//static void freeResources();
-	//ModelResource* mr;
-	//ShaderResource* sr;
-	//TextureResource* tr;
-	//Model* modele;
-	//Shader* shadere;
-	//Texture* texturi;
+	friend class Model;
+	friend class Shader;
+	friend class Texture;
 	std::map<int, ShaderResource*> shaderresources;
 	std::map<int, ModelResource*>modelresources;
 	std::map<int, TextureResource*> textureresources;
@@ -32,10 +23,24 @@ public:
 	std::map<int, Model*>modeleincarcate;
 	std::map<int, Shader*>shadereincarcate;
 	std::map<int, Texture*>texturiincarcate;
-
 	Shader* loadShader(GLint id);
 	Model* loadModel(GLint id);
 	Texture* loadTexture(GLint id);
+
+public:
+	
+	void Init(std::string xmlpath);
+	static ResourceManager* getresourceManager();
+	//static void freeResources();
+	//ModelResource* mr;
+	//ShaderResource* sr;
+	//TextureResource* tr;
+	//Model* modele;
+	//Shader* shadere;
+	//Texture* texturi;
+
+
+
 
 };
 

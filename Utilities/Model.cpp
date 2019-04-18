@@ -8,6 +8,25 @@
 
 ResourceManager* manager = ResourceManager::getresourceManager();
 
+GLuint Model::getid() {
+	return vbold;
+}
+
+GLuint Model::getindid() {
+	return ibold;
+}
+
+GLint Model::getnrIndici() {
+	return nrindici;
+}
+GLint Model::getnrIndiciWired() {
+	return nrindiciWired;
+}
+
+GLuint Model::getwiredid() {
+	return wiredIbold;
+}
+
 void Model::Load() {
 	int id = mr->id;
 	std::string path = mr->path;

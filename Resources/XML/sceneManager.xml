@@ -86,8 +86,8 @@
 		
 		
 		<object id="8">
-			<model>generated</model>
-			<shader>8</shader>
+			<model>5</model>
+			<shader>3</shader>
 			<type>terrain</type>
 			<wired/>
 			<blend>false</blend>
@@ -99,7 +99,7 @@
 			</color>
 			<textures>
 				<texture id="14"/>
-				<texture id="15"/>
+				<texture id="4"/>
 				<!--adaugati texturile-->
 			</textures>
 			<position>

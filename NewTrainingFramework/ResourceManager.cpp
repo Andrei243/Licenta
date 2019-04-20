@@ -1,7 +1,7 @@
 #pragma once
 
-
 #include "stdafx.h"
+#include "../Utilities/rapidxml.hpp"
 #include "ResourceManager.h"
 #include "../Utilities/Model.h"
 #include "../Utilities/Shader.h"
@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <utility>
 #include <iostream>
+
 
 
 ResourceManager* ResourceManager::resourceManager = NULL;
@@ -30,10 +31,10 @@ ResourceManager* ResourceManager::getresourceManager() {
 
 Model* ResourceManager::loadModel(GLint id) {
 	if (getresourceManager()->modeleincarcate.find(id) != getresourceManager()->modeleincarcate.end()) {
-		return getresourceManager()->modeleincarcate[id];
+		return getresourceManager()->modeleincarcate.at(id);
 	}
 	else {
-		Model* modelact = new Model ( getresourceManager()->modelresources[id]);
+		Model* modelact = new Model ( getresourceManager()->modelresources.at(id));
 		modelact->Load();
 		getresourceManager()->modeleincarcate.insert(std::make_pair(id, modelact));
 		return modelact;
@@ -45,13 +46,13 @@ Model* ResourceManager::loadModel(GLint id) {
 
 Texture* ResourceManager::loadTexture(GLint id) {
 	if (getresourceManager()->texturiincarcate.find(id) != getresourceManager()->texturiincarcate.end()) {
-		return getresourceManager()->texturiincarcate[id];
+		return getresourceManager()->texturiincarcate.at(id);
 	}
 	else {
-		Texture* texact = new Texture(getresourceManager()->textureresources[id]);
+		Texture* texact = new Texture(getresourceManager()->textureresources.at(id));
 		texact->Load();
 		getresourceManager()->texturiincarcate.insert(std::make_pair(id, texact));
-
+		return texact;
 	}
 
 }
@@ -61,7 +62,7 @@ Shader* ResourceManager::loadShader(GLint id) {
 		return getresourceManager()->shadereincarcate[id];
 	}
 	else {
-		Shader* shaderact = new Shader(getresourceManager()->shaderresources[id]);
+		Shader* shaderact = new Shader(getresourceManager()->shaderresources.at(id));
 		shaderact->Load();
 		getresourceManager()->shadereincarcate.insert(std::make_pair(id, shaderact));
 		return shaderact;
@@ -91,12 +92,12 @@ void ResourceManager::Init(std::string xmlpath) {
 
 	for (rapidxml::xml_node<>*itermodele = pmodel->first_node("model"); itermodele; itermodele = itermodele->next_sibling()) {
 		int id = atoi(itermodele->first_attribute("id")->value());
+		printf("%d", id);
 		std::string path = itermodele->first_node("path")->value();
 		ModelResource* mr = new ModelResource();
 		mr->path = path;
 		mr->id = id;
-		modelresources[id] = mr;
-
+		modelresources.insert(std::make_pair(id, mr));
 
 	}
 
@@ -109,8 +110,7 @@ void ResourceManager::Init(std::string xmlpath) {
 		sr->fs = fs;
 		sr->id = id;
 		sr->vs = vs;
-		shaderresources[id] = sr;
-
+		shaderresources.insert(std::make_pair(id, sr));
 	}
 
 	//pentru texturi
@@ -129,8 +129,7 @@ void ResourceManager::Init(std::string xmlpath) {
 		tr->min_filter = min_filter;
 		tr->wrap_s = wrap_s;
 		tr->wrap_t = wrap_t;
-		textureresources[id] = tr;
-
+		textureresources.insert(std::make_pair(id, tr));
 	}
 
 }

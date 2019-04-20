@@ -7,10 +7,11 @@
 
 
 
+
 class ResourceManager {
 private:
 	static ResourceManager* resourceManager;
-	//ResourceManager() {};
+	ResourceManager() {};
 	friend class Model;
 	friend class Shader;
 	friend class Texture;
@@ -23,24 +24,13 @@ private:
 	std::map<int, Model*>modeleincarcate;
 	std::map<int, Shader*>shadereincarcate;
 	std::map<int, Texture*>texturiincarcate;
+
+
+public:
 	Shader* loadShader(GLint id);
 	Model* loadModel(GLint id);
 	Texture* loadTexture(GLint id);
-
-public:
-	
 	void Init(std::string xmlpath);
 	static ResourceManager* getresourceManager();
-	//static void freeResources();
-	//ModelResource* mr;
-	//ShaderResource* sr;
-	//TextureResource* tr;
-	//Model* modele;
-	//Shader* shadere;
-	//Texture* texturi;
-
-
-
-
 };
 

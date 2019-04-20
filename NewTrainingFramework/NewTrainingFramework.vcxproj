@@ -169,6 +169,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="NewTrainingFramework.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SceneObject.cpp" />
     <ClCompile Include="Shaders.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -253,7 +254,9 @@
     <Xml Include="..\Resources\XML\resourceManager.xml">
       <SubType>Designer</SubType>
     </Xml>
-    <Xml Include="..\Resources\XML\sceneManager.xml" />
+    <Xml Include="..\Resources\XML\sceneManager.xml">
+      <SubType>Designer</SubType>
+    </Xml>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

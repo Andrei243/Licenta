@@ -29,7 +29,7 @@ GLuint Model::getwiredid() {
 
 void Model::Load() {
 	int id = mr->id;
-	std::string path = mr->path;
+	std::string path ="../"+ mr->path;
 	ModelResource* resursa = manager->modelresources[id];
 	std::string cale = resursa->path;
 	int nrVertecsi;

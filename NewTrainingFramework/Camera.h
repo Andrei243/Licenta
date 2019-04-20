@@ -61,6 +61,17 @@ public:
 
 	};
 
+	Camera(Vector3 _position, Vector3 _target, Vector3 _up, GLfloat _movespeed, GLfloat _rotatespeed, GLfloat _fov, GLfloat _near, GLfloat _far) {
+		perspectiveMatrix.SetPerspective(fov, ((GLfloat)Globals::screenWidth) / Globals::screenHeight, _near, _far);
+		position = _position;
+		target = _target;
+		up = _up;
+		moveSpeed = _movespeed;
+		rotateSpeed = _rotatespeed;
+		updateAxis();
+		updateWorldView();
+	}
+
 	void setDeltaTime(GLfloat _dt);
 	GLfloat getDeltaTime();
 	void setposition(Vector3 _pos);

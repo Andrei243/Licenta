@@ -1,7 +1,7 @@
 #pragma once
-#include "../Utilities/rapidxml.hpp"
-#include "../Utilities/utilities.h"
 #include <string>
+#include "../Utilities/utilities.h"
+
 
 class Texture;
 class ResourceManager;

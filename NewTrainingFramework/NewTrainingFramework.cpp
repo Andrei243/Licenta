@@ -11,6 +11,7 @@
 #include "Camera.h"
 #include <iostream>
 #include "ResourceManager.h"
+#include "SceneManager.h"
 
 #include "../Utilities/utilities.h" // if you use STL, please include this line AFTER all other include
 
@@ -36,7 +37,7 @@ int bpp;
 
 int Init ( ESContext *esContext )
 {
-	glClearColor ( 0.0f, 0.0f, 0.0f, 0.0f );
+	/*glClearColor ( 0.0f, 0.0f, 0.0f, 0.0f );
 
 
 	//triangle data (heap)
@@ -98,14 +99,15 @@ int Init ( ESContext *esContext )
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, tga);
 	}
 	glBindTexture(GL_TEXTURE_2D, 0);
-	//creation of shaders and program 
-	return myShaders.Init("../Resources/Shaders/TriangleShaderVS.vs", "../Resources/Shaders/TriangleShaderFS.fs");
+	//creation of shaders and program */
 
+	return myShaders.Init("../Resources/Shaders/TriangleShaderVS.vs", "../Resources/Shaders/TriangleShaderFS.fs");
+	
 }
 
 void Draw ( ESContext *esContext )
 {
-	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+	/*glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	
 
 	glUseProgram(myShaders.program);
@@ -145,12 +147,13 @@ void Draw ( ESContext *esContext )
 	glBindTexture(GL_TEXTURE_2D, 0);
 
 
-	eglSwapBuffers ( esContext->eglDisplay, esContext->eglSurface );
+	eglSwapBuffers ( esContext->eglDisplay, esContext->eglSurface );*/
+	SceneManager::getsceneManager()->Draw(esContext);
 }
 
 void Update ( ESContext *esContext, float deltaTime )
 {
-	static float contor = 0;
+	/*static float contor = 0;
 	static float lim = 0.05;
 	contor += deltaTime;
 	if (GetKeyState(VK_LBUTTON) & 0x100 || GetKeyState(VK_LBUTTON) & 0x80) {
@@ -176,12 +179,12 @@ void Update ( ESContext *esContext, float deltaTime )
 
 		contor -= lim;
 	}
-
+	*/
 }
 
 void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 {
-	if (bIsPressed) {
+	/*if (bIsPressed) {
 		switch (key) {
 		case 97:
 		case 65: {
@@ -266,7 +269,7 @@ void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 
 
 	
-
+	*/
 }
 
 void CleanUp()
@@ -279,20 +282,22 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	//identifying memory leaks
 	_CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF ); 
+	ResourceManager::getresourceManager()->Init("../Resources/XML/resourceManager.xml");
+	SceneManager::getsceneManager()->Init("../Resources/XML/sceneManager.xml");
 
-	camera = Camera(Vector3(0, 0, -1), Vector3(0, 0, 0));
+	/*camera = Camera(Vector3(0, 0, -1), Vector3(0, 0, 0));
 
 	matrice = camera.getmat();
 
-	ESContext esContext;
+	*/ESContext esContext;
 
     esInitContext ( &esContext );
 
 	esCreateWindow ( &esContext, "Hello Nightmare", Globals::screenWidth, Globals::screenHeight, ES_WINDOW_RGB | ES_WINDOW_DEPTH);
 
-	if ( Init ( &esContext ) != 0 )
-		return 0;
-	fereastra = FindWindow(NULL, "Hello Square");
+	//if ( Init ( &esContext ) != 0 )
+		//return 0;
+	//fereastra = FindWindow(NULL, "Hello Square");
 	esRegisterDrawFunc ( &esContext, Draw );
 	esRegisterUpdateFunc ( &esContext, Update );
 	esRegisterKeyFunc ( &esContext, Key);
@@ -305,12 +310,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	printf("\n");
 	printf("Press any key...\n");
 	_getch();
-	glDeleteBuffers(1, &indBuff);
+	/*glDeleteBuffers(1, &indBuff);
 	glDeleteBuffers(1, &vboId);
 	free(indici);
-	delete[]verticesData;
+	delete[]verticesData;*/
 
-    ResourceManager::getresourceManager()->Init("../Resources/XML/resourceManager.xml");
+	std::cout << myShaders.Init("../Resources/Shaders/TriangleShaderVS.vs", "../Resources/Shaders/TriangleShaderFS.fs");
 
 	return 0;
 }

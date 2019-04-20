@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "SceneManager.h"
 #include <string>
 #include "Vertex.h"
 #include "../Utilities/utilities.h"
@@ -21,20 +22,23 @@ SceneObject::SceneObject(std::string _type, Vector3 _position, Vector3 _rotation
 
 }
 
-void SceneObject::Draw(ESContext* escontext,Camera* camera) {
-
+void SceneObject::Draw() {
+	Camera* camera = SceneManager::getsceneManager()->getActiveCamera();
+	if (depthTest)glEnable(GL_DEPTH_TEST);
 	GLuint vboId, indBuff, idTextura;
-	GLint program,nrIndici;
-	program = shader->getid();
+	GLint nrIndici;
 	nrIndici = model->getnrIndici();
 	vboId = model->getid();
 	indBuff = model->getindid();
 	idTextura = texturi[0]->getid();
-	GLint positionAttribute = glGetAttribLocation(program, "a_posL");
-	GLint rotationUniform = glGetUniformLocation(program, "u_rotation");
-	GLint uvAttribute = glGetAttribLocation(program, "a_uv");
-	GLint TexUniform = glGetUniformLocation(program, "u_texture");
-	glUseProgram(program);
+	std::vector<GLuint>id_texturi;
+	for (unsigned int i = 0; i < texturi.size(); i++) {
+		id_texturi.push_back(texturi[i]->getid());
+	}
+
+
+
+	glUseProgram(shader->getid());
 	glBindBuffer(GL_ARRAY_BUFFER, vboId);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indBuff);
 	Matrix matrice;
@@ -48,25 +52,25 @@ void SceneObject::Draw(ESContext* escontext,Camera* camera) {
 	matrice = scalare * rotatie*translatie;
 	matrice = matrice * camera->getmat();
 
-	if (positionAttribute != -1)
+	if (shader->getPosAtt() != -1)
 	{
-		glEnableVertexAttribArray(positionAttribute);
-		glVertexAttribPointer(positionAttribute, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
+		glEnableVertexAttribArray(shader->getPosAtt());
+		glVertexAttribPointer(shader->getPosAtt(), 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
 	}
 
 
-	if (rotationUniform != -1) {
-		glUniformMatrix4fv(rotationUniform, 1, GL_FALSE, (GLfloat*)matrice.m);
+	if (shader->getRotAtt() != -1) {
+		glUniformMatrix4fv(shader->getRotAtt(), 1, GL_FALSE, (GLfloat*)matrice.m);
 
 	}
 
-	if (uvAttribute != -1) {
-		glEnableVertexAttribArray(uvAttribute);
-		glVertexAttribPointer(uvAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(4 * sizeof(Vector3)));
+	if (shader->getUvAtt() != -1) {
+		glEnableVertexAttribArray(shader->getUvAtt());
+		glVertexAttribPointer(shader->getUvAtt(), 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(4 * sizeof(Vector3)));
 	}
 
-	if (TexUniform != -1) {
-		glUniform1i(TexUniform, 0);
+	if (shader->getTexUn() != -1) {
+		glUniform1i(shader->getTexUn(), 0);
 	}
 
 	glBindTexture(GL_TEXTURE_2D, idTextura);
@@ -74,5 +78,6 @@ void SceneObject::Draw(ESContext* escontext,Camera* camera) {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_TEXTURE_2D, 0);
+	glDisable(GL_DEPTH_TEST);
 
 }

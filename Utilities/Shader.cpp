@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include <fstream>
 #include "Shader.h"
 #include "ShaderResource.h"
 
@@ -16,9 +17,9 @@ void Shader::Load() {
 	GLuint vertexShader, fragmentShader;
 	char vsf[360];
 	strcpy(vsf, vs.c_str());
-	std::cout << vs;
 	char fsf[360];
 	strcpy(fsf, fs.c_str());
+
 	vertexShader = esLoadShader(GL_VERTEX_SHADER, vsf);
 	if (vertexShader == 0) return;
 
@@ -34,7 +35,14 @@ void Shader::Load() {
 	 uvAttribute = glGetAttribLocation(id_prog, "a_uv");
 
 
-	texUniform = glGetUniformLocation(id_prog, "u_texture");
+	texUniform[0] = glGetUniformLocation(id_prog, "u_texture0");
+	texUniform[1] = glGetUniformLocation(id_prog, "u_texture1");
+	texUniform[2] = glGetUniformLocation(id_prog, "u_texture2");
+	texUniform[3] = glGetUniformLocation(id_prog, "u_texture3");
+	texUniform[4] = glGetUniformLocation(id_prog, "u_texture4");
+	texUniform[5] = glGetUniformLocation(id_prog, "u_texture5");
+
+
 
 }
 
@@ -52,6 +60,6 @@ GLint Shader::getRotAtt() {
 GLint Shader::getUvAtt() {
 	return uvAttribute;
 }
-GLint Shader::getTexUn() {
+GLint* Shader::getTexUn() {
 	return texUniform;
 }

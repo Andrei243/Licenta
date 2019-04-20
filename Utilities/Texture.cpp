@@ -8,15 +8,15 @@ GLuint Texture::getid() {
 }
 
 GLint procesare_stringuri(std::string nume) {
-	if (nume == "GL_NEAREST")return GL_NEAREST;
-	else if (nume == "GL_LINEAR")return GL_LINEAR;
-	else if (nume == "GL_NEAREST_MIPMAP_NEAREST")return GL_NEAREST_MIPMAP_NEAREST;
-	else if (nume == "GL_LINEAR_MIPMAP_NEAREST")return GL_LINEAR_MIPMAP_NEAREST;
-	else if (nume == "GL_NEAREST_MIPMAP_LINEAR")return GL_NEAREST_MIPMAP_LINEAR;
-	else if (nume == "GL_LINEAR_MIPMAP_LINEAR")return GL_LINEAR_MIPMAP_LINEAR;
-	else if (nume == "GL_CLAMP_TO_EDGE")return GL_CLAMP_TO_EDGE;
-	else if (nume == "GL_MIRRORED_REPEAT")return GL_MIRRORED_REPEAT;
-	else if (nume == "GL_REPEAT")return GL_REPEAT;
+	if (nume == "NEAREST")return GL_NEAREST;
+	else if (nume == "LINEAR")return GL_LINEAR;
+	else if (nume == "NEAREST_MIPMAP_NEAREST")return GL_NEAREST_MIPMAP_NEAREST;
+	else if (nume == "LINEAR_MIPMAP_NEAREST")return GL_LINEAR_MIPMAP_NEAREST;
+	else if (nume == "NEAREST_MIPMAP_LINEAR")return GL_NEAREST_MIPMAP_LINEAR;
+	else if (nume == "LINEAR_MIPMAP_LINEAR")return GL_LINEAR_MIPMAP_LINEAR;
+	else if (nume == "CLAMP_TO_EDGE")return GL_CLAMP_TO_EDGE;
+	else if (nume == "MIRRORED_REPEAT")return GL_MIRRORED_REPEAT;
+	else if (nume == "REPEAT")return GL_REPEAT;
 	else return -1;
 
 

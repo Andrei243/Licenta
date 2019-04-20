@@ -97,7 +97,7 @@ void SceneManager::Init(std::string path) {
 		bool depth_test = iterobjects->first_node("blend")->value() == "true" ? true : false;
 		std::string tip = iterobjects->first_node("type")->value();
 		if (tip == "normal") {
-			obiecte.push_back(new SceneObject(tip, pos, rotation, scale, model, shader, texturi, depth_test));
+			obiecte.push_back(new SceneObject(id,tip, pos, rotation, scale, model, shader, texturi, depth_test));
 
 		}
 		printf("Am incarcat un obiect \n");

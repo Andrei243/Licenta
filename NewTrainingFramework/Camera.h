@@ -8,7 +8,7 @@ const GLfloat dt = 0.5f;
 const GLfloat rs = 0.2f;
 const GLfloat ms = 50.0f;
 const GLfloat _fov = 45;
-
+const GLfloat PI = 3.14;
 
 class Camera {
 private:
@@ -62,7 +62,11 @@ public:
 	};
 
 	Camera(Vector3 _position, Vector3 _target, Vector3 _up, GLfloat _movespeed, GLfloat _rotatespeed, GLfloat _fov, GLfloat _near, GLfloat _far) {
-		perspectiveMatrix.SetPerspective(fov, ((GLfloat)Globals::screenWidth) / Globals::screenHeight, _near, _far);
+		_fov = (PI * 180) / _fov;
+		perspectiveMatrix.SetPerspective(_fov, ((GLfloat)Globals::screenWidth) / Globals::screenHeight, _near, _far);
+		nears = _near;
+		fars = _far;
+		fov = _fov;
 		position = _position;
 		target = _target;
 		up = _up;

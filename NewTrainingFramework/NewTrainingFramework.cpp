@@ -37,6 +37,8 @@ int bpp;
 
 int Init ( ESContext *esContext )
 {
+	ResourceManager::getresourceManager()->Init("../Resources/XML/resourceManager.xml");
+	SceneManager::getsceneManager()->Init("../Resources/XML/sceneManager.xml");
 	/*glClearColor ( 0.0f, 0.0f, 0.0f, 0.0f );
 
 
@@ -153,7 +155,7 @@ void Draw ( ESContext *esContext )
 
 void Update ( ESContext *esContext, float deltaTime )
 {
-	/*static float contor = 0;
+	static float contor = 0;
 	static float lim = 0.05;
 	contor += deltaTime;
 	if (GetKeyState(VK_LBUTTON) & 0x100 || GetKeyState(VK_LBUTTON) & 0x80) {
@@ -171,86 +173,86 @@ void Update ( ESContext *esContext, float deltaTime )
 		if (a.x > 0 && a.x < Globals::screenWidth&&a.y>0 && a.y < Globals::screenHeight)vitrot = 0;
 	}
 	if (contor >= lim) {
-		camera.setDeltaTime(deltaTime);
-		camera.rotateOy(vitrot);
+		 SceneManager::getsceneManager()->getActiveCamera()->setDeltaTime(deltaTime);
+		 SceneManager::getsceneManager()->getActiveCamera()->rotateOy(vitrot);
 		matrice = camera.getmat();
 
 	
 
 		contor -= lim;
 	}
-	*/
+	
 }
 
 void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 {
-	/*if (bIsPressed) {
+	if (bIsPressed) {
 		switch (key) {
 		case 97:
 		case 65: {
-			camera.MoveOx(-1);
+			SceneManager::getsceneManager()->getActiveCamera()->MoveOx(-1);
 			break;
 
 		}
 
 		case 115:
 		case 83: {
-			camera.MoveOz(1);
+			SceneManager::getsceneManager()->getActiveCamera()->MoveOz(1);
 			break;
 		}
 
 		case 100:
 		case 68: {
-			camera.MoveOx(1);
+			SceneManager::getsceneManager()->getActiveCamera()->MoveOx(1);
 			break;
 		}
 
 		case 113:
 		case 81: {
-			camera.MoveOy(1);
+			SceneManager::getsceneManager()->getActiveCamera()->MoveOy(1);
 			break;
 		}
 
 		case 119:
 		case 87: {
-			camera.MoveOz(-1);
+			SceneManager::getsceneManager()->getActiveCamera()->MoveOz(-1);
 			break;
 		}
 
 		case 101:
 		case 69: {
-			camera.MoveOy(-1);
+			SceneManager::getsceneManager()->getActiveCamera()->MoveOy(-1);
 			break;
 		}
 
 		case VK_UP: {
-			camera.rotateOx(1);
+			SceneManager::getsceneManager()->getActiveCamera()->rotateOx(1);
 			break;
 		}
 		case VK_DOWN: {
-			camera.rotateOx(-1);
+			SceneManager::getsceneManager()->getActiveCamera()->rotateOx(-1);
 			break;
 		}
 
 		case VK_LEFT: {
-			camera.rotateOy(1);
+			SceneManager::getsceneManager()->getActiveCamera()->rotateOy(1);
 			break;
 		}
 
 		case VK_RIGHT: {
-			camera.rotateOy(-1);
+			SceneManager::getsceneManager()->getActiveCamera()->rotateOy(-1);
 			break;
 		}
 
 		case 111:
 		case 79: {
-			camera.rotateOz(-1);
+			SceneManager::getsceneManager()->getActiveCamera()->rotateOz(-1);
 			break;
 		}
 
 		case 112:
 		case 80: {
-			camera.rotateOz(1);
+			SceneManager::getsceneManager()->getActiveCamera()->rotateOz(1);
 			break;
 		}
 
@@ -269,7 +271,7 @@ void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 
 
 	
-	*/
+	
 }
 
 void CleanUp()
@@ -282,8 +284,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	//identifying memory leaks
 	_CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF ); 
-	ResourceManager::getresourceManager()->Init("../Resources/XML/resourceManager.xml");
-	SceneManager::getsceneManager()->Init("../Resources/XML/sceneManager.xml");
+	
 
 	/*camera = Camera(Vector3(0, 0, -1), Vector3(0, 0, 0));
 
@@ -295,7 +296,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	esCreateWindow ( &esContext, "Hello Nightmare", Globals::screenWidth, Globals::screenHeight, ES_WINDOW_RGB | ES_WINDOW_DEPTH);
 
-	//if ( Init ( &esContext ) != 0 )
+	Init(&esContext);
 		//return 0;
 	//fereastra = FindWindow(NULL, "Hello Square");
 	esRegisterDrawFunc ( &esContext, Draw );

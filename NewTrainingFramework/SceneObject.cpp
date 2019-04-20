@@ -10,7 +10,8 @@
 #include <vector>
 #include "SceneObject.h"
 
-SceneObject::SceneObject(std::string _type, Vector3 _position, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*> _texturi, bool _depthTest) {
+SceneObject::SceneObject(int _id,std::string _type, Vector3 _position, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*> _texturi, bool _depthTest) {
+	id = _id;
 	type = _type;
 	position = _position;
 	rotation = _rotation;
@@ -30,11 +31,8 @@ void SceneObject::Draw() {
 	nrIndici = model->getnrIndici();
 	vboId = model->getid();
 	indBuff = model->getindid();
-	idTextura = texturi[0]->getid();
-	std::vector<GLuint>id_texturi;
-	for (unsigned int i = 0; i < texturi.size(); i++) {
-		id_texturi.push_back(texturi[i]->getid());
-	}
+	//idTextura = texturi[0]->getid();
+	
 
 
 
@@ -51,6 +49,13 @@ void SceneObject::Draw() {
 	rotatie = rotatiex * rotatiey*rotatiez;
 	matrice = scalare * rotatie*translatie;
 	matrice = matrice * camera->getmat();
+	for (unsigned int i = 0; i < texturi.size(); i++) {
+		glActiveTexture(GL_TEXTURE0 + i);
+		glBindTexture(GL_TEXTURE_2D, texturi[i]->getid());
+		if (shader->getTexUn()[i] != -1) {
+			glUniform1i(shader->getTexUn()[i], i);
+		}
+	}
 
 	if (shader->getPosAtt() != -1)
 	{
@@ -69,11 +74,8 @@ void SceneObject::Draw() {
 		glVertexAttribPointer(shader->getUvAtt(), 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(4 * sizeof(Vector3)));
 	}
 
-	if (shader->getTexUn() != -1) {
-		glUniform1i(shader->getTexUn(), 0);
-	}
 
-	glBindTexture(GL_TEXTURE_2D, idTextura);
+	//glBindTexture(GL_TEXTURE_2D, idTextura);
 	glDrawElements(GL_TRIANGLES, nrIndici, GL_UNSIGNED_SHORT, 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);

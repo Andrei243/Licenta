@@ -2,6 +2,8 @@
 
 #include "stdafx.h"
 #include "Model.h"
+#include <iostream>
+#include <fstream>
 #include "../NewTrainingFramework/ResourceManager.h"
 #include "../NewTrainingFramework/Vertex.h"
 #include <stdlib.h>
@@ -29,12 +31,12 @@ GLuint Model::getwiredid() {
 
 void Model::Load() {
 	int id = mr->id;
-	std::string path ="../"+ mr->path;
-	ModelResource* resursa = manager->modelresources[id];
-	std::string cale = resursa->path;
+	std::string path = mr->path;
 	int nrVertecsi;
 	Vertex* verticesData;
-	FILE* fisierModel = fopen(cale.c_str(), "r");
+	
+
+	FILE* fisierModel = fopen(path.c_str(), "r");
 	if (fisierModel == NULL)return;
 
 

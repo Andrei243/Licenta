@@ -48,14 +48,14 @@
 				<texture id="4"/>
 			</textures>
 			<position><!-- translatia -->
-				<x>20.5</x>
-				<y>27</y>
-				<z>21.22</z>
+				<x>0</x>
+				<y>0</y>
+				<z>0</z>
 			</position>
 			<rotation>
-				<x>0.5</x>
-				<y>1.4</y>
-				<z>1</z>
+				<x>0</x>
+				<y>0</y>
+				<z>0</z>
 			</rotation>
 			<scale>
 				<x>1.0</x>
@@ -87,7 +87,7 @@
 		
 		<object id="8">
 			<model>5</model>
-			<shader>3</shader>
+			<shader>10</shader>
 			<type>terrain</type>
 			<wired/>
 			<blend>false</blend>

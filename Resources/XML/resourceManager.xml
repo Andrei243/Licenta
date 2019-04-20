@@ -2,21 +2,17 @@
 <resourceManager>
 	<models>
 		<model id="1">
-			<path>..//..//Resources//Models//croco.nfg</path>
+			<path>../Resources/Models/croco.nfg</path>
 		</model>
 		<model id="5">
-			<path>../../Resources/Models//bila.nfg</path>
+			<path>../Resources/Models//bila.nfg</path>
 		</model>
 		<!-- si aici se adauga toate modelele -->
 	</models>
 	<shaders>
 		<shader id="10">
-			<vs>../../Resources/Shaders/TriangleShaderVS.vs</vs>
+			<vs>../Resources/Shaders/TriangleShaderVS.vs</vs>
 			<fs>../Resources/Shaders/TriangleShaderFS.fs</fs>
-		</shader>
-		<shader id="3">
-			<vs>../Resources/Shaders/terrainShader.vs</vs>
-			<fs>../Resources/Shaders/terrainShader.fs</fs>
 		</shader>
 		<!-- si aici se adauga toate shaderele -->
 	</shaders>

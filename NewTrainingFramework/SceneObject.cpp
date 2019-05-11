@@ -25,17 +25,13 @@ SceneObject::SceneObject(int _id,std::string _type, Vector3 _position, Vector3 _
 
 void SceneObject::Draw() {
 	Camera* camera = SceneManager::getsceneManager()->getActiveCamera();
-	if (depthTest)glEnable(GL_DEPTH_TEST);
+	if (depthTest) { glEnable(GL_DEPTH_TEST);  }
 	GLuint vboId, indBuff, idTextura;
 	GLint nrIndici;
 	nrIndici = model->getnrIndici();
 	vboId = model->getid();
 	indBuff = model->getindid();
 	//idTextura = texturi[0]->getid();
-	
-
-
-
 	glUseProgram(shader->getid());
 	glBindBuffer(GL_ARRAY_BUFFER, vboId);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indBuff);
@@ -75,11 +71,9 @@ void SceneObject::Draw() {
 	}
 
 
-	//glBindTexture(GL_TEXTURE_2D, idTextura);
 	glDrawElements(GL_TRIANGLES, nrIndici, GL_UNSIGNED_SHORT, 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_TEXTURE_2D, 0);
 	glDisable(GL_DEPTH_TEST);
-
 }

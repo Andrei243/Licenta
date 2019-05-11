@@ -62,7 +62,7 @@ public:
 	};
 
 	Camera(Vector3 _position, Vector3 _target, Vector3 _up, GLfloat _movespeed, GLfloat _rotatespeed, GLfloat _fov, GLfloat _near, GLfloat _far) {
-		_fov = (PI * 180) / _fov;
+		_fov = (PI * _fov) / 180;
 		perspectiveMatrix.SetPerspective(_fov, ((GLfloat)Globals::screenWidth) / Globals::screenHeight, _near, _far);
 		nears = _near;
 		fars = _far;

@@ -92,7 +92,6 @@ void ResourceManager::Init(std::string xmlpath) {
 
 	for (rapidxml::xml_node<>*itermodele = pmodel->first_node("model"); itermodele; itermodele = itermodele->next_sibling()) {
 		int id = atoi(itermodele->first_attribute("id")->value());
-		printf("%d", id);
 		std::string path = itermodele->first_node("path")->value();
 		ModelResource* mr = new ModelResource();
 		mr->path = path;

@@ -7,6 +7,9 @@
 		<model id="5">
 			<path>../Resources/Models//bila.nfg</path>
 		</model>
+    <model id="7">
+      <path>../Resources/Models/bus.nfg</path>
+    </model>
 		<!-- si aici se adauga toate modelele -->
 	</models>
 	<shaders>
@@ -24,6 +27,14 @@
 			<wrap_s>CLAMP_TO_EDGE</wrap_s>
 			<wrap_t>CLAMP_TO_EDGE</wrap_t>
 		</texture>
+    <texture id="5" type="2d">
+      <path>../Resources/Textures/bus.tga</path>
+    	<min_filter>LINEAR</min_filter>
+			<mag_filter>LINEAR</mag_filter>
+			<wrap_s>CLAMP_TO_EDGE</wrap_s>
+			<wrap_t>CLAMP_TO_EDGE</wrap_t>
+    </texture>
+      
 		<texture id="14" type="2d">
 			<path>../Resources/Textures/dirt.tga</path>			
 			<min_filter>LINEAR</min_filter>

@@ -26,11 +26,11 @@
 				<y>1</y>
 				<z>0</z>
 			</up>
-			<translationSpeed>10</translationSpeed>
-			<rotationSpeed>0.3</rotationSpeed>
+			<translationSpeed>500</translationSpeed>
+			<rotationSpeed>0.2</rotationSpeed>
 			<fov>45</fov>
 			<near>0.2</near>
-			<far>10000</far>
+			<far>1000000</far>
 		</camera>
 		<!-- eventual si alte cameras -->
 	</cameras>
@@ -38,7 +38,7 @@
 
 	
 	<objects>
-		<object id="1">
+		<object id="2">
 			<model>1</model><!-- id model -->
 			<shader>10</shader><!-- id shader -->
 			<type>normal</type>
@@ -58,9 +58,9 @@
 				<z>0</z>
 			</rotation>
 			<scale>
-				<x>1.0</x>
-				<y>1.0</y>
-				<z>1.0</z>
+				<x>1</x>
+				<y>1</y>
+				<z>1</z>
 			</scale>
 			<followingCamera>
 				<cameras>
@@ -83,44 +83,144 @@
 				<light>1</light>
 			</lights>
 		</object>
-		
-		
-		<object id="8">
-			<model>5</model>
-			<shader>10</shader>
-			<type>terrain</type>
-			<wired/>
-			<blend>false</blend>
-			<name>Teren</name>
-			<color>
-				<r>1.0</r>
-				<g>1.0</g>
-				<b>1.0</b>
-			</color>
-			<textures>
-				<texture id="14"/>
-				<texture id="4"/>
-				<!--adaugati texturile-->
-			</textures>
-			<position>
-				<x>1.5</x>
-				<y>2.4</y>
-				<z>7</z>
-			</position>
-			<rotation>
-				<x>0.0</x>
-				<y>0.0</y>
-				<z>0.0</z>
-			</rotation>
-			<scale>
-				<x>1.0</x>
-				<y>1.0</y>
-				<z>1.0</z>
-			</scale>
-			<lights>
-				<light>1</light>
-			</lights>
-		</object>
+
+    <object id="3">
+      <model>1</model>
+      <!-- id model -->
+      <shader>10</shader>
+      <!-- id shader -->
+      <type>normal</type>
+      <blend>true</blend>
+      <name>Crocodil_verde</name>
+      <!-- optional -->
+      <textures>
+        <texture id="4"/>
+      </textures>
+      <position>
+        <!-- translatia -->
+        <x>200</x>
+        <y>0</y>
+        <z>200</z>
+      </position>
+      <rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </rotation>
+      <scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </scale>
+      <followingCamera>
+        <cameras>
+          <camera>1</camera>
+        </cameras>
+        <ox/>
+        <oy/>
+        <oz/>
+      </followingCamera>
+      <trajectory type="linear" iteration="infinite" direction="alternate">
+        <!-- startPoint e chiar Pos -->
+        <endPoint>
+          <x>0.5</x>
+          <y>100.0</y>
+          <z>1.0</z>
+        </endPoint>
+        <speed>0.1</speed>
+      </trajectory>
+      <lights>
+        <light>1</light>
+      </lights>
+    </object>
+
+    <object id="2">
+      <model>7</model>
+      <!-- id model -->
+      <shader>10</shader>
+      <!-- id shader -->
+      <type>normal</type>
+      <blend>true</blend>
+      <name>Crocodil_verde</name>
+      <!-- optional -->
+      <textures>
+        <texture id="5"/>
+      </textures>
+      <position>
+        <!-- translatia -->
+        <x>20</x>
+        <y>20</y>
+        <z>20</z>
+      </position>
+      <rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </rotation>
+      <scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </scale>
+      <followingCamera>
+        <cameras>
+          <camera>1</camera>
+        </cameras>
+        <ox/>
+        <oy/>
+        <oz/>
+      </followingCamera>
+      <trajectory type="linear" iteration="infinite" direction="alternate">
+        <!-- startPoint e chiar Pos -->
+        <endPoint>
+          <x>0.5</x>
+          <y>100.0</y>
+          <z>1.0</z>
+        </endPoint>
+        <speed>0.1</speed>
+      </trajectory>
+      <lights>
+        <light>1</light>
+      </lights>
+    </object>
+
+    <object id="8">
+      <model>5</model>
+      <shader>10</shader>
+      <type>terrain</type>
+      <wired/>
+      <blend>false</blend>
+      <name>Teren</name>
+      <color>
+        <r>1.0</r>
+        <g>1.0</g>
+        <b>1.0</b>
+      </color>
+      <textures>
+        <texture id="14"/>
+        <texture id="4"/>
+        <!--adaugati texturile-->
+      </textures>
+      <position>
+        <x>1.5</x>
+        <y>2.4</y>
+        <z>7</z>
+      </position>
+      <rotation>
+        <x>0.0</x>
+        <y>0.0</y>
+        <z>0.0</z>
+      </rotation>
+      <scale>
+        <x>1.0</x>
+        <y>1.0</y>
+        <z>1.0</z>
+      </scale>
+      <lights>
+        <light>1</light>
+      </lights>
+    </object>
+    
 	</objects>
 	
 

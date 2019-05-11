@@ -155,9 +155,9 @@ void Draw ( ESContext *esContext )
 
 void Update ( ESContext *esContext, float deltaTime )
 {
-	static float contor = 0;
-	static float lim = 0.05;
+	static float contor=0;
 	contor += deltaTime;
+	static float lim = 0.05f;
 	if (GetKeyState(VK_LBUTTON) & 0x100 || GetKeyState(VK_LBUTTON) & 0x80) {
 		POINT a;
 		GetCursorPos(&a);
@@ -172,15 +172,20 @@ void Update ( ESContext *esContext, float deltaTime )
 		ScreenToClient(fereastra, &a);
 		if (a.x > 0 && a.x < Globals::screenWidth&&a.y>0 && a.y < Globals::screenHeight)vitrot = 0;
 	}
-	if (contor >= lim) {
-		 SceneManager::getsceneManager()->getActiveCamera()->setDeltaTime(deltaTime);
-		 SceneManager::getsceneManager()->getActiveCamera()->rotateOy(vitrot);
-		matrice = camera.getmat();
+	{
+	if (contor > lim) {
+			SceneManager::getsceneManager()->getActiveCamera()->setDeltaTime(contor);
+			SceneManager::getsceneManager()->getActiveCamera()->rotateOy(vitrot);
+			matrice = camera.getmat();
+			//std::cout << lim << " " << contor << "\n";
 
+			contor-=lim;
+		}
+	}
 	
 
-		contor -= lim;
-	}
+	
+	
 	
 }
 

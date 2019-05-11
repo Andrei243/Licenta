@@ -78,31 +78,36 @@ void SceneManager::Init(std::string path) {
 		for (rapidxml::xml_node<>*itertex = iterobjects->first_node("textures")->first_node("texture"); itertex; itertex = itertex->next_sibling()) {
 			texturi.push_back(ResourceManager::getresourceManager()->loadTexture(atoi(itertex->first_attribute("id")->value())));
 		}
-		printf("am citit texturi\n");
 		Vector3 pos;
-		pos.x = atoi(iterobjects->first_node("position")->first_node("x")->value());
-		pos.y = atoi(iterobjects->first_node("position")->first_node("y")->value());
-		pos.z = atoi(iterobjects->first_node("position")->first_node("z")->value());
+		pos.x = atof(iterobjects->first_node("position")->first_node("x")->value());
+		pos.y = atof(iterobjects->first_node("position")->first_node("y")->value());
+		pos.z = atof(iterobjects->first_node("position")->first_node("z")->value());
 
 		Vector3 rotation;
-		rotation.x = atoi(iterobjects->first_node("rotation")->first_node("x")->value());
-		rotation.y = atoi(iterobjects->first_node("rotation")->first_node("y")->value());
-		rotation.z = atoi(iterobjects->first_node("rotation")->first_node("z")->value());
+		rotation.x = atof(iterobjects->first_node("rotation")->first_node("x")->value());
+		rotation.y = atof(iterobjects->first_node("rotation")->first_node("y")->value());
+		rotation.z = atof(iterobjects->first_node("rotation")->first_node("z")->value());
 
 		Vector3 scale;
-		scale.x = atoi(iterobjects->first_node("scale")->first_node("x")->value());
-		scale.y = atoi(iterobjects->first_node("scale")->first_node("y")->value());
-		scale.z = atoi(iterobjects->first_node("scale")->first_node("z")->value());
+		scale.x = atof(iterobjects->first_node("scale")->first_node("x")->value());
+		scale.y = atof(iterobjects->first_node("scale")->first_node("y")->value());
+		scale.z = atof(iterobjects->first_node("scale")->first_node("z")->value());
 
-		bool depth_test = iterobjects->first_node("blend")->value() == "true" ? true : false;
+		
+		std::string blend = iterobjects->first_node("blend")->value();
+		bool depthTest;
+		if (blend == "true") {
+			depthTest = true;
+		}
+		else {
+			depthTest = false;
+		}
 		std::string tip = iterobjects->first_node("type")->value();
 		if (tip == "normal") {
-			obiecte.push_back(new SceneObject(id,tip, pos, rotation, scale, model, shader, texturi, depth_test));
+			obiecte.push_back(new SceneObject(id,tip, pos, rotation, scale, model, shader, texturi, depthTest));
 
 		}
-		printf("Am incarcat un obiect \n");
 	}
-
 
 }
 

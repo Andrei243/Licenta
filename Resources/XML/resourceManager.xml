@@ -17,9 +17,23 @@
 			<vs>../Resources/Shaders/TriangleShaderVS.vs</vs>
 			<fs>../Resources/Shaders/TriangleShaderFS.fs</fs>
 		</shader>
+
+    <shader id="15">
+      <vs>../Resources/Shaders/TerrainShaderVS.vs</vs>
+      <fs>../Resources/Shaders/TerrainShaderFS.fs</fs>
+    </shader>
+    
 		<!-- si aici se adauga toate shaderele -->
 	</shaders>
 	<textures>
+    <texture id="1" type="2d">
+      <path>../Resources/Textures/House.tga</path>
+      <min_filter>LINEAR</min_filter>
+			<mag_filter>LINEAR</mag_filter>
+			<wrap_s>CLAMP_TO_EDGE</wrap_s>
+			<wrap_t>CLAMP_TO_EDGE</wrap_t>
+    </texture>
+      
 		<texture id="4" type="2d">
 			<path>../Resources/Textures/croco.tga</path>			
 			<min_filter>LINEAR</min_filter>
@@ -28,7 +42,7 @@
 			<wrap_t>CLAMP_TO_EDGE</wrap_t>
 		</texture>
     <texture id="5" type="2d">
-      <path>../Resources/Textures/bus.tga</path>
+      <path>../Resources/Textures/Bus.tga</path>
     	<min_filter>LINEAR</min_filter>
 			<mag_filter>LINEAR</mag_filter>
 			<wrap_s>CLAMP_TO_EDGE</wrap_s>
@@ -39,8 +53,8 @@
 			<path>../Resources/Textures/dirt.tga</path>			
 			<min_filter>LINEAR</min_filter>
 			<mag_filter>LINEAR</mag_filter>
-			<wrap_s>CLAMP_TO_EDGE</wrap_s>
-			<wrap_t>CLAMP_TO_EDGE</wrap_t>
+			<wrap_s>GL_REPEAT</wrap_s>
+			<wrap_t>GL_REPEAT</wrap_t>
 		</texture>
 		<texture id="15" type="2d">
 			<path>../Resources/Textures/rock.tga</path>			
@@ -48,14 +62,14 @@
 			<mag_filter>LINEAR</mag_filter>
 			<wrap_s>CLAMP_TO_EDGE</wrap_s>
 			<wrap_t>CLAMP_TO_EDGE</wrap_t>
-		</texture>		
-		<texture id="5" type="2d">
-			<path>../Resources/Textures/bus.tga</path>
+		</texture>	
+    <texture id="16" type="2d">
+			<path>../Resources/Textures/Grass.tga</path>			
 			<min_filter>LINEAR</min_filter>
 			<mag_filter>LINEAR</mag_filter>
 			<wrap_s>CLAMP_TO_EDGE</wrap_s>
 			<wrap_t>CLAMP_TO_EDGE</wrap_t>
-		</texture>
+		</texture>	
 		<!-- si aici se adauga toate texturile -->
 	</textures>	
 </resourceManager>

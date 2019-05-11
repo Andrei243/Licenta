@@ -3,6 +3,7 @@
 #include "../Utilities/rapidxml.hpp"
 #include "ResourceManager.h"
 #include "SceneManager.h"
+#include "Terrain.h"
 #include <fstream>
 #include <sstream>
 
@@ -103,7 +104,14 @@ void SceneManager::Init(std::string path) {
 			depthTest = false;
 		}
 		std::string tip = iterobjects->first_node("type")->value();
-		if (tip == "normal") {
+		if (tip == "terrain") {
+			int nr_celule, dimensiuneCelula, offSetY;
+			nr_celule = atoi(iterobjects->first_node("nrCelule")->value());
+			dimensiuneCelula = atoi(iterobjects->first_node("dimensiuneCelula")->value());
+			offSetY = atoi(iterobjects->first_node("offSetY")->value());
+			obiecte.push_back(new Terrain(id,tip,pos,rotation,scale,model,shader,texturi,depthTest,nr_celule,dimensiuneCelula,offSetY));
+		}
+		else if (tip == "normal") {
 			obiecte.push_back(new SceneObject(id,tip, pos, rotation, scale, model, shader, texturi, depthTest));
 
 		}
@@ -116,11 +124,9 @@ Camera* SceneManager::getActiveCamera() {
 }
 
 void SceneManager::Draw(ESContext* escontext) {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	//glClearColor(backgroundColor.x, backgroundColor.y, backgroundColor.z, 0.0f);
 
 	for (auto obiect : obiecte) {
 		obiect->Draw();
 	}
-	eglSwapBuffers(escontext->eglDisplay, escontext->eglSurface);
 }

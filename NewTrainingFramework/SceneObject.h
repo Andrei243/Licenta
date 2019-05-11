@@ -8,7 +8,7 @@
 #include <vector>
 
 class SceneObject {
-private:
+protected:
 	std::string type;
 	int id;
 	Vector3 position;
@@ -22,5 +22,6 @@ private:
 public:
 	SceneObject(int _id,std::string _type, Vector3 _position, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*>texturi, bool _depthTest);
 	virtual void Draw();
+	virtual void Update(float deltaTime) {};
 
 };

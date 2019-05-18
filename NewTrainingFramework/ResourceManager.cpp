@@ -132,3 +132,4 @@ void ResourceManager::Init(std::string xmlpath) {
 	}
 
 }
+

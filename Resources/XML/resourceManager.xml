@@ -22,7 +22,7 @@
       <vs>../Resources/Shaders/TerrainShaderVS.vs</vs>
       <fs>../Resources/Shaders/TerrainShaderFS.fs</fs>
     </shader>
-    
+ 
 		<!-- si aici se adauga toate shaderele -->
 	</shaders>
 	<textures>
@@ -60,16 +60,24 @@
 			<path>../Resources/Textures/rock.tga</path>			
 			<min_filter>LINEAR</min_filter>
 			<mag_filter>LINEAR</mag_filter>
-			<wrap_s>CLAMP_TO_EDGE</wrap_s>
-			<wrap_t>CLAMP_TO_EDGE</wrap_t>
+			<wrap_s>GL_REPEAT</wrap_s>
+			<wrap_t>GL_REPEAT</wrap_t>
 		</texture>	
     <texture id="16" type="2d">
 			<path>../Resources/Textures/Grass.tga</path>			
 			<min_filter>LINEAR</min_filter>
 			<mag_filter>LINEAR</mag_filter>
-			<wrap_s>CLAMP_TO_EDGE</wrap_s>
-			<wrap_t>CLAMP_TO_EDGE</wrap_t>
+			<wrap_s>GL_REPEAT</wrap_s>
+			<wrap_t>GL_REPEAT</wrap_t>
 		</texture>	
+    
+    <texture id="17" type="blend">
+      <path>../Resources/Textures/Terrain_blend_map.tga</path>
+    <min_filter>LINEAR</min_filter>
+			<mag_filter>LINEAR</mag_filter>
+			<wrap_s>GL_REPEAT</wrap_s>
+			<wrap_t>GL_REPEAT</wrap_t>
+    </texture>
 		<!-- si aici se adauga toate texturile -->
 	</textures>	
 </resourceManager>

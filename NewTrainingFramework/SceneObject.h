@@ -1,11 +1,12 @@
 #pragma once
 #include <string>
-#include "../Utilities/utilities.h"
 #include "../Utilities/Shader.h"
 #include "../Utilities/Model.h"
 #include "../Utilities/Texture.h"
 #include "Camera.h"
 #include <vector>
+#include "../Utilities/utilities.h"
+
 
 class SceneObject {
 protected:
@@ -21,7 +22,9 @@ protected:
 
 public:
 	SceneObject(int _id,std::string _type, Vector3 _position, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*>texturi, bool _depthTest);
+	void CommonDraw(Camera* camera);
 	virtual void Draw();
 	virtual void Update(float deltaTime) {};
+	virtual void Key(unsigned char key) {};
 
 };

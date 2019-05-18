@@ -42,7 +42,12 @@ void Shader::Load() {
 	texUniform[4] = glGetUniformLocation(id_prog, "u_texture4");
 	texUniform[5] = glGetUniformLocation(id_prog, "u_texture5");
 
-
+	varUniform[0] = glGetUniformLocation(id_prog, "u_var0");
+	varUniform[1] = glGetUniformLocation(id_prog, "u_var1");
+	varUniform[2] = glGetUniformLocation(id_prog, "u_var2");
+	varUniform[3] = glGetUniformLocation(id_prog, "u_var3");
+	varUniform[4] = glGetUniformLocation(id_prog, "u_var4");
+	varUniform[5] = glGetUniformLocation(id_prog, "u_var5");
 
 }
 
@@ -62,4 +67,11 @@ GLint Shader::getUvAtt() {
 }
 GLint* Shader::getTexUn() {
 	return texUniform;
+}
+GLint* Shader::getVarUn() {
+	return varUniform;
+}
+
+Shader::~Shader() {
+	delete mr;
 }

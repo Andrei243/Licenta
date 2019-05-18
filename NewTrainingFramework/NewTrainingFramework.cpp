@@ -18,18 +18,18 @@
 
 
 GLuint vboId;
-GLuint indBuff;
+//GLuint indBuff;
 Shaders myShaders;
 GLfloat alpha = 0.0f;
-Matrix matrice;
-Camera camera;
+//Matrix matrice;
+//Camera camera;
 GLfloat vitrot = 0.0f;
 HWND fereastra;
-int nrVertecsi;
-int nrIndici;
-GLushort* indici;
-Vertex *verticesData;
-GLuint idTextura;
+//int nrVertecsi;
+//int nrIndici;
+//GLushort* indici;
+//Vertex *verticesData;
+//GLuint idTextura;
 int width;
 int height;
 int bpp;
@@ -55,6 +55,7 @@ void Draw ( ESContext *esContext )
 
 void Update ( ESContext *esContext, float deltaTime )
 {
+	SceneManager::getsceneManager()->Update(deltaTime);
 	static float contor=0;
 	contor += deltaTime;
 	static float lim = 0.05f;
@@ -76,8 +77,6 @@ void Update ( ESContext *esContext, float deltaTime )
 	if (contor > lim) {
 			SceneManager::getsceneManager()->getActiveCamera()->setDeltaTime(contor);
 			SceneManager::getsceneManager()->getActiveCamera()->rotateOy(vitrot);
-			matrice = camera.getmat();
-			//std::cout << lim << " " << contor << "\n";
 
 			contor-=lim;
 		}
@@ -92,6 +91,8 @@ void Update ( ESContext *esContext, float deltaTime )
 void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 {
 	if (bIsPressed) {
+		SceneManager::getsceneManager()->Key(key);
+
 		switch (key) {
 		case 97:
 		case 65: {
@@ -211,7 +212,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	printf("Press any key...\n");
 	_getch();
 
-	std::cout << myShaders.Init("../Resources/Shaders/TriangleShaderVS.vs", "../Resources/Shaders/TriangleShaderFS.fs");
+	delete ResourceManager::getresourceManager();
+	delete SceneManager::getsceneManager();
 
 	return 0;
 }

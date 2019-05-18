@@ -8,6 +8,7 @@ class Shader {
 	GLint rotationUniform;
 	GLint uvAttribute;
 	GLint texUniform[6];
+	GLint varUniform[6];
 	
 public:
 	void Load();
@@ -18,5 +19,6 @@ public:
 	GLint getRotAtt();
 	GLint getUvAtt();
 	GLint* getTexUn();
+	GLint* getVarUn();
 };
 

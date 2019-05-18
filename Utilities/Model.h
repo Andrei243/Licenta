@@ -1,5 +1,6 @@
 #pragma once
 #include "ModelResource.h"
+#include "../NewTrainingFramework/Vertex.h"
 
 
 class Model {
@@ -17,6 +18,7 @@ public:
 	GLint getnrIndiciWired();
 
 	void Load();
+	Model(Vertex* vertexi, int nr_vertexi, unsigned short* indici, int nr_indici);
 	Model(ModelResource* resursa);
 	~Model() {};
 };

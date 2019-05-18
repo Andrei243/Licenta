@@ -72,6 +72,19 @@ void Model::Load() {
 
 }
 
+Model::Model(Vertex* vertexi, int nrVertexi, unsigned short* indici, int nrIndici) {
+	this->nrindici = nrIndici;
+	glGenBuffers(1, &vbold);
+	glBindBuffer(GL_ARRAY_BUFFER, vbold);
+	glBufferData(GL_ARRAY_BUFFER, nrVertexi * sizeof(Vertex), vertexi, GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glGenBuffers(1, &ibold);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibold);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, nrindici * sizeof(unsigned short), indici, GL_STATIC_DRAW);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
+}
+
 Model::Model(ModelResource* resursa) {
 	this->mr = resursa;
 	this->Load();

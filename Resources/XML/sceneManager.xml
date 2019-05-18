@@ -185,13 +185,13 @@
     </object>
 
     <object id="8">
-      <model>5</model>
-      <shader>10</shader>
+      <model>generated</model>
+      <shader>15</shader>
       <type>terrain</type>
       <wired/>
-      <nrCelule>4</nrCelule>
+      <nrCelule>50</nrCelule>
       <dimensiuneCelula>10</dimensiuneCelula>
-      <offSetY>5</offSetY>
+      <offSetY>-100</offSetY>
       <blend>false</blend>
       <name>Teren</name>
       <color>
@@ -199,10 +199,16 @@
         <g>1.0</g>
         <b>1.0</b>
       </color>
+      <inaltimi>
+        <r>8</r>
+        <g>-4</g>
+        <b>5</b>
+      </inaltimi>
       <textures>
         <texture id="14"/>
         <texture id="15"/>
         <texture id="16"/>
+        <texture id="17"/>
         <!--adaugati texturile-->
       </textures>
       <position>
@@ -216,9 +222,9 @@
         <z>0.0</z>
       </rotation>
       <scale>
-        <x>1.0</x>
-        <y>1.0</y>
-        <z>1.0</z>
+        <x>5.0</x>
+        <y>5.0</y>
+        <z>5.0</z>
       </scale>
       <lights>
         <light>1</light>

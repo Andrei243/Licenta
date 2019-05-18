@@ -16,4 +16,6 @@ public:
 	void Init(std::string path);
 	Camera* getActiveCamera();
 	void Draw(ESContext * escontext);
+	void Key(unsigned char key);
+	void Update(float deltaTime);
 };

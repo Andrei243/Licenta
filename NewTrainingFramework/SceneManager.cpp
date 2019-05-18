@@ -73,7 +73,11 @@ void SceneManager::Init(std::string path) {
 	rapidxml::xml_node<>* pobjects = doc.first_node()->first_node("objects");
 	for (rapidxml::xml_node<>*iterobjects = pobjects->first_node("object"); iterobjects; iterobjects = iterobjects->next_sibling()) {
 		int id = atoi(iterobjects->first_attribute("id")->value());
-		Model* model = ResourceManager::getresourceManager()->loadModel(atoi(iterobjects->first_node("model")->value()));
+		Model* model;
+		{std::string mod = iterobjects->first_node("model")->value();
+		if (mod == "generated")model = NULL;
+		else model = ResourceManager::getresourceManager()->loadModel(atoi(iterobjects->first_node("model")->value()));
+		}
 		Shader* shader = ResourceManager::getresourceManager()->loadShader(atoi(iterobjects->first_node("shader")->value()));
 		std::vector<Texture*> texturi;
 		for (rapidxml::xml_node<>*itertex = iterobjects->first_node("textures")->first_node("texture"); itertex; itertex = itertex->next_sibling()) {
@@ -109,7 +113,12 @@ void SceneManager::Init(std::string path) {
 			nr_celule = atoi(iterobjects->first_node("nrCelule")->value());
 			dimensiuneCelula = atoi(iterobjects->first_node("dimensiuneCelula")->value());
 			offSetY = atoi(iterobjects->first_node("offSetY")->value());
-			obiecte.push_back(new Terrain(id,tip,pos,rotation,scale,model,shader,texturi,depthTest,nr_celule,dimensiuneCelula,offSetY));
+			Vector3 height;
+			height.x = atoi(iterobjects->first_node("inaltimi")->first_node("r")->value());
+			height.y = atoi(iterobjects->first_node("inaltimi")->first_node("g")->value());
+			height.z = atoi(iterobjects->first_node("inaltimi")->first_node("b")->value());
+
+			obiecte.push_back(new Terrain(id,tip,pos,rotation,scale,model,shader,texturi,depthTest,nr_celule,dimensiuneCelula,offSetY,height));
 		}
 		else if (tip == "normal") {
 			obiecte.push_back(new SceneObject(id,tip, pos, rotation, scale, model, shader, texturi, depthTest));
@@ -129,4 +138,17 @@ void SceneManager::Draw(ESContext* escontext) {
 	for (auto obiect : obiecte) {
 		obiect->Draw();
 	}
+}
+
+void SceneManager::Update(float deltaTime) {
+	for (auto obiect : obiecte) {
+		obiect->Update(deltaTime);
+	}
+}
+
+void SceneManager::Key(unsigned char key) {
+	for (auto obiect : obiecte) {
+		obiect->Key(key);
+	}
+
 }

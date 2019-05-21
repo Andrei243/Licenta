@@ -184,6 +184,32 @@
       </lights>
     </object>
 
+    <object id="15">
+      <model>generated</model>
+      <shader>17</shader>
+      <type>skybox</type>
+      <offSetY>0</offSetY>
+      <blend>true</blend>
+      <textures>
+        <texture id="18"/>
+      </textures>
+      <position>
+        <x>1.5</x>
+        <y>2.4</y>
+        <z>7</z>
+      </position>
+      <rotation>
+        <x>0.0</x>
+        <y>0.0</y>
+        <z>0.0</z>
+      </rotation>
+      <scale>
+        <x>5.0</x>
+        <y>5.0</y>
+        <z>5.0</z>
+      </scale>
+    </object> 
+
     <object id="8">
       <model>generated</model>
       <shader>15</shader>
@@ -192,7 +218,7 @@
       <nrCelule>50</nrCelule>
       <dimensiuneCelula>100</dimensiuneCelula>
       <offSetY>-100</offSetY>
-      <blend>false</blend>
+      <blend>true</blend>
       <name>Teren</name>
       <color>
         <r>1.0</r>

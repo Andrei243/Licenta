@@ -13,7 +13,7 @@
 #include <utility>
 #include <iostream>
 
-
+std::string cub = std::string("cube_map");
 
 ResourceManager* ResourceManager::resourceManager = NULL;
 
@@ -121,7 +121,12 @@ void ResourceManager::Init(std::string xmlpath) {
 		std::string mag_filter = itertexturi->first_node("mag_filter")->value();
 		std::string wrap_s = itertexturi->first_node("wrap_s")->value();
 		std::string wrap_t = itertexturi->first_node("wrap_t")->value();
-		TextureResource* tr = new TextureResource();
+		std::string type = itertexturi->first_attribute("type")->value();
+		if (type== cub) {
+			texturiincarcate.insert(std::make_pair(id, Texture::generareSkybox(path,type, min_filter, mag_filter, wrap_s, wrap_t)));
+		}
+		
+		{TextureResource* tr = new TextureResource();
 		tr->id = id;
 		tr->path = path;
 		tr->mag_filter = mag_filter;
@@ -129,6 +134,7 @@ void ResourceManager::Init(std::string xmlpath) {
 		tr->wrap_s = wrap_s;
 		tr->wrap_t = wrap_t;
 		textureresources.insert(std::make_pair(id, tr));
+		}
 	}
 
 }

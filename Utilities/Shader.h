@@ -9,12 +9,14 @@ class Shader {
 	GLint uvAttribute;
 	GLint texUniform[6];
 	GLint varUniform[6];
+	GLint cubeUniform;
 	
 public:
 	void Load();
 	GLint getid();
 	Shader(ShaderResource* resursa);
 	~Shader();
+	GLint getCubeUn();
 	GLint getPosAtt();
 	GLint getRotAtt();
 	GLint getUvAtt();

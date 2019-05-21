@@ -4,6 +4,7 @@
 #include "ResourceManager.h"
 #include "SceneManager.h"
 #include "Terrain.h"
+#include "SkyBox.h"
 #include <fstream>
 #include <sstream>
 
@@ -108,6 +109,10 @@ void SceneManager::Init(std::string path) {
 			depthTest = false;
 		}
 		std::string tip = iterobjects->first_node("type")->value();
+		if (tip == "skybox") {
+			int offSet = atoi(iterobjects->first_node("offSetY")->value());
+			obiecte.push_back(new SkyBox(id, tip, pos, rotation, scale, model, shader, texturi,depthTest, offSet));
+		}
 		if (tip == "terrain") {
 			int nr_celule, dimensiuneCelula, offSetY;
 			nr_celule = atoi(iterobjects->first_node("nrCelule")->value());

@@ -49,6 +49,8 @@ void Shader::Load() {
 	varUniform[4] = glGetUniformLocation(id_prog, "u_var4");
 	varUniform[5] = glGetUniformLocation(id_prog, "u_var5");
 
+	cubeUniform = glGetUniformLocation(id_prog, "u_cube_texture");
+
 }
 
 Shader::Shader(ShaderResource* resursa) {
@@ -71,7 +73,9 @@ GLint* Shader::getTexUn() {
 GLint* Shader::getVarUn() {
 	return varUniform;
 }
-
+GLint Shader::getCubeUn() {
+	return cubeUniform;
+}
 Shader::~Shader() {
 	delete mr;
 }

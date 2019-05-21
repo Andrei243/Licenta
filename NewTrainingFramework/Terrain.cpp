@@ -8,13 +8,6 @@
 
 Camera* camera = SceneManager::getsceneManager()->getActiveCamera();
 
-void afisVc3(Vector3 vec) {
-	std::cout << vec.x << " " << vec.y << " " << vec.z << "\n";
-}
-
-void afisVc2(Vector2 vec) {
-	std::cout << vec.x << " " << vec.y << "\n";
-}
 
 Terrain::Terrain(int _id, std::string _type, Vector3 _position, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*>texturi, bool _depthTest, int _nr_celule, int _dimensiuneCelula, int _offSetY, Vector3 height):SceneObject(_id, _type, _position, _rotation, _scale, _model, _shader, texturi, _depthTest) {
 	model = Terrain::generateModel(_offSetY, _dimensiuneCelula, _nr_celule);
@@ -79,8 +72,12 @@ void Terrain::Draw() {
 }
 
 void Terrain::Update(float deltaTime) {
+	//std::cout << position.x << " " << position.y << " " << position.z << "\n";
 	if (position.x - SceneManager::getsceneManager()->getActiveCamera()->getposition().x > dimensiuneCelula)position.x -= dimensiuneCelula;
 	else if (SceneManager::getsceneManager()->getActiveCamera()->getposition().x - position.x > dimensiuneCelula)position.x += dimensiuneCelula;
 	if (position.z - SceneManager::getsceneManager()->getActiveCamera()->getposition().z > dimensiuneCelula)position.z -= dimensiuneCelula;
 	else if (SceneManager::getsceneManager()->getActiveCamera()->getposition().z - position.z > dimensiuneCelula)position.z += dimensiuneCelula;
+	/*if (position.y - SceneManager::getsceneManager()->getActiveCamera()->getposition().y > dimensiuneCelula)position.y -= dimensiuneCelula;
+	else if (SceneManager::getsceneManager()->getActiveCamera()->getposition().y - position.y > dimensiuneCelula)position.y += dimensiuneCelula;*/
+
 }

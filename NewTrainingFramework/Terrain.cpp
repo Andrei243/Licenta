@@ -16,6 +16,7 @@ Terrain::Terrain(int _id, std::string _type, Vector3 _position, Vector3 _rotatio
 	heightr = height.x;
 	heightg = height.y;
 	heightb = height.z;
+	deplx = deplz = 0;
 	
 }
 
@@ -60,12 +61,14 @@ Model* Terrain::generateModel(int offsetY, int dimensiuneCelula,int nr_celule) {
 void Terrain::Draw() {
 	Camera* camera = SceneManager::getsceneManager()->getActiveCamera();
 	if (depthTest) { glEnable(GL_DEPTH_TEST); }
+	glUseProgram(shader->getid());
 
 	glUniform1i(shader->getVarUn()[0], nr_celule);
 	glUniform1i(shader->getVarUn()[1], heightr);
 	glUniform1i(shader->getVarUn()[2], heightg);
 	glUniform1i(shader->getVarUn()[3], heightb);
-
+	glUniform1i(shader->getVarUn()[4], deplx);
+	glUniform1i(shader->getVarUn()[5], deplz);
 	CommonDraw(camera);
 	glDisable(GL_DEPTH_TEST);
 
@@ -73,11 +76,17 @@ void Terrain::Draw() {
 
 void Terrain::Update(float deltaTime) {
 	//std::cout << position.x << " " << position.y << " " << position.z << "\n";
-	if (position.x - SceneManager::getsceneManager()->getActiveCamera()->getposition().x > dimensiuneCelula)position.x -= dimensiuneCelula;
-	else if (SceneManager::getsceneManager()->getActiveCamera()->getposition().x - position.x > dimensiuneCelula)position.x += dimensiuneCelula;
-	if (position.z - SceneManager::getsceneManager()->getActiveCamera()->getposition().z > dimensiuneCelula)position.z -= dimensiuneCelula;
-	else if (SceneManager::getsceneManager()->getActiveCamera()->getposition().z - position.z > dimensiuneCelula)position.z += dimensiuneCelula;
+	//std::cout << deplx << " " << deplz << "\n";
+	if (position.x - SceneManager::getsceneManager()->getActiveCamera()->getposition().x > dimensiuneCelula) { position.x -= dimensiuneCelula; deplx--; }
+	else if (SceneManager::getsceneManager()->getActiveCamera()->getposition().x - position.x > dimensiuneCelula) { position.x += dimensiuneCelula; deplx++; }
+	if (position.z - SceneManager::getsceneManager()->getActiveCamera()->getposition().z > dimensiuneCelula) { position.z -= dimensiuneCelula; deplz--; }
+	else if (SceneManager::getsceneManager()->getActiveCamera()->getposition().z - position.z > dimensiuneCelula) { position.z += dimensiuneCelula; deplz++; }
 	/*if (position.y - SceneManager::getsceneManager()->getActiveCamera()->getposition().y > dimensiuneCelula)position.y -= dimensiuneCelula;
 	else if (SceneManager::getsceneManager()->getActiveCamera()->getposition().y - position.y > dimensiuneCelula)position.y += dimensiuneCelula;*/
 
+}
+
+Paralelipiped Terrain::setBoundTag(Paralelipiped par) {
+	par.tag = "terrain";
+	return par;
 }

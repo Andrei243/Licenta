@@ -83,3 +83,19 @@ void SceneObject::CommonDraw(Camera* camera) {
 	glBindBuffer(GL_TEXTURE_2D, 0);
 
 }
+Paralelipiped SceneObject::setBoundTag(Paralelipiped par) {
+	par.tag = "";
+	return par;
+}
+
+Paralelipiped SceneObject::getParalelipiped() {
+	Paralelipiped paralelipiped = model->getBoundingBox();
+	paralelipiped.minx += position.x;
+	paralelipiped.maxx += position.x;
+	paralelipiped.miny += position.y;
+	paralelipiped.maxy += position.y; 
+	paralelipiped.minz += position.y;
+	paralelipiped.maxz += position.y;
+	paralelipiped=setBoundTag(paralelipiped);
+	return paralelipiped;
+}

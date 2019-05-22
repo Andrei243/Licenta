@@ -56,6 +56,7 @@ void Draw ( ESContext *esContext )
 void Update ( ESContext *esContext, float deltaTime )
 {
 	SceneManager::getsceneManager()->Update(deltaTime);
+	SceneManager::getsceneManager()->verificaColiziuni();
 	static float contor=0;
 	contor += deltaTime;
 	static float lim = 0.05f;

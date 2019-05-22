@@ -12,6 +12,7 @@ class SceneManager {
 	std::vector<SceneObject*>obiecte;
 
 public:
+	void verificaColiziuni();
 	static SceneManager* getsceneManager();
 	void Init(std::string path);
 	Camera* getActiveCamera();

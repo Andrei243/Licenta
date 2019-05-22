@@ -38,7 +38,7 @@ void Model::Load() {
 
 	FILE* fisierModel = fopen(path.c_str(), "r");
 	if (fisierModel == NULL)return;
-
+	
 
 	fscanf(fisierModel, "NrVertices: %d", &nrVertecsi);
 	verticesData = new Vertex[nrVertecsi];
@@ -47,7 +47,18 @@ void Model::Load() {
 		fscanf(fisierModel, "%d. pos:[%f, %f, %f]; norm:[%f, %f, %f]; binorm:[%f, %f, %f]; tgt:[%f, %f, %f]; uv:[%f, %f];", &inutil, &verticesData[i].pos.x, &verticesData[i].pos.y, &verticesData[i].pos.z, &verticesData[i].norm.x, &verticesData[i].norm.y, &verticesData[i].norm.z, &verticesData[i].binorm.x, &verticesData[i].binorm.y, &verticesData[i].binorm.z, &verticesData[i].tgt.x, &verticesData[i].tgt.y, &verticesData[i].tgt.z, &verticesData[i].uv.x, &verticesData[i].uv.y);
 
 	}
-
+	boundingBox.maxx = boundingBox.minx=verticesData[0].pos.x;
+	boundingBox.miny = boundingBox.maxy=verticesData[0].pos.y;
+	boundingBox.maxz = boundingBox.minz=verticesData[0].pos.z;
+	for (int i = 1; i < nrVertecsi; i++) {
+		Vector3 pos = verticesData[i].pos;
+		if (boundingBox.minx > pos.x)boundingBox.minx = pos.x;
+		if (boundingBox.maxx < pos.x)boundingBox.maxx = pos.x;
+		if (boundingBox.miny > pos.y)boundingBox.miny = pos.y;
+		if (boundingBox.maxy < pos.x)boundingBox.maxy = pos.y;
+		if (boundingBox.minz > pos.z)boundingBox.minz = pos.z;
+		if (boundingBox.maxz < pos.z)boundingBox.maxz = pos.z;
+	}
 	//buffer object
 	glGenBuffers(1, &vbold);
 	glBindBuffer(GL_ARRAY_BUFFER, vbold);
@@ -88,4 +99,7 @@ Model::Model(Vertex* vertexi, int nrVertexi, unsigned short* indici, int nrIndic
 Model::Model(ModelResource* resursa) {
 	this->mr = resursa;
 	this->Load();
+}
+Paralelipiped Model::getBoundingBox() {
+	return boundingBox;
 }

@@ -157,3 +157,21 @@ void SceneManager::Key(unsigned char key) {
 	}
 
 }
+
+void SceneManager::verificaColiziuni() {
+	for (int i = 0; i < obiecte.size()-1; i++) {
+		Paralelipiped p1;
+		p1 = obiecte[i]->getParalelipiped();
+		for (int j = i + 1; j < obiecte.size(); j++) {
+			Paralelipiped  p2;
+			p2 = obiecte[j]->getParalelipiped();
+			if (Paralelipiped::verificaColiziune(p1, p2) || Paralelipiped::verificaColiziune(p2, p1)) {
+				std::cout << "Coliziune\n";
+			}
+
+		}
+
+	}
+
+
+}

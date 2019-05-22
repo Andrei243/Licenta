@@ -9,6 +9,7 @@
 
 
 class SceneObject {
+private:
 protected:
 	std::string type;
 	int id;
@@ -19,12 +20,22 @@ protected:
 	Shader* shader;
 	std::vector<Texture*> texturi;
 	bool depthTest;
+	virtual Paralelipiped setBoundTag(Paralelipiped par);
 
 public:
 	SceneObject(int _id,std::string _type, Vector3 _position, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*>texturi, bool _depthTest);
 	void CommonDraw(Camera* camera);
 	virtual void Draw();
 	virtual void Update(float deltaTime) {};
-	virtual void Key(unsigned char key) {};
+	virtual void Key(unsigned char key) {
+		if (getParalelipiped().tag == "") {
+			switch (key) {
+			case 'U':
+				position.z -= 20;
+			}
+		}
+
+	};
+	Paralelipiped getParalelipiped();
 
 };

@@ -91,7 +91,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libEGL.lib;libGLESv2.lib;fmod_vc.lib;fmod64_vc.lib;fmodL_vc.lib;fmodL64_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\Lib\Nvidia;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
@@ -186,6 +186,8 @@
     <ClInclude Include="..\Utilities\Model.h" />
     <ClInclude Include="..\Utilities\Shader.h" />
     <ClInclude Include="..\Utilities\Texture.h" />
+    <ClInclude Include="Bus.h" />
+    <ClInclude Include="Croco.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Camera.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-Nvidia|Win32'">false</ExcludedFromBuild>

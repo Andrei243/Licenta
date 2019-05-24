@@ -84,18 +84,15 @@ void SceneObject::CommonDraw(Camera* camera) {
 
 }
 Paralelipiped SceneObject::setBoundTag(Paralelipiped par) {
-	par.tag = "";
+	par.tag = "Obiect";
 	return par;
 }
 
 Paralelipiped SceneObject::getParalelipiped() {
 	Paralelipiped paralelipiped = model->getBoundingBox();
-	paralelipiped.minx += position.x;
-	paralelipiped.maxx += position.x;
-	paralelipiped.miny += position.y;
-	paralelipiped.maxy += position.y; 
-	paralelipiped.minz += position.y;
-	paralelipiped.maxz += position.y;
+	paralelipiped = paralelipiped.calculeazaParalelipiped(rotation,scale,position);
+
 	paralelipiped=setBoundTag(paralelipiped);
+	std::cout << paralelipiped.tag << " " << paralelipiped.minx << " " << paralelipiped.maxx << " " << paralelipiped.miny << " " << paralelipiped.maxy << " " << paralelipiped.minz << " " << paralelipiped.maxz << "\n";
 	return paralelipiped;
 }

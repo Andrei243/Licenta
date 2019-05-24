@@ -41,7 +41,7 @@
 		<object id="2">
 			<model>1</model><!-- id model -->
 			<shader>10</shader><!-- id shader -->
-			<type>normal</type>
+			<type>croco</type>
 			<blend>true</blend>
 			<name>Crocodil_verde</name><!-- optional -->
 			<textures>
@@ -50,7 +50,7 @@
 			<position><!-- translatia -->
 				<x>0</x>
 				<y>0</y>
-				<z>0</z>
+				<z>200</z>
 			</position>
 			<rotation>
 				<x>0</x>
@@ -89,7 +89,7 @@
       <!-- id model -->
       <shader>10</shader>
       <!-- id shader -->
-      <type>normal</type>
+      <type>croco</type>
       <blend>true</blend>
       <name>Crocodil_verde</name>
       <!-- optional -->
@@ -136,21 +136,17 @@
 
     <object id="2">
       <model>7</model>
-      <!-- id model -->
       <shader>10</shader>
-      <!-- id shader -->
-      <type>normal</type>
+      <type>bus</type>
       <blend>true</blend>
       <name>Crocodil_verde</name>
-      <!-- optional -->
       <textures>
         <texture id="5"/>
       </textures>
       <position>
-        <!-- translatia -->
         <x>20</x>
         <y>20</y>
-        <z>20</z>
+        <z>800</z>
       </position>
       <rotation>
         <x>0</x>
@@ -171,7 +167,6 @@
         <oz/>
       </followingCamera>
       <trajectory type="linear" iteration="infinite" direction="alternate">
-        <!-- startPoint e chiar Pos -->
         <endPoint>
           <x>0.5</x>
           <y>100.0</y>
@@ -209,7 +204,7 @@
         <z>5.0</z>
       </scale>
     </object> 
-
+<!--
     <object id="8">
       <model>generated</model>
       <shader>15</shader>
@@ -235,7 +230,6 @@
         <texture id="15"/>
         <texture id="16"/>
         <texture id="17"/>
-        <!--adaugati texturile-->
       </textures>
       <position>
         <x>1.5</x>
@@ -256,7 +250,7 @@
         <light>1</light>
       </lights>
     </object>
-    
+    -->
 	</objects>
 	
 

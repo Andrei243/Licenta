@@ -12,6 +12,8 @@
 #include <algorithm>
 #include <utility>
 #include <iostream>
+#include "../Utilities/fmod.h"
+#include "../Utilities/fmod.hpp"
 
 std::string cub = std::string("cube_map");
 
@@ -75,6 +77,18 @@ Shader* ResourceManager::loadShader(GLint id) {
 
 
 void ResourceManager::Init(std::string xmlpath) {
+	if (FMOD::System_Create(&fmodSystem) != FMOD_OK) {
+		std::cout << "Nu se pot incarca sunete\n";
+	}
+	
+	int driverCount = 0;
+	fmodSystem->getNumDrivers(&driverCount);
+	if (driverCount == 0) {
+		std::cout << "Ceva e in neregula cu sunetul\n";
+	}
+
+	fmodSystem->init(36, FMOD_INIT_NORMAL, NULL);
+	
 
 	rapidxml::xml_document<>doc;
 	std::ifstream file(xmlpath.c_str());
@@ -86,7 +100,17 @@ void ResourceManager::Init(std::string xmlpath) {
 	rapidxml::xml_node<>* pmodel = doc.first_node()->first_node("models");
 	rapidxml::xml_node<>*pshader = doc.first_node()->first_node("shaders");
 	rapidxml::xml_node<>*ptextures = doc.first_node()->first_node("textures");
+	rapidxml::xml_node<>*psounds = doc.first_node()->first_node("sounds");
 
+	//pentru sunete
+	for (rapidxml::xml_node<>*itersounds = psounds->first_node("sound"); itersounds; itersounds = itersounds->next_sibling()) {
+		int id = atoi(itersounds->first_attribute("id")->value());
+		std::string path = itersounds->value();
+		FMOD::Sound* sound;
+		fmodSystem->createSound(path.c_str(), FMOD_LOOP_OFF, 0, &sound);
+		suneteincarcate.insert(std::make_pair(id, sound));
+
+	}
 
 	//pentru modele
 
@@ -139,3 +163,11 @@ void ResourceManager::Init(std::string xmlpath) {
 
 }
 
+void ResourceManager::playSound(int id) {
+	
+	FMOD::Sound* sunet = suneteincarcate[id];
+	fmodSystem->playSound(sunet, 0, false, 0);
+}
+void ResourceManager::Update() {
+	fmodSystem->update();
+}

@@ -116,6 +116,12 @@
     <ClInclude Include="Paralelipiped.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Croco.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Resources\Shaders\TriangleShaderFS.fs">

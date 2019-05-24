@@ -27,15 +27,7 @@ public:
 	void CommonDraw(Camera* camera);
 	virtual void Draw();
 	virtual void Update(float deltaTime) {};
-	virtual void Key(unsigned char key) {
-		if (getParalelipiped().tag == "") {
-			switch (key) {
-			case 'U':
-				position.z -= 20;
-			}
-		}
-
-	};
+	virtual void Key(unsigned char key) {};
 	Paralelipiped getParalelipiped();
 
 };

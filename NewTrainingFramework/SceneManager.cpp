@@ -5,6 +5,8 @@
 #include "SceneManager.h"
 #include "Terrain.h"
 #include "SkyBox.h"
+#include "Bus.h"
+#include "Croco.h"
 #include <fstream>
 #include <sstream>
 
@@ -113,7 +115,7 @@ void SceneManager::Init(std::string path) {
 			int offSet = atoi(iterobjects->first_node("offSetY")->value());
 			obiecte.push_back(new SkyBox(id, tip, pos, rotation, scale, model, shader, texturi,depthTest, offSet));
 		}
-		if (tip == "terrain") {
+		else if (tip == "terrain") {
 			int nr_celule, dimensiuneCelula, offSetY;
 			nr_celule = atoi(iterobjects->first_node("nrCelule")->value());
 			dimensiuneCelula = atoi(iterobjects->first_node("dimensiuneCelula")->value());
@@ -124,6 +126,13 @@ void SceneManager::Init(std::string path) {
 			height.z = atoi(iterobjects->first_node("inaltimi")->first_node("b")->value());
 
 			obiecte.push_back(new Terrain(id,tip,pos,rotation,scale,model,shader,texturi,depthTest,nr_celule,dimensiuneCelula,offSetY,height));
+		}
+		else if (tip == "croco") {
+			obiecte.push_back(new Crocodil(id, tip, pos, rotation, scale, model, shader, texturi, depthTest));
+		}
+		else if (tip == "bus") {
+			obiecte.push_back(new Bus(id, tip, pos, rotation, scale, model, shader, texturi, depthTest));
+
 		}
 		else if (tip == "normal") {
 			obiecte.push_back(new SceneObject(id,tip, pos, rotation, scale, model, shader, texturi, depthTest));
@@ -149,6 +158,7 @@ void SceneManager::Update(float deltaTime) {
 	for (auto obiect : obiecte) {
 		obiect->Update(deltaTime);
 	}
+	ResourceManager::getresourceManager()->Update();
 }
 
 void SceneManager::Key(unsigned char key) {
@@ -162,16 +172,21 @@ void SceneManager::verificaColiziuni() {
 	for (int i = 0; i < obiecte.size()-1; i++) {
 		Paralelipiped p1;
 		p1 = obiecte[i]->getParalelipiped();
+		if (p1.tag == "skybox")continue;
 		for (int j = i + 1; j < obiecte.size(); j++) {
+			
 			Paralelipiped  p2;
 			p2 = obiecte[j]->getParalelipiped();
+			if (p2.tag == "skybox")continue;
 			if (Paralelipiped::verificaColiziune(p1, p2) || Paralelipiped::verificaColiziune(p2, p1)) {
-				std::cout << "Coliziune\n";
+				std::cout <<p1.tag<<" "<<p2.tag<<"\n";
+				ResourceManager::getresourceManager()->playSound(1);
 			}
 
 		}
 
 	}
+	std::cout << "gata un frame\n";
 
 
 }

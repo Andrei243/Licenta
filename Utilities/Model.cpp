@@ -83,12 +83,24 @@ void Model::Load() {
 
 }
 
-Model::Model(Vertex* vertexi, int nrVertexi, unsigned short* indici, int nrIndici) {
+Model::Model(Vertex* verticesData, int nrVertexi, unsigned short* indici, int nrIndici) {
 	this->nrindici = nrIndici;
 	glGenBuffers(1, &vbold);
 	glBindBuffer(GL_ARRAY_BUFFER, vbold);
-	glBufferData(GL_ARRAY_BUFFER, nrVertexi * sizeof(Vertex), vertexi, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, nrVertexi * sizeof(Vertex), verticesData, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	boundingBox.maxx = boundingBox.minx = verticesData[0].pos.x;
+	boundingBox.miny = boundingBox.maxy = verticesData[0].pos.y;
+	boundingBox.maxz = boundingBox.minz = verticesData[0].pos.z;
+	for (int i = 1; i < nrVertexi; i++) {
+		Vector3 pos = verticesData[i].pos;
+		if (boundingBox.minx > pos.x)boundingBox.minx = pos.x;
+		if (boundingBox.maxx < pos.x)boundingBox.maxx = pos.x;
+		if (boundingBox.miny > pos.y)boundingBox.miny = pos.y;
+		if (boundingBox.maxy < pos.x)boundingBox.maxy = pos.y;
+		if (boundingBox.minz > pos.z)boundingBox.minz = pos.z;
+		if (boundingBox.maxz < pos.z)boundingBox.maxz = pos.z;
+	}
 	glGenBuffers(1, &ibold);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibold);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, nrindici * sizeof(unsigned short), indici, GL_STATIC_DRAW);

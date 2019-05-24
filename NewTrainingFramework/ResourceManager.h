@@ -4,6 +4,8 @@
 #include "../Utilities/Shader.h"
 #include "../Utilities/Texture.h"
 #include <map>
+#include "../Utilities/fmod.h"
+#include "../Utilities/fmod.hpp"
 
 
 
@@ -11,6 +13,7 @@
 class ResourceManager {
 private:
 	static ResourceManager* resourceManager;
+	FMOD::System* fmodSystem;
 	ResourceManager() {};
 	friend class Model;
 	friend class Shader;
@@ -24,9 +27,11 @@ private:
 	std::map<int, Model*>modeleincarcate;
 	std::map<int, Shader*>shadereincarcate;
 	std::map<int, Texture*>texturiincarcate;
-
+	std::map<int, FMOD::Sound*>suneteincarcate;
 
 public:
+	void Update();
+	void playSound(int id);
 	Shader* loadShader(GLint id);
 	Model* loadModel(GLint id);
 	Texture* loadTexture(GLint id);

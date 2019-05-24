@@ -94,5 +94,9 @@
       <wrap_t>GL_REPEAT</wrap_t>
     </texture>
 		<!-- si aici se adauga toate texturile -->
-	</textures>	
+	</textures>
+  <sounds>
+    <sound id="1">Resources/Sounds/hapciu.wav</sound>
+  </sounds>
+
 </resourceManager>

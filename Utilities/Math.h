@@ -13,7 +13,7 @@ public:
 	Vector2() : x(0.0f), y(0.0f){}
 	Vector2(GLfloat _x, GLfloat _y) : x(_x), y(_y) {}
 	Vector2(GLfloat * pArg) : x(pArg[0]), y(pArg[1]) {}
-	Vector2(Vector2 & vector) : x(vector.x), y(vector.y) {}
+	Vector2(const Vector2 & vector) : x(vector.x), y(vector.y) {}
 
 
 	//Vector's operations
@@ -49,7 +49,7 @@ public:
 	Vector3() : x(0.0f), y(0.0f), z(0.0f) {}
 	Vector3(GLfloat _x, GLfloat _y, GLfloat _z) : x(_x), y(_y), z(_z) {}
 	Vector3(GLfloat * pArg) : x(pArg[0]), y(pArg[1]), z(pArg[2]) {}
-	Vector3(Vector3 & vector) : x(vector.x), y(vector.y), z(vector.z) {}
+	Vector3(const Vector3 & vector) : x(vector.x), y(vector.y), z(vector.z) {}
 
 
 
@@ -93,7 +93,7 @@ public:
 	Vector4(GLfloat * pArg) : x(pArg[0]), y(pArg[1]), z(pArg[2]), w(pArg[3]) {}
 	Vector4(Vector3 & vector) : x(vector.x), y(vector.y), z(vector.z), w(1.0f){}
 	Vector4(Vector3 & vector, GLfloat _w) : x(vector.x), y(vector.y), z(vector.z), w(_w) {}
-	Vector4(Vector4 & vector) : x(vector.x), y(vector.y), z(vector.z), w(vector.w) {}
+	Vector4(const Vector4 & vector) : x(vector.x), y(vector.y), z(vector.z), w(vector.w) {}
 
 	//Vector's operations
 	GLfloat Length();

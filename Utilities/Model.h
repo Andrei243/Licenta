@@ -11,6 +11,7 @@ class Model {
 	GLuint vbold;
 	GLint nrindici, nrindiciWired;
 	Paralelipiped boundingBox;
+	std::vector<Vertex> vertexi;
 	
 public:
 	GLuint getid();
@@ -18,7 +19,7 @@ public:
 	GLuint getindid();
 	GLint getnrIndici();
 	GLint getnrIndiciWired();
-	Paralelipiped getBoundingBox();
+	Paralelipiped getBoundingBox(Vector3 rotation,Vector3 scale,Vector3 position);
 
 	void Load();
 	Model(Vertex* vertexi, int nr_vertexi, unsigned short* indici, int nr_indici);

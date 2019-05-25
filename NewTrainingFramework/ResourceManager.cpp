@@ -108,7 +108,7 @@ void ResourceManager::Init(std::string xmlpath) {
 		std::string path = itersounds->value();
 		FMOD::Sound* sound;
 		fmodSystem->createSound(path.c_str(), FMOD_LOOP_OFF, 0, &sound);
-		suneteincarcate.insert(std::make_pair(id, sound));
+		suneteincarcate.insert(std::make_pair(id, path));
 
 	}
 
@@ -149,7 +149,7 @@ void ResourceManager::Init(std::string xmlpath) {
 		if (type== cub) {
 			texturiincarcate.insert(std::make_pair(id, Texture::generareSkybox(path,type, min_filter, mag_filter, wrap_s, wrap_t)));
 		}
-		
+		else
 		{TextureResource* tr = new TextureResource();
 		tr->id = id;
 		tr->path = path;
@@ -164,9 +164,14 @@ void ResourceManager::Init(std::string xmlpath) {
 }
 
 void ResourceManager::playSound(int id) {
-	
-	FMOD::Sound* sunet = suneteincarcate[id];
-	fmodSystem->playSound(sunet, 0, false, 0);
+	FMOD::Sound* sound;
+	std::string path = suneteincarcate[id];
+
+	fmodSystem->createSound(path.c_str(), FMOD_LOOP_OFF, 0, &sound);
+
+	if (fmodSystem->playSound(sound, 0, false, 0)!=FMOD_OK) 
+	{std::cout<<"Ceva e gresit\n" ; }
+	sound->release();
 }
 void ResourceManager::Update() {
 	fmodSystem->update();

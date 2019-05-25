@@ -50,7 +50,7 @@
 			<position><!-- translatia -->
 				<x>0</x>
 				<y>0</y>
-				<z>200</z>
+				<z>-200</z>
 			</position>
 			<rotation>
 				<x>0</x>
@@ -103,9 +103,9 @@
         <z>200</z>
       </position>
       <rotation>
-        <x>0</x>
-        <y>0</y>
-        <z>0</z>
+        <x>90</x>
+        <y>90</y>
+        <z>90</z>
       </rotation>
       <scale>
         <x>1</x>
@@ -210,9 +210,9 @@
       <shader>15</shader>
       <type>terrain</type>
       <wired/>
-      <nrCelule>50</nrCelule>
+      <nrCelule>100</nrCelule>
       <dimensiuneCelula>100</dimensiuneCelula>
-      <offSetY>-100</offSetY>
+      <offSetY>-5</offSetY>
       <blend>true</blend>
       <name>Teren</name>
       <color>
@@ -232,9 +232,9 @@
         <texture id="17"/>
       </textures>
       <position>
-        <x>1.5</x>
-        <y>2.4</y>
-        <z>7</z>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
       </position>
       <rotation>
         <x>0.0</x>
@@ -242,15 +242,15 @@
         <z>0.0</z>
       </rotation>
       <scale>
-        <x>5.0</x>
-        <y>5.0</y>
-        <z>5.0</z>
+        <x>1.0</x>
+        <y>1.0</y>
+        <z>1.0</z>
       </scale>
       <lights>
         <light>1</light>
       </lights>
     </object>
-    -->
+ -->
 	</objects>
 	
 

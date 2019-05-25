@@ -36,6 +36,7 @@ void SkyBox::Draw() {
 	rotatie = rotatiex * rotatiey*rotatiez;
 	matrice = scalare * rotatie*translatie;
 	matrice = matrice * camera->getmat();
+
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, texturi[0]->getid());
 	glUniform1i(shader->getCubeUn(), 0);

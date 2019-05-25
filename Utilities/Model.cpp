@@ -45,7 +45,7 @@ void Model::Load() {
 	int inutil;
 	for (int i = 0; i < nrVertecsi; i++) {
 		fscanf(fisierModel, "%d. pos:[%f, %f, %f]; norm:[%f, %f, %f]; binorm:[%f, %f, %f]; tgt:[%f, %f, %f]; uv:[%f, %f];", &inutil, &verticesData[i].pos.x, &verticesData[i].pos.y, &verticesData[i].pos.z, &verticesData[i].norm.x, &verticesData[i].norm.y, &verticesData[i].norm.z, &verticesData[i].binorm.x, &verticesData[i].binorm.y, &verticesData[i].binorm.z, &verticesData[i].tgt.x, &verticesData[i].tgt.y, &verticesData[i].tgt.z, &verticesData[i].uv.x, &verticesData[i].uv.y);
-
+		vertexi.push_back(verticesData[i]);
 	}
 	boundingBox.maxx = boundingBox.minx=verticesData[0].pos.x;
 	boundingBox.miny = boundingBox.maxy=verticesData[0].pos.y;
@@ -84,6 +84,9 @@ void Model::Load() {
 }
 
 Model::Model(Vertex* verticesData, int nrVertexi, unsigned short* indici, int nrIndici) {
+	for (int i = 0; i < nrVertexi; i++) {
+		vertexi.push_back(verticesData[i]);
+	}
 	this->nrindici = nrIndici;
 	glGenBuffers(1, &vbold);
 	glBindBuffer(GL_ARRAY_BUFFER, vbold);
@@ -112,6 +115,20 @@ Model::Model(ModelResource* resursa) {
 	this->mr = resursa;
 	this->Load();
 }
-Paralelipiped Model::getBoundingBox() {
-	return boundingBox;
+Paralelipiped Model::getBoundingBox(Vector3 rotation,Vector3 scale,Vector3 position) {
+	Matrix rotatiex, rotatiey, rotatiez, matrotatie, scalare, pozitie;
+	rotatiex.SetRotationX(rotation.x);
+	rotatiey.SetRotationY(rotation.y);
+	rotatiez.SetRotationZ(rotation.z);
+	scalare.SetScale(scale);
+	pozitie.SetTranslation(position);
+	matrotatie = scalare * rotatiex * rotatiey*rotatiez*pozitie;
+	std::vector<Vertex> vertexi_noi;
+	for (auto element : vertexi) {
+		Vertex nou = element;
+		Vector4 pos_nou= Vector4(nou.pos,1) * matrotatie;
+		nou.pos = Vector3(pos_nou.x, pos_nou.y, pos_nou.z);
+		vertexi_noi.push_back(nou);
+	}
+	return Paralelipiped(vertexi_noi);
 }

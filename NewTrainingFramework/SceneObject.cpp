@@ -89,10 +89,9 @@ Paralelipiped SceneObject::setBoundTag(Paralelipiped par) {
 }
 
 Paralelipiped SceneObject::getParalelipiped() {
-	Paralelipiped paralelipiped = model->getBoundingBox();
-	paralelipiped = paralelipiped.calculeazaParalelipiped(rotation,scale,position);
+	Paralelipiped paralelipiped = model->getBoundingBox(rotation,scale,position);
 
 	paralelipiped=setBoundTag(paralelipiped);
-	std::cout << paralelipiped.tag << " " << paralelipiped.minx << " " << paralelipiped.maxx << " " << paralelipiped.miny << " " << paralelipiped.maxy << " " << paralelipiped.minz << " " << paralelipiped.maxz << "\n";
+	//std::cout << paralelipiped.tag << " " << paralelipiped.minx << " " << paralelipiped.maxx << " " << paralelipiped.miny << " " << paralelipiped.maxy << " " << paralelipiped.minz << " " << paralelipiped.maxz << "\n";
 	return paralelipiped;
 }

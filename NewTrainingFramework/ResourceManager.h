@@ -27,7 +27,7 @@ private:
 	std::map<int, Model*>modeleincarcate;
 	std::map<int, Shader*>shadereincarcate;
 	std::map<int, Texture*>texturiincarcate;
-	std::map<int, FMOD::Sound*>suneteincarcate;
+	std::map<int, std::string>suneteincarcate;
 
 public:
 	void Update();

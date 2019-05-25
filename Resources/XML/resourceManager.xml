@@ -96,7 +96,7 @@
 		<!-- si aici se adauga toate texturile -->
 	</textures>
   <sounds>
-    <sound id="1">Resources/Sounds/hapciu.wav</sound>
+    <sound id="1">../Resources/Sounds/hapciu.wav</sound>
   </sounds>
 
 </resourceManager>

@@ -10,6 +10,7 @@ Camera* camera = SceneManager::getsceneManager()->getActiveCamera();
 
 
 Terrain::Terrain(int _id, std::string _type, Vector3 _position, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*>texturi, bool _depthTest, int _nr_celule, int _dimensiuneCelula, int _offSetY, Vector3 height):SceneObject(_id, _type, _position, _rotation, _scale, _model, _shader, texturi, _depthTest) {
+	position = SceneManager::getsceneManager()->getActiveCamera()->getposition();
 	model = Terrain::generateModel(_offSetY, _dimensiuneCelula, _nr_celule);
 	nr_celule = _nr_celule;
 	dimensiuneCelula = _dimensiuneCelula;
@@ -33,7 +34,7 @@ Model* Terrain::generateModel(int offsetY, int dimensiuneCelula,int nr_celule) {
 			poz.z = (float)dimensiuneCelula * (j - nr_celule / 2);
 			poz.y = offsetY;
 			vertexi[i*nr_celule + j].pos = poz;
-			vertexi[i*nr_celule + j].uv = Vector2(i / (float)nr_celule, j / (float)nr_celule);
+			vertexi[i*nr_celule + j].uv = Vector2(i /*/ (float)nr_celule*/, j /*/ (float)nr_celule*/);
 		}
 
 
@@ -77,10 +78,28 @@ void Terrain::Draw() {
 void Terrain::Update(float deltaTime) {
 	//std::cout << position.x << " " << position.y << " " << position.z << "\n";
 	//std::cout << deplx << " " << deplz << "\n";
-	if (position.x - SceneManager::getsceneManager()->getActiveCamera()->getposition().x > dimensiuneCelula) { position.x -= dimensiuneCelula; deplx--; }
-	else if (SceneManager::getsceneManager()->getActiveCamera()->getposition().x - position.x > dimensiuneCelula) { position.x += dimensiuneCelula; deplx++; }
-	if (position.z - SceneManager::getsceneManager()->getActiveCamera()->getposition().z > dimensiuneCelula) { position.z -= dimensiuneCelula; deplz--; }
-	else if (SceneManager::getsceneManager()->getActiveCamera()->getposition().z - position.z > dimensiuneCelula) { position.z += dimensiuneCelula; deplz++; }
+	if (position.x - SceneManager::getsceneManager()->getActiveCamera()->getposition().x > dimensiuneCelula) { 
+		int nrSarituri = ((int)(position.x - SceneManager::getsceneManager()->getActiveCamera()->getposition().x)) / dimensiuneCelula;
+		position.x -= nrSarituri*dimensiuneCelula; 
+		deplx-=nrSarituri; 
+	}
+	else if (SceneManager::getsceneManager()->getActiveCamera()->getposition().x - position.x > dimensiuneCelula) { 
+		int nrSarituri = ((int)(SceneManager::getsceneManager()->getActiveCamera()->getposition().x - position.x)) / dimensiuneCelula;
+		position.x +=nrSarituri* dimensiuneCelula; 
+		deplx+=nrSarituri; 
+	}
+
+	if (position.z - SceneManager::getsceneManager()->getActiveCamera()->getposition().z > dimensiuneCelula) {
+		int nrSarituri = ((int)(position.z - SceneManager::getsceneManager()->getActiveCamera()->getposition().z)) / dimensiuneCelula;
+		position.z -= nrSarituri * dimensiuneCelula;
+		deplz -= nrSarituri;
+	}
+	else if (SceneManager::getsceneManager()->getActiveCamera()->getposition().z - position.z > dimensiuneCelula) {
+		int nrSarituri = ((int)(SceneManager::getsceneManager()->getActiveCamera()->getposition().z - position.z)) / dimensiuneCelula;
+
+		position.z += nrSarituri * dimensiuneCelula;
+		deplz += nrSarituri;
+	}
 	/*if (position.y - SceneManager::getsceneManager()->getActiveCamera()->getposition().y > dimensiuneCelula)position.y -= dimensiuneCelula;
 	else if (SceneManager::getsceneManager()->getActiveCamera()->getposition().y - position.y > dimensiuneCelula)position.y += dimensiuneCelula;*/
 

@@ -179,14 +179,14 @@ void SceneManager::verificaColiziuni() {
 			p2 = obiecte[j]->getParalelipiped();
 			if (p2.tag == "skybox")continue;
 			if (Paralelipiped::verificaColiziune(p1, p2) || Paralelipiped::verificaColiziune(p2, p1)) {
-				std::cout <<p1.tag<<" "<<p2.tag<<"\n";
+				//std::cout <<p1.tag<<" "<<p2.tag<<"\n";
 				ResourceManager::getresourceManager()->playSound(1);
 			}
 
 		}
 
 	}
-	std::cout << "gata un frame\n";
+	//std::cout << "gata un frame\n";
 
 
 }

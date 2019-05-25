@@ -56,3 +56,20 @@ Paralelipiped Paralelipiped::calculeazaParalelipiped(Vector3 rotatie, Vector3 sc
 
 
 }
+
+Paralelipiped::Paralelipiped(std::vector<Vertex>vertexi) {
+	minx = maxx = vertexi[0].pos.x;
+	miny = maxy = vertexi[0].pos.y;
+	minz = maxz = vertexi[0].pos.z;
+
+	for (auto vert : vertexi) {
+		if (vert.pos.x < minx)minx = vert.pos.x;
+		if (vert.pos.x > maxx)maxx = vert.pos.x;
+		if (vert.pos.y < miny)miny = vert.pos.y;
+		if (vert.pos.y > maxy)maxy = vert.pos.y;
+		if (vert.pos.z < minz)minz = vert.pos.z;
+		if (vert.pos.z > maxz)maxz = vert.pos.z;
+
+	}
+
+}

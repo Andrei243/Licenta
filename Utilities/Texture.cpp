@@ -65,12 +65,12 @@ Texture* Texture::generareSkybox(std::string path,
 		}
 	}
 
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, tip, width, height, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X, 0, tip, width, height, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, tip, width, height, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, tip, width, height, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 0, tip, width, height, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, tip, width, height, 0, tip, GL_UNSIGNED_BYTE, minitga1);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
 	delete minitga1;
 	return texture;
 }

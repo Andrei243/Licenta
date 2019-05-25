@@ -108,7 +108,7 @@ void ResourceManager::Init(std::string xmlpath) {
 		std::string path = itersounds->value();
 		FMOD::Sound* sound;
 		fmodSystem->createSound(path.c_str(), FMOD_LOOP_OFF, 0, &sound);
-		suneteincarcate.insert(std::make_pair(id, path));
+		suneteincarcate.insert(std::make_pair(id, sound));
 
 	}
 
@@ -165,13 +165,13 @@ void ResourceManager::Init(std::string xmlpath) {
 
 void ResourceManager::playSound(int id) {
 	FMOD::Sound* sound;
-	std::string path = suneteincarcate[id];
+	sound = suneteincarcate[id];
 
-	fmodSystem->createSound(path.c_str(), FMOD_LOOP_OFF, 0, &sound);
+	//fmodSystem->createSound(path.c_str(), FMOD_LOOP_OFF, 0, &sound);
 
 	if (fmodSystem->playSound(sound, 0, false, 0)!=FMOD_OK) 
 	{std::cout<<"Ceva e gresit\n" ; }
-	sound->release();
+	//sound->release();
 }
 void ResourceManager::Update() {
 	fmodSystem->update();

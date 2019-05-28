@@ -70,7 +70,7 @@ void SkyBox::Draw() {
 
 }
 
-void SkyBox::Update() {
+void SkyBox::Update(float deltaTime) {
 	float y = position.y;
 	position = SceneManager::getsceneManager()->getActiveCamera()->getposition();
 	position.y = y;

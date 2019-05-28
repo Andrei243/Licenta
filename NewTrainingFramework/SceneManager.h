@@ -10,6 +10,7 @@ class SceneManager {
 	int camera_actuala;
 	Vector3 backgroundColor;
 	std::vector<SceneObject*>obiecte;
+	std::vector<std::vector<bool> > coliziune;
 
 public:
 	void verificaColiziuni();

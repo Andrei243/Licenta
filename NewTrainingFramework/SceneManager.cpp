@@ -139,6 +139,8 @@ void SceneManager::Init(std::string path) {
 
 		}
 	}
+	coliziune = std::vector<std::vector<bool> >(obiecte.size() - 1, std::vector<bool>(obiecte.size() - 1, false));
+
 
 }
 
@@ -172,15 +174,20 @@ void SceneManager::verificaColiziuni() {
 	for (int i = 0; i < obiecte.size()-1; i++) {
 		Paralelipiped p1;
 		p1 = obiecte[i]->getParalelipiped();
-		if (p1.tag == "skybox")continue;
-		for (int j = i + 1; j < obiecte.size(); j++) {
-			
-			Paralelipiped  p2;
-			p2 = obiecte[j]->getParalelipiped();
-			if (p2.tag == "skybox")continue;
-			if (Paralelipiped::verificaColiziune(p1, p2) || Paralelipiped::verificaColiziune(p2, p1)) {
-				//std::cout <<p1.tag<<" "<<p2.tag<<"\n";
-				ResourceManager::getresourceManager()->playSound(1);
+		for (int j = 0; j < obiecte.size() - 1; j++) {
+			Paralelipiped p2 = obiecte[j]->getParalelipiped();
+			bool colizionat = Paralelipiped::verificaColiziune(p1, p2);
+			if (colizionat == coliziune[i][j]) {
+				continue;
+			}
+			else if (colizionat) {
+				coliziune[i][j] = true;
+				if (p1.tag == "bus"&&p2.tag == "croco") {
+					ResourceManager::getresourceManager()->playSound(1);
+				}
+			}
+			else {
+				coliziune[i][j] = false;
 			}
 
 		}

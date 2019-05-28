@@ -204,15 +204,15 @@
         <z>5.0</z>
       </scale>
     </object> 
-<!--
+
     <object id="8">
       <model>generated</model>
       <shader>15</shader>
       <type>terrain</type>
       <wired/>
-      <nrCelule>100</nrCelule>
+      <nrCelule>50</nrCelule>
       <dimensiuneCelula>100</dimensiuneCelula>
-      <offSetY>-5</offSetY>
+      <offSetY>-200</offSetY>
       <blend>true</blend>
       <name>Teren</name>
       <color>
@@ -250,7 +250,7 @@
         <light>1</light>
       </lights>
     </object>
- -->
+ 
 	</objects>
 	
 

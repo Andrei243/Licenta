@@ -19,22 +19,22 @@ public:
 		switch (key) {
 		case 'U':
 		case 'u':
-			position.z += 20;
+			position.z -= 20;
 			break;
 
 		case 'J':
 		case 'j':
-			position.z -= 20;
+			position.z += 20;
 			break;
 
 		case 'H':
 		case 'h':
-			position.x -= 20;
+			position.x += 20;
 			break;
 
 		case 'K':
 		case 'k':
-			position.x += 20;
+			position.x -= 20;
 			break;
 
 		}

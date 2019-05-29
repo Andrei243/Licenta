@@ -9,6 +9,7 @@
 #include "Croco.h"
 #include <fstream>
 #include <sstream>
+#include <boost/assert.hpp>
 
 
 
@@ -72,6 +73,9 @@ void SceneManager::Init(std::string path) {
 
 
 	}
+
+	BOOST_ASSERT(camere.size() == 2);
+
 	camera_actuala = atoi(doc.first_node()->first_node("activeCamera")->value());
 	rapidxml::xml_node<>* pobjects = doc.first_node()->first_node("objects");
 	for (rapidxml::xml_node<>*iterobjects = pobjects->first_node("object"); iterobjects; iterobjects = iterobjects->next_sibling()) {
@@ -139,6 +143,8 @@ void SceneManager::Init(std::string path) {
 
 		}
 	}
+	BOOST_ASSERT(obiecte.size() == 4);
+
 	coliziune = std::vector<std::vector<bool> >(obiecte.size() - 1, std::vector<bool>(obiecte.size() - 1, false));
 
 

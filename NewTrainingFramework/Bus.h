@@ -19,7 +19,7 @@ public:
 		int z = rand();
 		Vector3 depl = Vector3(x, 0, z);
 		depl = depl.Normalize();
-		position += depl * deltaTime * 20;
+		position += depl * deltaTime * -20 ;
 
 	}
 

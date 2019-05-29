@@ -16,12 +16,29 @@ public:
 public:
 	virtual void Key(unsigned char key) {
 		
-			switch (key) {
-			case 'U':
-			case 'u':
-				position.z += 20;
-			
+		switch (key) {
+		case 'U':
+		case 'u':
+			position.z += 20;
+			break;
+
+		case 'J':
+		case 'j':
+			position.z -= 20;
+			break;
+
+		case 'H':
+		case 'h':
+			position.x -= 20;
+			break;
+
+		case 'K':
+		case 'k':
+			position.x += 20;
+			break;
+
 		}
+
 
 	};
 

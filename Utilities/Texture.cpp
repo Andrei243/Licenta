@@ -56,22 +56,45 @@ Texture* Texture::generareSkybox(std::string path,
 		tip = GL_RGB;
 		nr_oct = 3;
 	}
-	char* minitga1 = new char[(width / 4) * (height / 3)*nr_oct];
-	for (int i = 0; i < height / 3; i++) {
-		for (int j = 0; j < width / 4; j++) {
-			for(int k=0;k<nr_oct;k++)
-			minitga1[i*width * nr_oct/4 + j * nr_oct+k] = text[i*width * nr_oct + width / 4 + j * nr_oct+k];
+	//char* minitga1 = new char[(width / 4) * (height / 3)*nr_oct];
+	//for (int i = 0; i < height / 3; i++) {
+		//for (int j = 0; j < width / 4; j++) {
+			//for(int k=0;k<nr_oct;k++)
+			//minitga1[i*width * nr_oct/4 + j * nr_oct+k] = text[i*width * nr_oct + width / 4 + j * nr_oct+k];
 
-		}
+		//}
+	//}
+
+	//glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
+	//glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
+	//glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
+	//glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
+	//glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
+	//glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
+	//delete minitga1;
+	char** minitga = new char*[6];
+	for (int idx = 0; idx < 6; idx++) {
+		minitga[idx] = new char[(width / 4) * (height / 3) * nr_oct];
 	}
 
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	delete minitga1;
+	for (int i = 0; i < height / 3; i++) {
+		for (int j = 0; j < width / 4; j++) {
+			for (int k = 0; k < nr_oct; k++) {
+				minitga[2][i*width * nr_oct / 4 + j * nr_oct + k] = text[i*width * nr_oct + width / 4 * nr_oct + j * nr_oct + k]; // 2
+				minitga[3][i*width * nr_oct / 4 + j * nr_oct + k] = text[i*width * nr_oct + height / 3 * 2 * width * nr_oct + width / 4 * nr_oct + j * nr_oct + k];  // 3
+				minitga[1][i*width * nr_oct / 4 + j * nr_oct + k] = text[i*width * nr_oct + height / 3 * width * nr_oct + j * nr_oct + k];
+				minitga[4][i*width * nr_oct / 4 + j * nr_oct + k] = text[i*width * nr_oct + height / 3 * width * nr_oct + width / 4 * nr_oct + j * nr_oct + k];
+				minitga[0][i*width * nr_oct / 4 + j * nr_oct + k] = text[i*width * nr_oct + height / 3 * width * nr_oct + 2 * width / 4 * nr_oct + j * nr_oct + k];
+				minitga[5][i*width * nr_oct / 4 + j * nr_oct + k] = text[i*width * nr_oct + height / 3 * width * nr_oct + 3 * width / 4 * nr_oct + j * nr_oct + k];
+
+			}
+		}
+	}
+	for (int idx = 0; idx < 6; idx++) {
+		glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + idx, 0, tip, width / 4, height / 3, 0, tip, GL_UNSIGNED_BYTE, minitga[idx]);
+	}
+
+
 	return texture;
 }
 

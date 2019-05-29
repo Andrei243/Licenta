@@ -84,55 +84,6 @@
 			</lights>
 		</object>
 
-    <object id="3">
-      <model>1</model>
-      <!-- id model -->
-      <shader>10</shader>
-      <!-- id shader -->
-      <type>croco</type>
-      <blend>true</blend>
-      <name>Crocodil_verde</name>
-      <!-- optional -->
-      <textures>
-        <texture id="4"/>
-      </textures>
-      <position>
-        <!-- translatia -->
-        <x>200</x>
-        <y>0</y>
-        <z>200</z>
-      </position>
-      <rotation>
-        <x>90</x>
-        <y>90</y>
-        <z>90</z>
-      </rotation>
-      <scale>
-        <x>1</x>
-        <y>1</y>
-        <z>1</z>
-      </scale>
-      <followingCamera>
-        <cameras>
-          <camera>1</camera>
-        </cameras>
-        <ox/>
-        <oy/>
-        <oz/>
-      </followingCamera>
-      <trajectory type="linear" iteration="infinite" direction="alternate">
-        <!-- startPoint e chiar Pos -->
-        <endPoint>
-          <x>0.5</x>
-          <y>100.0</y>
-          <z>1.0</z>
-        </endPoint>
-        <speed>0.1</speed>
-      </trajectory>
-      <lights>
-        <light>1</light>
-      </lights>
-    </object>
 
     <object id="2">
       <model>7</model>

@@ -14,6 +14,7 @@
 #include <iostream>
 #include "../Utilities/fmod.h"
 #include "../Utilities/fmod.hpp"
+#include <boost/assert.hpp>
 
 std::string cub = std::string("cube_map");
 
@@ -111,6 +112,7 @@ void ResourceManager::Init(std::string xmlpath) {
 		suneteincarcate.insert(std::make_pair(id, sound));
 
 	}
+	BOOST_ASSERT(suneteincarcate.size() == 1);
 
 	//pentru modele
 
@@ -124,6 +126,8 @@ void ResourceManager::Init(std::string xmlpath) {
 
 	}
 
+	BOOST_ASSERT(modelresources.size() == 4);
+
 	//pentru shadere
 	for (rapidxml::xml_node<>*itershadere = pshader->first_node("shader"); itershadere; itershadere = itershadere->next_sibling()) {
 		int id = atoi(itershadere->first_attribute("id")->value());
@@ -135,6 +139,8 @@ void ResourceManager::Init(std::string xmlpath) {
 		sr->vs = vs;
 		shaderresources.insert(std::make_pair(id, sr));
 	}
+
+	BOOST_ASSERT(shaderresources.size() == 3);
 
 	//pentru texturi
 

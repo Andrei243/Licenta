@@ -8,6 +8,16 @@ GLuint Texture::getid() {
 	return id;
 }
 
+void inversare_vector(char* vec, int lungime) {
+	for (int i = 0; i < lungime / 2; i++) {
+		char aux = vec[i];
+		vec[i] = vec[lungime - i];
+		vec[lungime - i] - aux;
+	}
+
+
+}
+
 GLint procesare_stringuri(std::string nume) {
 	if (nume == "NEAREST")return GL_NEAREST;
 	else if (nume == "LINEAR")return GL_LINEAR;
@@ -90,7 +100,10 @@ Texture* Texture::generareSkybox(std::string path,
 			}
 		}
 	}
+	
+
 	for (int idx = 0; idx < 6; idx++) {
+		//inversare_vector(minitga[idx], (width / 4) * (height / 3) * nr_oct);
 		glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + idx, 0, tip, width / 4, height / 3, 0, tip, GL_UNSIGNED_BYTE, minitga[idx]);
 	}
 

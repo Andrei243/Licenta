@@ -50,6 +50,7 @@ void SceneObject::CommonDraw(Camera* camera) {
 	scalare.SetScale(scale);
 	rotatie = rotatiex * rotatiey*rotatiez;
 	matrice = scalare * rotatie*translatie;
+	Matrix model = matrice;
 	matrice = matrice * camera->getmat();
 	for (unsigned int i = 0; i < texturi.size(); i++) {
 		glActiveTexture(GL_TEXTURE0 + i);
@@ -57,6 +58,10 @@ void SceneObject::CommonDraw(Camera* camera) {
 		if (shader->getTexUn()[i] != -1) {
 			glUniform1i(shader->getTexUn()[i], i);
 		}
+	}
+
+	if (shader->getModUn() != -1) {
+		glUniformMatrix4fv(shader->getModUn(), 1, GL_FALSE, (GLfloat*)model.m);
 	}
 
 	if (shader->getPosAtt() != -1)
@@ -75,7 +80,20 @@ void SceneObject::CommonDraw(Camera* camera) {
 		glEnableVertexAttribArray(shader->getUvAtt());
 		glVertexAttribPointer(shader->getUvAtt(), 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(4 * sizeof(Vector3)));
 	}
+	if (shader->getFogUn()[0] != -1) {
+		glUniform1f(shader->getFogUn()[0], SceneManager::getsceneManager()->r);
+	}
+	if (shader->getFogUn()[1] != -1) {
+		glUniform1f(shader->getFogUn()[1], SceneManager::getsceneManager()->R);
+	}
+	if (shader->getFogUn()[2] != -1) {
+		glUniform3f(shader->getFogUn()[2], SceneManager::getsceneManager()->fogcol.x, SceneManager::getsceneManager()->fogcol.y, SceneManager::getsceneManager()->fogcol.z);
+	}
 
+	Vector3 camerapos = SceneManager::getsceneManager()->getActiveCamera()->getposition();
+	if (shader->getCamUn() != -1) {
+		glUniform3f(shader->getCamUn(), camerapos.x, camerapos.y, camerapos.z);
+	}
 
 	glDrawElements(GL_TRIANGLES, nrIndici, GL_UNSIGNED_SHORT, 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);

@@ -13,6 +13,9 @@ uniform int u_var3;
 
 uniform int u_var4;
 uniform int u_var5;
+
+uniform mat4 model;
+varying vec3 pos;
 void main()
 {
 //vec2 aux2=a_uv;
@@ -34,5 +37,6 @@ vec4 blend=texture2D(u_texture3,aux);
 vec4 posL = vec4(a_posL, 1.0);
 posL.y+=blend.r*float(u_var1)+blend.g*float(u_var2)+blend.b*float(u_var3);
 gl_Position =u_rotation*posL;
+pos = vec3(model*posL);
 }
    

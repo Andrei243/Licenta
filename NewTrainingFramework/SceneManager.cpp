@@ -38,6 +38,13 @@ void SceneManager::Init(std::string path) {
 	backgroundColor.y = atoi(doc.first_node()->first_node("backgroundColor")->first_node("g")->value());
 	backgroundColor.z = atoi(doc.first_node()->first_node("backgroundColor")->first_node("b")->value());
 
+	r = atof(doc.first_node()->first_node("fog")->first_node("r")->value());
+	R = atof(doc.first_node()->first_node("fog")->first_node("R")->value());
+	fogcol.x = atof(doc.first_node()->first_node("fog")->first_node("color")->first_node("r")->value());
+	fogcol.y = atof(doc.first_node()->first_node("fog")->first_node("color")->first_node("g")->value());
+	fogcol.z = atof(doc.first_node()->first_node("fog")->first_node("color")->first_node("b")->value());
+
+
 	//pentru camere
 
 	for (rapidxml::xml_node<>*itercameras = pcameras->first_node("camera");itercameras; itercameras = itercameras->next_sibling()) {

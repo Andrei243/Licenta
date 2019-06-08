@@ -11,8 +11,11 @@ class SceneManager {
 	Vector3 backgroundColor;
 	std::vector<SceneObject*>obiecte;
 	std::vector<std::vector<bool> > coliziune;
+	
 
 public:
+	float r, R;
+	Vector3 fogcol;
 	void verificaColiziuni();
 	static SceneManager* getsceneManager();
 	void Init(std::string path);

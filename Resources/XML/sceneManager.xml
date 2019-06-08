@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sceneManager>
 
+  <fog>
+    <r>2000</r>
+    <R>5000</R>
+    <color>
+      <r>0.3</r>
+      <g>0</g>
+      <b>0.4</b>
+    </color>
+  </fog>
+
 	<backgroundColor>
 		<r>0.0</r>
 		<g>0.0</g>
@@ -140,12 +150,12 @@
         <texture id="18"/>
       </textures>
       <position>
-        <x>1.5</x>
-        <y>2.4</y>
-        <z>7</z>
+        <x>0</x>
+        <y>-2000</y>
+        <z>0</z>
       </position>
       <rotation>
-        <x>0.0</x>
+        <x>180.0</x>
         <y>0.0</y>
         <z>0.0</z>
       </rotation>
@@ -161,7 +171,7 @@
       <shader>15</shader>
       <type>terrain</type>
       <wired/>
-      <nrCelule>50</nrCelule>
+      <nrCelule>100</nrCelule>
       <dimensiuneCelula>100</dimensiuneCelula>
       <offSetY>-200</offSetY>
       <blend>true</blend>
@@ -172,9 +182,9 @@
         <b>1.0</b>
       </color>
       <inaltimi>
-        <r>8</r>
-        <g>-4</g>
-        <b>5</b>
+        <r>80</r>
+        <g>-40</g>
+        <b>50</b>
       </inaltimi>
       <textures>
         <texture id="14"/>

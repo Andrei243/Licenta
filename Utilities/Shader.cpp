@@ -49,8 +49,15 @@ void Shader::Load() {
 	varUniform[4] = glGetUniformLocation(id_prog, "u_var4");
 	varUniform[5] = glGetUniformLocation(id_prog, "u_var5");
 
+	fogUniforms[0] = glGetUniformLocation(id_prog, "r");
+	fogUniforms[1] = glGetUniformLocation(id_prog, "R");
+	fogUniforms[2] = glGetUniformLocation(id_prog, "fogcol");
+
 	cubeUniform = glGetUniformLocation(id_prog, "u_cube_texture");
 
+	modelUniform = glGetUniformLocation(id_prog, "model");
+
+	camUniform = glGetUniformLocation(id_prog, "camera");
 }
 
 Shader::Shader(ShaderResource* resursa) {
@@ -78,4 +85,16 @@ GLint Shader::getCubeUn() {
 }
 Shader::~Shader() {
 	delete mr;
+}
+
+GLint* Shader::getFogUn() {
+	return fogUniforms;
+}
+
+GLint Shader::getModUn() {
+	return modelUniform;
+}
+
+GLint Shader::getCamUn() {
+	return camUniform;
 }

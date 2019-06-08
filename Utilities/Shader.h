@@ -10,6 +10,9 @@ class Shader {
 	GLint texUniform[6];
 	GLint varUniform[6];
 	GLint cubeUniform;
+	GLint fogUniforms[3];
+	GLint modelUniform;
+	GLint camUniform;
 	
 public:
 	void Load();
@@ -22,5 +25,8 @@ public:
 	GLint getUvAtt();
 	GLint* getTexUn();
 	GLint* getVarUn();
+	GLint* getFogUn();
+	GLint getModUn();
+	GLint getCamUn();
 };
 

@@ -13,6 +13,9 @@
     <model id="8">
       <path>../Resources/Models/SkyBox.nfg</path>
     </model>
+    <model id="9">
+      <path>../Resources/Models/fire.nfg</path>
+    </model>
 		<!-- si aici se adauga toate modelele -->
 	</models>
 	<shaders>
@@ -20,6 +23,11 @@
 			<vs>../Resources/Shaders/TriangleShaderVS.vs</vs>
 			<fs>../Resources/Shaders/TriangleShaderFS.fs</fs>
 		</shader>
+
+    <shader id="11">
+      <vs>../Resources/Shaders/Fire.vs</vs>
+      <fs>../Resources/Shaders/Fire.fs</fs>
+    </shader>
 
     <shader id="15">
       <vs>../Resources/Shaders/TerrainShaderVS.vs</vs>
@@ -56,6 +64,30 @@
 			<wrap_s>CLAMP_TO_EDGE</wrap_s>
 			<wrap_t>CLAMP_TO_EDGE</wrap_t>
     </texture>
+
+    <texture id="6" type="2d">
+      <path>../Resources/Textures/fire3.tga</path>
+      <min_filter>LINEAR</min_filter>
+      <mag_filter>LINEAR</mag_filter>
+      <wrap_s>GL_REPEAT</wrap_s>
+      <wrap_t>GL_REPEAT</wrap_t>
+    </texture>
+
+    <texture id="7" type="2d">
+      <path>../Resources/Textures/fire_mask.tga</path>
+      <min_filter>LINEAR</min_filter>
+      <mag_filter>LINEAR</mag_filter>
+      <wrap_s>GL_REPEAT</wrap_s>
+      <wrap_t>GL_REPEAT</wrap_t>
+    </texture>
+
+    <texture id="8" type="2d">
+      <path>../Resources/Textures/DisplacementMap.tga</path>
+      <min_filter>LINEAR</min_filter>
+      <mag_filter>LINEAR</mag_filter>
+      <wrap_s>GL_REPEAT</wrap_s>
+      <wrap_t>GL_REPEAT</wrap_t>
+    </texture>
       
 		<texture id="14" type="2d">
 			<path>../Resources/Textures/dirt.tga</path>			
@@ -77,7 +109,7 @@
 			<mag_filter>LINEAR</mag_filter>
 			<wrap_s>GL_REPEAT</wrap_s>
 			<wrap_t>GL_REPEAT</wrap_t>
-		</texture>	
+		</texture>
     
     <texture id="17" type="blend">
       <path>../Resources/Textures/Terrain_blend_map.tga</path>

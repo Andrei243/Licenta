@@ -212,6 +212,44 @@
       </lights>
     </object>
  
+  <object id="9">
+      <model>9</model>
+      <shader>11</shader>
+      <type>fire</type>
+      <wired/>
+      <blend>true</blend>
+      <name>Foc</name>
+      <displ_max>20</displ_max>
+      <color>
+        <r>1.0</r>
+        <g>1.0</g>
+        <b>1.0</b>
+      </color>
+      <textures>
+        <texture id="7"/>
+        <texture id="6"/>
+        <texture id="8"/>
+      </textures>
+      <position>
+        <x>20</x>
+        <y>0</y>
+        <z>0</z>
+      </position>
+      <rotation>
+        <x>0.0</x>
+        <y>0.0</y>
+        <z>0.0</z>
+      </rotation>
+      <scale>
+        <x>10.0</x>
+        <y>10.0</y>
+        <z>10.0</z>
+      </scale>
+      <lights>
+        <light>1</light>
+      </lights>
+    </object>
+ 
 	</objects>
 	
 

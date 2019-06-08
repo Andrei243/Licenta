@@ -112,7 +112,6 @@ void ResourceManager::Init(std::string xmlpath) {
 		suneteincarcate.insert(std::make_pair(id, sound));
 
 	}
-	BOOST_ASSERT(suneteincarcate.size() == 1);
 
 	//pentru modele
 
@@ -126,7 +125,6 @@ void ResourceManager::Init(std::string xmlpath) {
 
 	}
 
-	BOOST_ASSERT(modelresources.size() == 4);
 
 	//pentru shadere
 	for (rapidxml::xml_node<>*itershadere = pshader->first_node("shader"); itershadere; itershadere = itershadere->next_sibling()) {
@@ -140,7 +138,6 @@ void ResourceManager::Init(std::string xmlpath) {
 		shaderresources.insert(std::make_pair(id, sr));
 	}
 
-	BOOST_ASSERT(shaderresources.size() == 3);
 
 	//pentru texturi
 

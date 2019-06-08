@@ -6,6 +6,7 @@
 #include "Terrain.h"
 #include "SkyBox.h"
 #include "Bus.h"
+#include "Fire.h"
 #include "Croco.h"
 #include <fstream>
 #include <sstream>
@@ -81,7 +82,6 @@ void SceneManager::Init(std::string path) {
 
 	}
 
-	BOOST_ASSERT(camere.size() == 2);
 
 	camera_actuala = atoi(doc.first_node()->first_node("activeCamera")->value());
 	rapidxml::xml_node<>* pobjects = doc.first_node()->first_node("objects");
@@ -145,12 +145,16 @@ void SceneManager::Init(std::string path) {
 			obiecte.push_back(new Bus(id, tip, pos, rotation, scale, model, shader, texturi, depthTest));
 
 		}
+		else if (tip == "fire") {
+			float dismax = atof(iterobjects->first_node("displ_max")->value());
+			obiecte.push_back(new Fire(id, tip, pos, rotation, scale, model, shader, texturi, depthTest,dismax));
+
+		}
 		else if (tip == "normal") {
 			obiecte.push_back(new SceneObject(id,tip, pos, rotation, scale, model, shader, texturi, depthTest));
 
 		}
 	}
-	BOOST_ASSERT(obiecte.size() == 4);
 
 	coliziune = std::vector<std::vector<bool> >(obiecte.size() - 1, std::vector<bool>(obiecte.size() - 1, false));
 

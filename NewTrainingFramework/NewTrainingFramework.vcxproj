@@ -167,6 +167,7 @@
     <ClCompile Include="..\Utilities\Shader.cpp" />
     <ClCompile Include="..\Utilities\Texture.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Fire.cpp" />
     <ClCompile Include="NewTrainingFramework.cpp" />
     <ClCompile Include="Paralelipiped.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="..\Utilities\Texture.h" />
     <ClInclude Include="Bus.h" />
     <ClInclude Include="Croco.h" />
+    <ClInclude Include="Fire.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Camera.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-Nvidia|Win32'">false</ExcludedFromBuild>
@@ -222,6 +224,8 @@
     <None Include="..\Resources\Modele\witch.nfg" />
     <None Include="..\Resources\Modele\Woman1.nfg" />
     <None Include="..\Resources\Modele\Woman2.nfg" />
+    <None Include="..\Resources\Shaders\Fire.fs" />
+    <None Include="..\Resources\Shaders\Fire.vs" />
     <None Include="..\Resources\Shaders\SkyboxShaderVS.vs" />
     <None Include="..\Resources\Shaders\SkyboxShaderFS.fs" />
     <None Include="..\Resources\Shaders\TerrainShaderFS.fs" />

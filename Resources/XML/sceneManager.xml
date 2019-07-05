@@ -211,7 +211,7 @@
         <light>1</light>
       </lights>
     </object>
- 
+    
   <object id="9">
       <model>9</model>
       <shader>11</shader>
@@ -249,7 +249,7 @@
         <light>1</light>
       </lights>
     </object>
- 
+  
 	</objects>
 	
 

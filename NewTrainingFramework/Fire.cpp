@@ -7,7 +7,6 @@ void Fire::Draw() {
 	Camera* camera = SceneManager::getsceneManager()->getActiveCamera();
 	if (depthTest) { 
 		glEnable(GL_DEPTH_TEST); 
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
 
 	GLuint vboId, indBuff, idTextura;
@@ -64,7 +63,7 @@ void Fire::Draw() {
 		glEnableVertexAttribArray(shader->getUvAtt());
 		glVertexAttribPointer(shader->getUvAtt(), 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(4 * sizeof(Vector3)));
 	}
-	/*if (shader->getFogUn()[0] != -1) {
+	if (shader->getFogUn()[0] != -1) {
 		glUniform1f(shader->getFogUn()[0], SceneManager::getsceneManager()->r);
 	}
 	if (shader->getFogUn()[1] != -1) {
@@ -72,12 +71,12 @@ void Fire::Draw() {
 	}
 	if (shader->getFogUn()[2] != -1) {
 		glUniform3f(shader->getFogUn()[2], SceneManager::getsceneManager()->fogcol.x, SceneManager::getsceneManager()->fogcol.y, SceneManager::getsceneManager()->fogcol.z);
-	}*/
+	}
 
-	//Vector3 camerapos = SceneManager::getsceneManager()->getActiveCamera()->getposition();
-	/*if (shader->getCamUn() != -1) {
+	Vector3 camerapos = SceneManager::getsceneManager()->getActiveCamera()->getposition();
+	if (shader->getCamUn() != -1) {
 		glUniform3f(shader->getCamUn(), camerapos.x, camerapos.y, camerapos.z);
-	}*/
+	}
 
 	glDrawElements(GL_TRIANGLES, nrIndici, GL_UNSIGNED_SHORT, 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -88,8 +87,8 @@ void Fire::Draw() {
 
 
 void Fire::Update(float deltaTime) {
-	time += deltaTime;
-	if (time >= 1) {
-		time -= 1;
-	}
+	
+	time_t cl = clock();
+
+	time = (double)cl / 100;
 }

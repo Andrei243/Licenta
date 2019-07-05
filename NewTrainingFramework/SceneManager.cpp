@@ -10,7 +10,6 @@
 #include "Croco.h"
 #include <fstream>
 #include <sstream>
-#include <boost/assert.hpp>
 
 
 
@@ -167,24 +166,37 @@ Camera* SceneManager::getActiveCamera() {
 
 void SceneManager::Draw(ESContext* escontext) {
 	//glClearColor(backgroundColor.x, backgroundColor.y, backgroundColor.z, 0.0f);
+	double time = clock();
 
 	for (auto obiect : obiecte) {
 		obiect->Draw();
 	}
+	double act = clock();
+
+	std::cout << "Draw : " << act - time << '\n';
+
 }
 
 void SceneManager::Update(float deltaTime) {
+	double time = clock();
 	for (auto obiect : obiecte) {
 		obiect->Update(deltaTime);
 	}
 	ResourceManager::getresourceManager()->Update();
+	double act = clock();
+	std::cout << "Update : " << act - time << '\n';
+
 }
 
 void SceneManager::Key(unsigned char key) {
+	double time = clock();
+
 	for (auto obiect : obiecte) {
 		obiect->Key(key);
 	}
+	double act = clock();
 
+	std::cout << "Key" << act - time << '\n';
 }
 
 void SceneManager::verificaColiziuni() {

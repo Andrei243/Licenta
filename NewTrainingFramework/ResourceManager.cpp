@@ -14,7 +14,6 @@
 #include <iostream>
 #include "../Utilities/fmod.h"
 #include "../Utilities/fmod.hpp"
-#include <boost/assert.hpp>
 
 std::string cub = std::string("cube_map");
 

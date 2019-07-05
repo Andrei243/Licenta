@@ -9,7 +9,7 @@ public:
 	void Update(float deltaTime);
 
 private:
-	float time;
+	double time;
 	float displmax;
 
 };

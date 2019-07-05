@@ -3,6 +3,6 @@
 class Globals
 {
 public:
-	static const int screenWidth = 1280;
-	static const int screenHeight = 720;
+	static const int screenWidth = 1920;
+	static const int screenHeight = 1080;
 };

@@ -1,13 +1,15 @@
 #pragma once
 #include"../Utilities/Math.h"
+
+enum tip_lumina { null, point, directional, spotlight };
+
 class Light
 {
 public:
 	Light(Vector3 _spec, Vector3 _diff,int _id) :spec(_spec), diff(_diff),id(_id) {};
-	~Light();
+	~Light() {};
 
-	virtual double calculeazaComponentaSpeculara() = 0;
-	virtual double calculeazaComponentaDifuza() = 0;
+	tip_lumina tip;
 	Vector3 spec;
 	Vector3 diff;
 	int id;

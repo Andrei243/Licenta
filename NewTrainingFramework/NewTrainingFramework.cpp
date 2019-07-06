@@ -12,6 +12,10 @@
 #include <iostream>
 #include "ResourceManager.h"
 #include "SceneManager.h"
+#include "Light.h"
+#include "PointLight.h"
+#include "DirectionalLight.h"
+#include <ctime>
 
 #include "../Utilities/utilities.h" // if you use STL, please include this line AFTER all other include
 
@@ -46,6 +50,8 @@ int Init ( ESContext *esContext )
 
 void Draw ( ESContext *esContext )
 {
+	double time = clock();
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -53,12 +59,18 @@ void Draw ( ESContext *esContext )
 	SceneManager::getsceneManager()->Draw(esContext);
 	eglSwapBuffers(esContext->eglDisplay, esContext->eglSurface);
 
+	double act = clock();
+
+	std::cout << "Draw : " << act - time << '\n';
+
 }
 
 void Update ( ESContext *esContext, float deltaTime )
 {
+	double time = clock();
+
 	SceneManager::getsceneManager()->Update(deltaTime);
-	SceneManager::getsceneManager()->verificaColiziuni();
+	//SceneManager::getsceneManager()->verificaColiziuni();
 	static float contor=0;
 	contor += deltaTime;
 	static float lim = 0.05f;
@@ -84,7 +96,9 @@ void Update ( ESContext *esContext, float deltaTime )
 			contor-=lim;
 		}
 	}
-	
+	double act = clock();
+	std::cout << "Update : " << act - time << '\n';
+
 
 	
 	
@@ -93,6 +107,8 @@ void Update ( ESContext *esContext, float deltaTime )
 
 void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 {
+	double time = clock();
+
 	if (bIsPressed) {
 		SceneManager::getsceneManager()->Key(key);
 
@@ -178,7 +194,9 @@ void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 
 	}
 
+	double act = clock();
 
+	std::cout << "Key : " << act - time << '\n';
 	
 	
 }

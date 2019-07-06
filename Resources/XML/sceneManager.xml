@@ -211,7 +211,7 @@
         <light>1</light>
       </lights>
     </object>
-    
+
   <object id="9">
       <model>9</model>
       <shader>11</shader>
@@ -219,7 +219,7 @@
       <wired/>
       <blend>true</blend>
       <name>Foc</name>
-      <displ_max>20</displ_max>
+      <displ_max>0.1</displ_max>
       <color>
         <r>1.0</r>
         <g>1.0</g>
@@ -275,6 +275,11 @@
 				<g>1.0</g>
 				<b>1.0</b>
 			</specularColor>
+      <position>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </position>
 			<type>point</type>
 		</light>
 	</lights>

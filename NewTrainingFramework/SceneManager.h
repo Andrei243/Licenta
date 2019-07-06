@@ -3,6 +3,7 @@
 #include "Camera.h"
 #include "SceneObject.h"
 #include <vector>
+#include "Lights.h"
 
 class SceneManager {
 	static SceneManager* sceneManager;
@@ -11,6 +12,8 @@ class SceneManager {
 	Vector3 backgroundColor;
 	std::vector<SceneObject*>obiecte;
 	std::vector<std::vector<bool> > coliziune;
+	std::map<int, Light*> lumini;
+	AmbientLight* ambientLight;
 	
 
 public:
@@ -23,4 +26,6 @@ public:
 	void Draw(ESContext * escontext);
 	void Key(unsigned char key);
 	void Update(float deltaTime);
+	Vector3 ambientColor() { return ambientLight->diff; };
+	double ratio() { return ambientLight->ratio; }
 };

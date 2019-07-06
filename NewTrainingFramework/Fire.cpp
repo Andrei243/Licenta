@@ -87,8 +87,12 @@ void Fire::Draw() {
 
 
 void Fire::Update(float deltaTime) {
-	
+	//static double prev = 0;
 	time_t cl = clock();
 
-	time = (double)cl / 100;
+	time = (double)cl/5000;
+	//prev = (double)cl;
+	time = (double)time - (int)time;
+	//time = time / 10000;
+	std::cout << "Timp transmis : " << time << '\n';
 }

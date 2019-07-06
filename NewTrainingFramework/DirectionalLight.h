@@ -5,9 +5,10 @@ class DirectionalLight :
 	public Light
 {
 public:
-	DirectionalLight(Vector3 spec, Vector3 diff, int id, Vector3 _dir) :Light(spec, diff, id), dir(_dir) {};
+	DirectionalLight(Vector3 spec, Vector3 diff, int id, Vector3 _dir) :Light(spec, diff, id), dir(_dir) { tip = directional; };
 	~DirectionalLight();
 	Vector3 dir;
+	
 
 };
 

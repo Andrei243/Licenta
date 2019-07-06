@@ -21,11 +21,9 @@ vec2 uv_displ=v_uv+offset;
 
 //float dis=distance(pos,camera);
 vec4 c_fire=texture2D(u_texture1,uv_displ);
-vec4 forma=texture2D(u_texture0,vec2(v_uv.x,-v_uv.y));
-if(forma.a<0.01){
-discard;
-}
-c_fire.a=c_fire.a * forma.a;
+float alpha=texture2D(u_texture0,vec2(v_uv.x,v_uv.y)).x;
+c_fire.a=c_fire.a * alpha;
+
 vec4 color=c_fire;
 
 

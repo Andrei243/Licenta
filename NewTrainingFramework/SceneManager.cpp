@@ -81,6 +81,59 @@ void SceneManager::Init(std::string path) {
 
 	}
 
+	rapidxml::xml_node<>* plights = doc.first_node()->first_node("lights");
+	for (rapidxml::xml_node<>* iterlights = plights->first_node("light"); iterlights; iterlights = iterlights->next_sibling()) {
+		int id = atoi(iterlights->first_attribute("id")->value());
+		Vector3 diff;
+		diff.x = atof(iterlights->first_node("diffuseColor")->first_node("r")->value());
+		diff.y = atof(iterlights->first_node("diffuseColor")->first_node("g")->value());
+		diff.z = atof(iterlights->first_node("diffuseColor")->first_node("b")->value());
+
+		Vector3 spec;
+		spec.x = atof(iterlights->first_node("specularColor")->first_node("r")->value());
+		spec.y = atof(iterlights->first_node("specularColor")->first_node("g")->value());
+		spec.z = atof(iterlights->first_node("specularColor")->first_node("b")->value());
+
+		std::string tip = iterlights->first_node("type")->value();
+
+		if (tip == "point") {
+			Vector3 pos;
+			pos.x = atof(iterlights->first_node("position")->first_node("x")->value());
+			pos.y = atof(iterlights->first_node("position")->first_node("y")->value());
+			pos.z = atof(iterlights->first_node("position")->first_node("z")->value());
+			lumini.insert(std::make_pair(id, new PointLight(spec, diff, id, pos)));
+		}
+		else if (tip == "directional") {
+			Vector3 dir;
+			dir.x = atof(iterlights->first_node("direction")->first_node("x")->value());
+			dir.y = atof(iterlights->first_node("direction")->first_node("y")->value());
+			dir.z = atof(iterlights->first_node("direction")->first_node("z")->value());
+			lumini.insert(std::make_pair(id, new DirectionalLight(spec, diff, id, dir)));
+		}
+		else if (tip == "spotlight") {
+			Vector3 pos;
+			pos.x = atof(iterlights->first_node("position")->first_node("x")->value());
+			pos.y = atof(iterlights->first_node("position")->first_node("y")->value());
+			pos.z = atof(iterlights->first_node("position")->first_node("z")->value());
+
+			Vector3 dir;
+			dir.x = atof(iterlights->first_node("direction")->first_node("x")->value());
+			dir.y = atof(iterlights->first_node("direction")->first_node("y")->value());
+			dir.z = atof(iterlights->first_node("direction")->first_node("z")->value());
+
+			float unghiDeschidere = atof(iterlights->first_node("unghiDeschidere")->value());
+
+			lumini.insert(std::make_pair(id, new SpotLight(spec, diff, id, unghiDeschidere, pos, dir)));
+		}
+
+	}
+	ambientLight = new AmbientLight();
+	ambientLight->diff.x = atof(doc.first_node()->first_node("ambientalLight")->first_node("color")->first_node("r")->value());
+	ambientLight->diff.y = atof(doc.first_node()->first_node("ambientalLight")->first_node("color")->first_node("g")->value());
+	ambientLight->diff.z = atof(doc.first_node()->first_node("ambientalLight")->first_node("color")->first_node("b")->value());
+	ambientLight->spec = ambientLight->diff;
+	ambientLight->ratio = atof(doc.first_node()->first_node("ambientalLight")->first_node("ratio")->value());
+
 
 	camera_actuala = atoi(doc.first_node()->first_node("activeCamera")->value());
 	rapidxml::xml_node<>* pobjects = doc.first_node()->first_node("objects");
@@ -166,37 +219,29 @@ Camera* SceneManager::getActiveCamera() {
 
 void SceneManager::Draw(ESContext* escontext) {
 	//glClearColor(backgroundColor.x, backgroundColor.y, backgroundColor.z, 0.0f);
-	double time = clock();
 
 	for (auto obiect : obiecte) {
 		obiect->Draw();
 	}
-	double act = clock();
 
-	std::cout << "Draw : " << act - time << '\n';
 
 }
 
 void SceneManager::Update(float deltaTime) {
-	double time = clock();
 	for (auto obiect : obiecte) {
 		obiect->Update(deltaTime);
 	}
 	ResourceManager::getresourceManager()->Update();
-	double act = clock();
-	std::cout << "Update : " << act - time << '\n';
+
 
 }
 
 void SceneManager::Key(unsigned char key) {
-	double time = clock();
 
 	for (auto obiect : obiecte) {
 		obiect->Key(key);
 	}
-	double act = clock();
-
-	std::cout << "Key" << act - time << '\n';
+	
 }
 
 void SceneManager::verificaColiziuni() {

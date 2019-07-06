@@ -28,4 +28,5 @@ public:
 	void Update(float deltaTime);
 	Vector3 ambientColor() { return ambientLight->diff; };
 	double ratio() { return ambientLight->ratio; }
+	Light* getLight(int id) { return lumini.at(id); }
 };

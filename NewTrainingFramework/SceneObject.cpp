@@ -23,6 +23,18 @@ SceneObject::SceneObject(int _id,std::string _type, Vector3 _position, Vector3 _
 
 }
 
+int fromlighttyetoint(tip_lumina tip) {
+	switch(tip) {
+	case point:
+		return 1;
+	case directional:
+		return 2;
+	case spotlight:
+		return 3;
+	}
+}
+
+
 void SceneObject::Draw() {
 	Camera* camera = SceneManager::getsceneManager()->getActiveCamera();
 	if (depthTest) { glEnable(GL_DEPTH_TEST); }
@@ -76,6 +88,13 @@ void SceneObject::CommonDraw(Camera* camera) {
 
 	}
 
+	if (shader->getNormAtt() != -1) {
+		glEnableVertexAttribArray(shader->getNormAtt());
+		glVertexAttribPointer(shader->getNormAtt(), 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)sizeof(Vector3));
+
+	}
+
+
 	if (shader->getUvAtt() != -1) {
 		glEnableVertexAttribArray(shader->getUvAtt());
 		glVertexAttribPointer(shader->getUvAtt(), 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(4 * sizeof(Vector3)));
@@ -93,6 +112,39 @@ void SceneObject::CommonDraw(Camera* camera) {
 	Vector3 camerapos = SceneManager::getsceneManager()->getActiveCamera()->getposition();
 	if (shader->getCamUn() != -1) {
 		glUniform3f(shader->getCamUn(), camerapos.x, camerapos.y, camerapos.z);
+	}
+	SceneManager* sceneManager = SceneManager::getsceneManager();
+
+	if (shader->getRatio() != -1) {
+		glUniform1f(shader->getRatio(), sceneManager->ratio());
+	}
+	if (shader->getAmbColor() != -1) {
+		glUniform3f(shader->getAmbColor(), sceneManager->ambientColor().x, sceneManager->ambientColor().y, sceneManager->ambientColor().z);
+
+	}
+
+	for (int i = 0;i<lumini.size()&&i<5;i++) {
+		Light* lumina = sceneManager->getLight(lumini[i]);
+		glUniform1i(shader->getTypes()[i], fromlighttyetoint(lumina->tip));
+		glUniform3f(shader->getSpecs()[i], lumina->spec.x,lumina->spec.y,lumina->spec.z);
+		glUniform3f(shader->getDiff()[i], lumina->diff.x, lumina->diff.y, lumina->diff.z);
+
+		if (lumina->tip == point) {
+			glUniform3f(shader->getPos()[i], lumina->pos.x, lumina->pos.y, lumina->pos.z);
+		}
+		if (lumina->tip == directional) {
+			glUniform3f(shader->getPos()[1], lumina->dir.x, lumina->dir.y, lumina->dir.z);
+		}
+		if (lumina->tip == spotlight) {
+			glUniform3f(shader->getPos()[i], lumina->pos.x, lumina->pos.y, lumina->pos.z);
+			glUniform3f(shader->getPos()[1], lumina->dir.x, lumina->dir.y, lumina->dir.z);
+			glUniform1f(shader->getDeschidere()[i], lumina->unghiDeschidere);
+
+		}
+
+	}
+	for (int i = lumini.size(); i < 5; i++) {
+		glUniform1i(shader->getTypes()[i], 0);
 	}
 
 	glDrawElements(GL_TRIANGLES, nrIndici, GL_UNSIGNED_SHORT, 0);

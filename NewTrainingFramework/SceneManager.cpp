@@ -137,6 +137,7 @@ void SceneManager::Init(std::string path) {
 
 	camera_actuala = atoi(doc.first_node()->first_node("activeCamera")->value());
 	rapidxml::xml_node<>* pobjects = doc.first_node()->first_node("objects");
+	int count = 0;
 	for (rapidxml::xml_node<>*iterobjects = pobjects->first_node("object"); iterobjects; iterobjects = iterobjects->next_sibling()) {
 		int id = atoi(iterobjects->first_attribute("id")->value());
 		Model* model;
@@ -205,6 +206,12 @@ void SceneManager::Init(std::string path) {
 		else if (tip == "normal") {
 			obiecte.push_back(new SceneObject(id,tip, pos, rotation, scale, model, shader, texturi, depthTest));
 
+		}
+		if (iterobjects->first_node("lights") != 0) {
+			for (rapidxml::xml_node<>* iterlumini = iterobjects->first_node("lights")->first_node("light"); iterlumini; iterlumini = iterlumini->next_sibling()) {
+				obiecte[count++]->adaugaLumina(atoi(iterlumini->value()));
+
+			}
 		}
 	}
 

@@ -21,6 +21,7 @@ protected:
 	std::vector<Texture*> texturi;
 	bool depthTest;
 	virtual Paralelipiped setBoundTag(Paralelipiped par);
+	std::vector<int> lumini;
 
 public:
 	SceneObject(int _id,std::string _type, Vector3 _position, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*>texturi, bool _depthTest);
@@ -29,5 +30,6 @@ public:
 	virtual void Update(float deltaTime) {};
 	virtual void Key(unsigned char key) {};
 	Paralelipiped getParalelipiped();
+	void adaugaLumina(int id) { lumini.push_back(id); }
 
 };

@@ -44,6 +44,7 @@ int Init ( ESContext *esContext )
 	ResourceManager::getresourceManager()->Init("../Resources/XML/resourceManager.xml");
 	SceneManager::getsceneManager()->Init("../Resources/XML/sceneManager.xml");
 
+
 	return myShaders.Init("../Resources/Shaders/TriangleShaderVS.vs", "../Resources/Shaders/TriangleShaderFS.fs");
 	
 }

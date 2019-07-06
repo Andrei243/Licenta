@@ -4,6 +4,7 @@
 
 
 class AmbientLight :public Light {
+public:
 	AmbientLight() :Light(Vector3(0, 0, 0), Vector3(0, 0, 0), 0) {};
 	double ratio;
 	friend class SceneManager;

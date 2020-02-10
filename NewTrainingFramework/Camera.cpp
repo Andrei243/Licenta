@@ -1,6 +1,8 @@
 #pragma once
 #include "stdafx.h"
 #include "Camera.h"
+#include "SceneManager.h"
+
 
 
 void Camera::refacereVector3(Vector3 &a) {
@@ -131,10 +133,10 @@ void Camera::rotateOx(GLfloat directie) {
 void Camera::updateWorldView() {
 	Matrix R = generareR();
 	Matrix translatie;
-	translatie.SetTranslation(position.x, position.y, position.z);
+	translatie.SetTranslation(position.x, position.y, position.z, SceneManager::getsceneManager()->getTypeOfSpace());
 	worldMatrix = R * translatie;
 	R = R.Transpose();
-	translatie.SetTranslation(-position.x, -position.y, -position.z);
+	translatie.SetTranslation(-position.x, -position.y, -position.z, SceneManager::getsceneManager()->getTypeOfSpace());
 	viewMatrix = translatie * R;
 }
 

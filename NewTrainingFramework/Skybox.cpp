@@ -4,6 +4,7 @@
 #include <iostream>
 #include "SceneManager.h"
 
+
 SkyBox::SkyBox(int _id, std::string _type, Vector3 _position, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*>texturi, bool _depthTest, GLint _offsetY) :SceneObject(_id, _type, _position, _rotation, _scale, _model, _shader, texturi, _depthTest) {
 	offsetY = _offsetY;
 	model = SkyBox::generateModel();
@@ -28,7 +29,7 @@ void SkyBox::Draw() {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indBuff);
 	Matrix matrice;
 	Matrix translatie, rotatie, rotatiex, rotatiey, rotatiez, scalare;
-	translatie.SetTranslation(position);
+	translatie.SetTranslation(position, SceneManager::getsceneManager()->getTypeOfSpace());
 	rotatiex.SetRotationX(rotation.x);
 	rotatiey.SetRotationY(rotation.y);
 	rotatiez.SetRotationZ(rotation.z);

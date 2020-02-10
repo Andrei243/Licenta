@@ -5,6 +5,7 @@
 #include <vector>
 #include "Lights.h"
 
+
 class SceneManager {
 	static SceneManager* sceneManager;
 	std::map<int,Camera*> camere;
@@ -14,7 +15,7 @@ class SceneManager {
 	std::vector<std::vector<bool> > coliziune;
 	std::map<int, Light*> lumini;
 	AmbientLight* ambientLight;
-	
+	TypeOfSpace typeOfSpace;
 
 public:
 	float r, R;
@@ -29,4 +30,5 @@ public:
 	Vector3 ambientColor() { return ambientLight->diff; };
 	double ratio() { return ambientLight->ratio; }
 	Light* getLight(int id) { return lumini.at(id); }
+	TypeOfSpace getTypeOfSpace() { return typeOfSpace; }
 };

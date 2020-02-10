@@ -11,7 +11,28 @@
 #include <fstream>
 #include <sstream>
 
+void removeSpace(char* s)
+{
+	char* s2 = s;
+	do {
+		if (*s2 != ' ')
+			*s++ = *s2;
+	} while (*s2++);
+}
+TypeOfSpace FromStringToTypeOfSpace(char* c) {
+	removeSpace(c);
+	if (strcmp(c, "Flat") == 0) {
+		return Flat;
+	}
+	else if (strcmp(c, "Hyperbolic") == 0) {
+		return Hyperbolic;
+	}
+	else if (strcmp(c, "Spherical") == 0) {
+		return Spherical;
+	}
+	return None;
 
+}
 
 SceneManager* SceneManager::sceneManager = NULL;
 
@@ -43,7 +64,7 @@ void SceneManager::Init(std::string path) {
 	fogcol.x = atof(doc.first_node()->first_node("fog")->first_node("color")->first_node("r")->value());
 	fogcol.y = atof(doc.first_node()->first_node("fog")->first_node("color")->first_node("g")->value());
 	fogcol.z = atof(doc.first_node()->first_node("fog")->first_node("color")->first_node("b")->value());
-
+	typeOfSpace = FromStringToTypeOfSpace(doc.first_node()->first_node("typeOfSpace")->value());
 
 	//pentru camere
 
@@ -76,8 +97,7 @@ void SceneManager::Init(std::string path) {
 		GLfloat fov = atof(itercameras->first_node("fov")->value());
 		GLfloat nears = atof(itercameras->first_node("near")->value());
 		GLfloat fars = atof(itercameras->first_node("far")->value());
-		camere.insert(std::make_pair(id, new Camera(position, targ, up, translationSpeed, rotationSpeed, fov, nears, fars)));
-
+		camere.insert(std::make_pair(id, new Camera(position, targ, up, translationSpeed, rotationSpeed, fov, nears, fars,typeOfSpace)));
 
 	}
 
@@ -274,7 +294,6 @@ void SceneManager::verificaColiziuni() {
 		}
 
 	}
-	//std::cout << "gata un frame\n";
 
 
 }

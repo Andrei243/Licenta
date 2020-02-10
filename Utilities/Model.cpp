@@ -7,8 +7,10 @@
 #include "../NewTrainingFramework/ResourceManager.h"
 #include "../NewTrainingFramework/Vertex.h"
 #include <stdlib.h>
+#include "../NewTrainingFramework/SceneManager.h"
 
 ResourceManager* manager = ResourceManager::getresourceManager();
+SceneManager* sceneManager = SceneManager::getsceneManager();
 
 GLuint Model::getid() {
 	return vbold;
@@ -121,7 +123,7 @@ Paralelipiped Model::getBoundingBox(Vector3 rotation,Vector3 scale,Vector3 posit
 	rotatiey.SetRotationY(rotation.y);
 	rotatiez.SetRotationZ(rotation.z);
 	scalare.SetScale(scale);
-	pozitie.SetTranslation(position);
+	pozitie.SetTranslation(position, sceneManager->getTypeOfSpace());
 	matrotatie = scalare * rotatiex * rotatiey*rotatiez*pozitie;
 	std::vector<Vertex> vertexi_noi;
 	for (auto element : vertexi) {

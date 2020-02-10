@@ -2,7 +2,7 @@
 
 #include "esUtil.h"
 
-
+enum TypeOfSpace {None,Flat,Spherical,Hyperbolic };
 
 //Vector2
 
@@ -149,11 +149,11 @@ public:
 	Matrix & SetScale(GLfloat * pScale);
 	Matrix & SetScale(Vector3 &scaleVec);
 
-	Matrix & SetTranslation(GLfloat x, GLfloat y, GLfloat z);
-	Matrix & SetTranslation(GLfloat *pTrans);
-	Matrix & SetTranslation(Vector3 &vec);
+	Matrix & SetTranslation(GLfloat x, GLfloat y, GLfloat z,TypeOfSpace type);
+	Matrix & SetTranslation(GLfloat *pTrans,TypeOfSpace type);
+	Matrix & SetTranslation(Vector3 &vec,TypeOfSpace type);
 
-	Matrix & SetPerspective(GLfloat fovY, GLfloat aspect, GLfloat nearPlane, GLfloat farPlane);
+	Matrix & SetPerspective(GLfloat fovY, GLfloat aspect, GLfloat nearPlane, GLfloat farPlane,TypeOfSpace type);
 
 	Matrix Transpose();
 

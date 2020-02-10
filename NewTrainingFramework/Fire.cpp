@@ -3,6 +3,7 @@
 #include <time.h>
 #include "SceneManager.h"
 
+
 void Fire::Draw() {
 	Camera* camera = SceneManager::getsceneManager()->getActiveCamera();
 	if (depthTest) { 
@@ -19,7 +20,7 @@ void Fire::Draw() {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indBuff);
 	Matrix matrice;
 	Matrix translatie, rotatie, rotatiex, rotatiey, rotatiez, scalare;
-	translatie.SetTranslation(position);
+	translatie.SetTranslation(position, SceneManager::getsceneManager()->getTypeOfSpace());
 	rotatiex.SetRotationX(rotation.x);
 	rotatiey.SetRotationY(rotation.y);
 	rotatiez.SetRotationZ(rotation.z);

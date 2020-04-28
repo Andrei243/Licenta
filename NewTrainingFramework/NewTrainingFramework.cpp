@@ -22,10 +22,18 @@
 
 
 GLuint vboId;
+//GLuint indBuff;
 Shaders myShaders;
 GLfloat alpha = 0.0f;
+//Matrix matrice;
+//Camera camera;
 GLfloat vitrot = 0.0f;
 HWND fereastra;
+//int nrVertecsi;
+//int nrIndici;
+//GLushort* indici;
+//Vertex *verticesData;
+//GLuint idTextura;
 int width;
 int height;
 int bpp;
@@ -51,6 +59,10 @@ void Draw ( ESContext *esContext )
 
 	SceneManager::getsceneManager()->Draw(esContext);
 	eglSwapBuffers(esContext->eglDisplay, esContext->eglSurface);
+
+	double act = clock();
+
+	std::cout << "Draw : " << act - time << '\n';
 
 }
 
@@ -85,6 +97,8 @@ void Update ( ESContext *esContext, float deltaTime )
 			contor-=lim;
 		}
 	}
+	double act = clock();
+	std::cout << "Update : " << act - time << '\n';
 
 
 	
@@ -181,6 +195,10 @@ void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 
 	}
 
+	double act = clock();
+
+	std::cout << "Key : " << act - time << '\n';
+	
 	
 }
 

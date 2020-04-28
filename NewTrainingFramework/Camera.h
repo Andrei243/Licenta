@@ -27,7 +27,6 @@ private:
 	Matrix viewMatrix;
 	Matrix worldMatrix;
 	Matrix perspectiveMatrix;
-	TypeOfSpace type;
 
 	void updateAxis();
 	Matrix generareR();
@@ -36,12 +35,11 @@ private:
 
 public:
 	void refacereVector3(Vector3 &);
-	
 
 	Camera() {};
 
-	Camera(Vector3 _position, Vector3 _target,TypeOfSpace type) :position(_position), target(_target),nears(0.1),fars(1000),fov(_fov),type(type) {
-		perspectiveMatrix.SetPerspective(fov, ((GLfloat)Globals::screenWidth) / Globals::screenHeight, nears, fars,type);
+	Camera(Vector3 _position, Vector3 _target) :position(_position), target(_target),nears(0.1),fars(1000),fov(_fov) {
+		perspectiveMatrix.SetPerspective(fov, ((GLfloat)Globals::screenWidth) / Globals::screenHeight, nears, fars);
 		deltaTime = dt;
 		moveSpeed = ms;
 		rotateSpeed = rs;
@@ -52,8 +50,8 @@ public:
 
 	};
 
-	Camera(Vector3 _position, Vector3 _target, Vector3 _up,TypeOfSpace type) :position(_position), target(_target), up(_up),nears(0.1),fars(1000),fov(_fov),type(type) {
-		perspectiveMatrix.SetPerspective(fov, ((GLfloat)Globals::screenWidth) / Globals::screenHeight, nears, fars, type);
+	Camera(Vector3 _position, Vector3 _target, Vector3 _up) :position(_position), target(_target), up(_up),nears(0.1),fars(1000),fov(_fov) {
+		perspectiveMatrix.SetPerspective(fov, ((GLfloat)Globals::screenWidth) / Globals::screenHeight, nears, fars);
 		deltaTime = dt;
 		moveSpeed = ms;
 		rotateSpeed = rs;
@@ -63,9 +61,9 @@ public:
 
 	};
 
-	Camera(Vector3 _position, Vector3 _target, Vector3 _up, GLfloat _movespeed, GLfloat _rotatespeed, GLfloat _fov, GLfloat _near, GLfloat _far,TypeOfSpace type):position(_position),target(_target),up(_up),type(type) {
+	Camera(Vector3 _position, Vector3 _target, Vector3 _up, GLfloat _movespeed, GLfloat _rotatespeed, GLfloat _fov, GLfloat _near, GLfloat _far):position(_position),target(_target),up(_up) {
 		_fov = (PI * _fov) / 180;
-		perspectiveMatrix.SetPerspective(_fov, ((GLfloat)Globals::screenWidth) / Globals::screenHeight, _near, _far, type);
+		perspectiveMatrix.SetPerspective(_fov, ((GLfloat)Globals::screenWidth) / Globals::screenHeight, _near, _far);
 		nears = _near;
 		fars = _far;
 		fov = _fov;

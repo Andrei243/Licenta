@@ -3,8 +3,6 @@
 #include <vector>
 #include "Paralelipiped.h"
 #include "Vertex.h"
-#include "SceneManager.h"
-
 
 bool Paralelipiped::verificaColiziune(Paralelipiped o1, Paralelipiped o2) {
 	bool x, y, z;
@@ -30,7 +28,7 @@ Paralelipiped Paralelipiped::calculeazaParalelipiped(Vector3 rotatie, Vector3 sc
 	rotatiey.SetRotationY(rotatie.y);
 	rotatiez.SetRotationZ(rotatie.z);
 	scalare.SetScale(scale);
-	pozitie.SetTranslation(pos, SceneManager::getsceneManager()->getTypeOfSpace());
+	pozitie.SetTranslation(pos);
 	matrotatie = scalare* rotatiex * rotatiey*rotatiez*pozitie;
 	
 	for (auto element : pozitii) {

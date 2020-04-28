@@ -10,8 +10,6 @@
 #include <vector>
 #include "SceneObject.h"
 
-
-
 SceneObject::SceneObject(int _id,std::string _type, Vector3 _position, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*> _texturi, bool _depthTest) {
 	id = _id;
 	type = _type;
@@ -57,7 +55,7 @@ void SceneObject::CommonDraw(Camera* camera) {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indBuff);
 	Matrix matrice;
 	Matrix translatie, rotatie, rotatiex, rotatiey, rotatiez, scalare;
-	translatie.SetTranslation(position, SceneManager::getsceneManager()->getTypeOfSpace());
+	translatie.SetTranslation(position);
 	rotatiex.SetRotationX(rotation.x);
 	rotatiey.SetRotationY(rotation.y);
 	rotatiez.SetRotationZ(rotation.z);

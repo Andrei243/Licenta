@@ -8,13 +8,13 @@
 bool Paralelipiped::verificaColiziune(Paralelipiped o1, Paralelipiped o2) {
 	bool x, y, z;
 	x = y = z = false;
-	if (o1.minx <= o2.maxx&&o1.maxx >= o2.minx)x = true;
+	if (o1.minx <= o2.maxx && o1.maxx >= o2.minx)x = true;
 	if (o1.miny <= o2.maxy && o1.maxy >= o2.miny)y = true;
 	if (o1.minz <= o2.maxz && o1.maxz >= o2.minz)z = true;
-	return x && y&&z;
+	return x && y && z;
 }
 
-Paralelipiped Paralelipiped::calculeazaParalelipiped(Vector3 rotatie, Vector3 scale,Vector3 pos) {
+Paralelipiped Paralelipiped::calculeazaParalelipiped(Vector3 rotatie, Vector3 scale, Vector3 pos) {
 	std::vector<Vector3> pozitii;
 	pozitii.push_back(Vector3(maxx, maxy, maxz));
 	pozitii.push_back(Vector3(maxx, maxy, minz));
@@ -24,18 +24,19 @@ Paralelipiped Paralelipiped::calculeazaParalelipiped(Vector3 rotatie, Vector3 sc
 	pozitii.push_back(Vector3(minx, maxy, minz));
 	pozitii.push_back(Vector3(minx, miny, maxz));
 	pozitii.push_back(Vector3(minx, miny, minz));
-	Matrix rotatiex, rotatiey, rotatiez, matrotatie,scalare,pozitie;
+	Matrix rotatiex, rotatiey, rotatiez, matrotatie, scalare, pozitie;
 	rotatiex.SetRotationX(rotatie.x);
 	rotatiey.SetRotationY(rotatie.y);
 	rotatiez.SetRotationZ(rotatie.z);
 	scalare.SetScale(scale);
 	pozitie.SetTranslation(pos);
-	matrotatie = scalare* rotatiex * rotatiey*rotatiez*pozitie;
-	
-	for (auto element : pozitii) {
+	matrotatie = scalare * rotatiex * rotatiey * rotatiez * pozitie;
+
+	for (int i = 0; i < pozitii.size(); i++) {
+		Vector3 element = pozitii[i];
 		Vector4 aux = Vector4(element, 1.0f);
-		aux = matrotatie * aux;
-		element = Vector3(aux.x,aux.y,aux.z);
+		aux = aux * matrotatie;
+		pozitii[i] = Vector3(aux.x, aux.y, aux.z);
 	}
 	Paralelipiped nou;
 	nou.minx = nou.maxx = pozitii[0].x;

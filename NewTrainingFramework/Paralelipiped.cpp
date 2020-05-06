@@ -3,6 +3,7 @@
 #include <vector>
 #include "Paralelipiped.h"
 #include "Vertex.h"
+#include <algorithm>
 
 bool Paralelipiped::verificaColiziune(Paralelipiped o1, Paralelipiped o2) {
 	bool x, y, z;
@@ -51,9 +52,6 @@ Paralelipiped Paralelipiped::calculeazaParalelipiped(Vector3 rotatie, Vector3 sc
 
 	}
 	return nou;
-
-
-
 
 }
 

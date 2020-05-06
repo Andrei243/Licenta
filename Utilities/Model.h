@@ -2,6 +2,7 @@
 #include "ModelResource.h"
 #include "../NewTrainingFramework/Vertex.h"
 #include "../NewTrainingFramework/Paralelipiped.h"
+#include <vector>
 
 
 class Model {
@@ -23,6 +24,7 @@ public:
 
 	void Load();
 	Model(Vertex* vertexi, int nr_vertexi, unsigned short* indici, int nr_indici);
+	Model(std::vector<Vertex> vertices, std::vector<unsigned short> indices);
 	Model(ModelResource* resursa);
 	~Model() {};
 };

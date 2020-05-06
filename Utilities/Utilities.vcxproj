@@ -74,6 +74,9 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release-ATI|Win32'">$(SolutionDir)\BIN-ATI\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release-ATI|Win32'">$(Configuration)\</IntDir>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-Nvidia|Win32'">
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-Nvidia|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>

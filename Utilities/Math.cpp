@@ -1,11 +1,12 @@
 
 #include "stdafx.h"
 #include "Math.h"
-#include <math.h>
+#include <cmath>
+
 
 //Vector2
 
-GLfloat Vector2::Length()
+GLfloat Vector2::Length() const
 {
 	return sqrt(x*x + y*y);
 }
@@ -22,6 +23,10 @@ Vector2 & Vector2::Normalize()
 Vector2 Vector2::operator + (Vector2 & vector)
 {
 	return Vector2(x + vector.x, y + vector.y);
+}
+
+GLfloat Vector2::GetAngle() const {
+	return atanf(y / x);
 }
 
 Vector2 & Vector2::operator += (Vector2 & vector)

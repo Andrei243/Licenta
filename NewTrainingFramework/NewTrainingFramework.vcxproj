@@ -198,6 +198,7 @@
     <ClInclude Include="Camera.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-Nvidia|Win32'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="Header.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Lights.h" />
     <ClInclude Include="Paralelipiped.h" />

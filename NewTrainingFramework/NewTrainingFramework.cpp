@@ -71,7 +71,7 @@ void Update ( ESContext *esContext, float deltaTime )
 	double time = clock();
 
 	SceneManager::getsceneManager()->Update(deltaTime);
-	//SceneManager::getsceneManager()->verificaColiziuni();
+	SceneManager::getsceneManager()->verificaColiziuni();
 	static float contor=0;
 	contor += deltaTime;
 	static float lim = 0.05f;

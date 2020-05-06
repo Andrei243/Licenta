@@ -17,7 +17,7 @@ public:
 
 
 	//Vector's operations
-	GLfloat Length();
+	GLfloat Length() const;
 	Vector2 & Normalize();
 	Vector2 operator + (Vector2 & vector);
 	Vector2 & operator += (Vector2 & vector);
@@ -31,6 +31,7 @@ public:
 	Vector2 & operator = (Vector2 & vector);
 	Vector2 Modulate(Vector2 & vector);
 	GLfloat Dot(Vector2 & vector);
+	GLfloat GetAngle() const;
 
 	//access to elements
 	GLfloat operator [] (unsigned int idx);

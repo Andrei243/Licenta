@@ -5,15 +5,13 @@
 #include <fstream>
 #include <string>
 #include "Shader.h"
-#include "ShaderResource.h"
+#include "../Utilities/utilities.h"
 
 GLint Shader::getid() {
 	return id_prog;
 }
 
 void Shader::Load() {
-	std::string vs = mr->vs;
-	std::string fs = mr->fs;
 	
 	GLuint vertexShader, fragmentShader;
 	char vsf[360];
@@ -101,8 +99,9 @@ void Shader::Load() {
 	deschidereUniform[4] = glGetUniformLocation(id_prog, "deschidere4");
 }
 
-Shader::Shader(ShaderResource* resursa) {
-	this->mr = resursa;
+Shader::Shader(std::string vsPath,std::string fsPath) {
+	vs = vsPath;
+	fs = fsPath;
 	this->Load();
 
 }
@@ -125,9 +124,12 @@ GLint Shader::getCubeUn() {
 	return cubeUniform;
 }
 Shader::~Shader() {
-	delete mr;
+	cleanUp();
 }
 
+void Shader::cleanUp() {
+	glDeleteProgram(id_prog);
+}
 GLint* Shader::getFogUn() {
 	return fogUniforms;
 }

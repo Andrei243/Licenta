@@ -3,22 +3,14 @@
 #include "stdafx.h"
 #include "Texture.h"
 #include <iostream>
+#include "TGA.h"
 
 GLuint Texture::getid() {
 	return id;
 }
 
-void inversare_vector(char* vec, int lungime) {
-	for (int i = 0; i < lungime / 2; i++) {
-		char aux = vec[i];
-		vec[i] = vec[lungime - i];
-		vec[lungime - i] - aux;
-	}
 
-
-}
-
-GLint procesare_stringuri(std::string nume) {
+GLint processString(std::string nume) {
 	if (nume == "NEAREST")return GL_NEAREST;
 	else if (nume == "LINEAR")return GL_LINEAR;
 	else if (nume == "NEAREST_MIPMAP_NEAREST")return GL_NEAREST_MIPMAP_NEAREST;
@@ -33,29 +25,24 @@ GLint procesare_stringuri(std::string nume) {
 
 }
 
-Texture::Texture(TextureResource* tr) {
-	this->tr = tr;
-}
-Texture* Texture::generareSkybox(std::string path,
+Texture* generateSkyboxFromTGA(std::string path,
 	std::string type,
 	std::string min_filter,
 	std::string mag_filter,
 	std::string wrap_s,
 	std::string wrap_t) {
-	std::cout << "Generare skybox" << "\n";
-	Texture* texture = new Texture();
+	GLuint id;
 	int width, height, bpp;
-	glGenTextures(1, &texture->id);
-	glBindTexture(GL_TEXTURE_CUBE_MAP, texture->id);
+	glGenTextures(1, &id);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, id);
 
-	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, procesare_stringuri(min_filter));
-	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, procesare_stringuri(mag_filter));
-	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, procesare_stringuri(wrap_s));
-	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, procesare_stringuri(wrap_t));
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, processString(min_filter));
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, processString(mag_filter));
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, processString(wrap_s));
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, processString(wrap_t));
 	int tip;
 	GLvoid* tga = (GLvoid*)LoadTGA(path.c_str(), &width, &height, &bpp);
 	char* text = (char*)tga;
-	//for (int i = 0; i < height*width*bpp / 8; i++)std::cout << text[i];
 	int nr_oct;
 	if (bpp == 32) {
 		tip = GL_RGBA;
@@ -66,22 +53,6 @@ Texture* Texture::generareSkybox(std::string path,
 		tip = GL_RGB;
 		nr_oct = 3;
 	}
-	//char* minitga1 = new char[(width / 4) * (height / 3)*nr_oct];
-	//for (int i = 0; i < height / 3; i++) {
-		//for (int j = 0; j < width / 4; j++) {
-			//for(int k=0;k<nr_oct;k++)
-			//minitga1[i*width * nr_oct/4 + j * nr_oct+k] = text[i*width * nr_oct + width / 4 + j * nr_oct+k];
-
-		//}
-	//}
-
-	//glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	//glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	//glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	//glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	//glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	//glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, tip, width/4, height/3, 0, tip, GL_UNSIGNED_BYTE, minitga1);
-	//delete minitga1;
 	char** minitga = new char*[6];
 	for (int idx = 0; idx < 6; idx++) {
 		minitga[idx] = new char[(width / 4) * (height / 3) * nr_oct];
@@ -103,29 +74,23 @@ Texture* Texture::generareSkybox(std::string path,
 	
 
 	for (int idx = 0; idx < 6; idx++) {
-		//inversare_vector(minitga[idx], (width / 4) * (height / 3) * nr_oct);
 		glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + idx, 0, tip, width / 4, height / 3, 0, tip, GL_UNSIGNED_BYTE, minitga[idx]);
 	}
 
 
-	return texture;
+	return new Texture(id);
 }
 
-void Texture::Load() {
-	std::string path = tr->path;
-	std::string type = tr->type;
-	std::string min_filter = tr->min_filter;
-	std::string mag_filter = tr->mag_filter;
-	std::string wrap_s = tr->wrap_s;
-	std::string wrap_t = tr->wrap_t;
+Texture* GenerateFromTGA(std::string type, std::string min_filter, std::string mag_filter, std::string wrap_s, std::string wrap_t, std::string path) {
+	GLuint id;
 	int width, height,bpp;
 	glGenTextures(1, &id);
 	glBindTexture(GL_TEXTURE_2D, id);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, procesare_stringuri(min_filter));
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, procesare_stringuri(mag_filter));
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, procesare_stringuri(wrap_s));
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, procesare_stringuri(wrap_t));
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, processString(min_filter));
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, processString(mag_filter));
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, processString(wrap_s));
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, processString(wrap_t));
 
 	GLvoid* tga = (GLvoid*)LoadTGA(path.c_str(), &width, &height, &bpp);
 	if (bpp == 32) {
@@ -135,6 +100,26 @@ void Texture::Load() {
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, tga);
 	}
 	glBindTexture(GL_TEXTURE_2D, 0);
-
+	return new Texture(id);
 	
+}
+Texture::Texture(std::string type, std::string min_filter, std::string mag_filter, std::string wrap_s, std::string wrap_t, GLvoid* data, int width, int height, int pixelType) {
+	GLuint idTex;
+	glGenTextures(1, &idTex);
+	glBindTexture(GL_TEXTURE_2D, idTex);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, processString(min_filter));
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, processString(mag_filter));
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, processString(wrap_s));
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, processString(wrap_t));
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, pixelType, GL_UNSIGNED_BYTE, data);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	this->id = idTex;
+
+}
+Texture::Texture(GLuint id) {
+	this->id = id;
+}
+void Texture::cleanUp() {
+	glDeleteTextures(1, &id);
 }

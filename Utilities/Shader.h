@@ -1,8 +1,10 @@
 #pragma once
-#include "ShaderResource.h"
+
+#include "utilities.h"
 
 class Shader {
-	ShaderResource* mr;
+	std::string vs;
+	std::string fs;
 	GLint id_prog;
 	GLint positionAttribute;
 	GLint rotationUniform;
@@ -24,11 +26,12 @@ class Shader {
 	GLint posUniform[5];
 	GLint dirUniform[5];
 	GLint deschidereUniform[5];
+	void cleanUp();
 	
 public:
 	void Load();
 	GLint getid();
-	Shader(ShaderResource* resursa);
+	Shader(std::string vsPath, std::string fsPath);
 	~Shader();
 	GLint getCubeUn();
 	GLint getPosAtt();

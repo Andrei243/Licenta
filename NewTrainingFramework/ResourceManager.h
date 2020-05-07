@@ -12,30 +12,38 @@
 
 class ResourceManager {
 private:
-	static ResourceManager* resourceManager;
 	FMOD::System* fmodSystem;
-	ResourceManager() {};
-	friend class Model;
-	friend class Shader;
-	friend class Texture;
-	std::map<int, ShaderResource*> shaderresources;
-	std::map<int, ModelResource*>modelresources;
-	std::map<int, TextureResource*> textureresources;
+	
 	std::map<int, Model*>models;
 	std::map<int, Shader*>shaders;
 	std::map<int, Texture*>textures;
-	std::map<int, Model*>modeleincarcate;
-	std::map<int, Shader*>shadereincarcate;
-	std::map<int, Texture*>texturiincarcate;
-	std::map<int, FMOD::Sound*>suneteincarcate;
+	std::map<int, FMOD::Sound*>sounds;
 
 public:
+	ResourceManager() {
+		if (FMOD::System_Create(&fmodSystem) != FMOD_OK) {
+			std::cout << "Sounds can't be loaded\n";
+		}
+		else {
+			int driverCount = 0;
+			fmodSystem->getNumDrivers(&driverCount);
+			if (driverCount == 0) {
+				std::cout << "Ceva e in neregula cu sunetul\n";
+			}
+
+			fmodSystem->init(36, FMOD_INIT_NORMAL, NULL);
+		}
+	};
 	void Update();
 	void playSound(int id);
-	Shader* loadShader(GLint id);
-	Model* loadModel(GLint id);
-	Texture* loadTexture(GLint id);
-	void Init(std::string xmlpath);
-	static ResourceManager* getresourceManager();
+	void addModel(int id, Model* model);
+	void addShader(int id, Shader* shader);
+	void addTexture(int id, Texture* texture);
+	void addSound(int id, std::string path, FMOD_MODE mode);
+	Model* getModel(int id);
+	Shader* getShader(int id);
+	Texture* getTexture(int id);
+	~ResourceManager();
+	void cleanUp();
 };
 

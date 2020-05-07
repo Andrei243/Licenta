@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "SkyBox.h"
 #include <iostream>
-#include "SceneManager.h"
+#include "GameManager.h"
 
 SkyBox::SkyBox(int _id, std::string _type, Vector3 _position, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*>texturi, bool _depthTest, GLint _offsetY) :SceneObject(_id, _type, _position, _rotation, _scale, _model, _shader, texturi, _depthTest) {
 	offsetY = _offsetY;
@@ -12,7 +12,7 @@ SkyBox::SkyBox(int _id, std::string _type, Vector3 _position, Vector3 _rotation,
 
 
 void SkyBox::Draw() {
-	Camera* camera = SceneManager::getsceneManager()->getActiveCamera();
+	Camera* camera = GameManager::getGameManager()->getCurrentScene()->getActiveCamera();
 	if (depthTest) { glEnable(GL_DEPTH_TEST); }
 	glUseProgram(shader->getid());
 
@@ -72,7 +72,7 @@ void SkyBox::Draw() {
 
 void SkyBox::Update(float deltaTime) {
 	float y = position.y;
-	position = SceneManager::getsceneManager()->getActiveCamera()->getposition();
+	position = GameManager::getGameManager()->getCurrentScene()->getActiveCamera()->getposition();
 	position.y = y;
 }
 

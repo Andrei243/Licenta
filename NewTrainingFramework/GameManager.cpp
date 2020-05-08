@@ -5,6 +5,8 @@
 
 GameManager* GameManager::gameManager = NULL;
 
+
+
 void GameManager::Init(ESContext* context) {
 	sceneNumber = 0;
 	scenes[sceneNumber]->Init();
@@ -44,14 +46,24 @@ void GameManager::setGameManager(GameManager* manager) {
 	GameManager::gameManager = manager;
 }
 
-GameManager::GameManager() {
+void GameManager::addScene(SceneManager* scene) {
+	scenes.push_back(scene);
+}
 
+
+GameManager::GameManager() {
+	sceneNumber = 0;
 }
 void Draw(ESContext* context) {
 	GameManager::getGameManager()->Draw(context);
 }
 
 void Update(ESContext* context, float deltaTime) {
+	POINT a;
+	GetCursorPos(&a);
+	ScreenToClient(context->hWnd, &a);
+	GameManager::getGameManager()->Mouse(Vector2(a.x, a.y), LeftClick, GetKeyState(VK_LBUTTON) & 0x100 || GetKeyState(VK_LBUTTON) & 0x80);
+	GameManager::getGameManager()->Mouse(Vector2(a.x, a.y), RightClick, GetKeyState(VK_RBUTTON) & 0x100 || GetKeyState(VK_RBUTTON) & 0x80);
 	GameManager::getGameManager()->Update(context, deltaTime);
 }
 

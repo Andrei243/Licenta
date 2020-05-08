@@ -57,11 +57,7 @@ Model* Terrain::generateModel(int offsetY, int dimensiuneCelula,int nr_celule) {
 	return new Model(vertexi, nr_vertexi, indici, nrindiciter);
 
 }
-
-void Terrain::Draw() {
-	Camera* camera = GameManager::getGameManager()->getCurrentScene()->getActiveCamera();
-	if (depthTest) { glEnable(GL_DEPTH_TEST); }
-	glUseProgram(shader->getid());
+void Terrain::SpecificDraw(Matrix mat) {
 
 	glUniform1i(shader->getVarUn()[0], nr_celule);
 	glUniform1i(shader->getVarUn()[1], heightr);
@@ -69,10 +65,8 @@ void Terrain::Draw() {
 	glUniform1i(shader->getVarUn()[3], heightb);
 	glUniform1i(shader->getVarUn()[4], deplx);
 	glUniform1i(shader->getVarUn()[5], deplz);
-	CommonDraw(camera);
-	glDisable(GL_DEPTH_TEST);
-
 }
+
 
 void Terrain::Update(float deltaTime) {
 	Camera* activeCamera = GameManager::getGameManager()->getCurrentScene()->getActiveCamera();

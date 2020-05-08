@@ -37,6 +37,7 @@ public:
 	virtual void Key(unsigned char key);
 	virtual void Update(float deltaTime);
 	virtual void Init() = 0;
+	void deleteObject(int id);
 	void cleanUp();
 	Vector3 ambientColor() { return ambientLight->diff; };
 	double ratio() { return ambientLight->ratio; }

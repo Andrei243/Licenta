@@ -71,3 +71,18 @@ Texture* ResourceManager::getTexture(int id) {
 Shader* ResourceManager::getShader(int id) {
 	return shaders[id];
 }
+
+ResourceManager::ResourceManager() {
+	if (FMOD::System_Create(&fmodSystem) != FMOD_OK) {
+		std::cout << "Sounds can't be loaded\n";
+	}
+	else {
+		int driverCount = 0;
+		fmodSystem->getNumDrivers(&driverCount);
+		if (driverCount == 0) {
+			std::cout << "Ceva e in neregula cu sunetul\n";
+		}
+
+		fmodSystem->init(36, FMOD_INIT_NORMAL, NULL);
+	}
+}

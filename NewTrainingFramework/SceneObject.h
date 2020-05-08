@@ -21,15 +21,15 @@ protected:
 	std::vector<Texture*> texturi;
 	bool depthTest;
 	virtual Paralelipiped setBoundTag(Paralelipiped par);
-	std::vector<int> lumini;
+	std::vector<int> lights;
 
 public:
 	SceneObject(int _id,std::string _type, Vector3 _position, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*>texturi, bool _depthTest);
-	void CommonDraw(Camera* camera);
-	virtual void Draw();
+	virtual void SpecificDraw(Matrix mat=Matrix().SetIdentity());
+	void Draw(Matrix mat = Matrix().SetIdentity());
 	virtual void Update(float deltaTime) {};
 	virtual void Key(unsigned char key) {};
-	Paralelipiped getParalelipiped();
-	void adaugaLumina(int id) { lumini.push_back(id); }
+	Paralelipiped getBoundingBox();
+	void addLight(int id) { lights.push_back(id); }
 
 };

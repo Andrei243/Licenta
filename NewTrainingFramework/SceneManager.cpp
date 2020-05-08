@@ -242,7 +242,7 @@ void SceneManager::Key(unsigned char key) {
 void SceneManager::verifyCollisions() {
 	
 	for (auto collision : collisions) {
-		bool colizionat = Paralelipiped::verificaColiziune(objects[collision.first.first]->getParalelipiped(), objects[collision.first.second]->getParalelipiped());
+		bool colizionat = Paralelipiped::verificaColiziune(objects[collision.first.first]->getBoundingBox(), objects[collision.first.second]->getBoundingBox());
 		if (colizionat) {
 			if (isCollided.find(collision.first) != isCollided.end()) {
 				for (auto collisionExecutor : collision.second) {
@@ -308,4 +308,17 @@ SceneManager::SceneManager() {
 
 void SceneManager::cleanUp() {
 	resourceManager->cleanUp();
+}
+
+void SceneManager::deleteObject(int id) {
+	delete objects[id];
+	objects.erase(id);
+	for (auto it = collisions.begin();; it != collisions.end()) {
+		if (it->first.first == id || it->first.second == id) {
+			it = collisions.erase(it);
+		}
+		else {
+			++it;
+		}
+	}
 }

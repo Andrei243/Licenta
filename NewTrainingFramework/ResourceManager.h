@@ -20,20 +20,7 @@ private:
 	std::map<int, FMOD::Sound*>sounds;
 
 public:
-	ResourceManager() {
-		if (FMOD::System_Create(&fmodSystem) != FMOD_OK) {
-			std::cout << "Sounds can't be loaded\n";
-		}
-		else {
-			int driverCount = 0;
-			fmodSystem->getNumDrivers(&driverCount);
-			if (driverCount == 0) {
-				std::cout << "Ceva e in neregula cu sunetul\n";
-			}
-
-			fmodSystem->init(36, FMOD_INIT_NORMAL, NULL);
-		}
-	};
+	ResourceManager();
 	void Update();
 	void playSound(int id);
 	void addModel(int id, Model* model);

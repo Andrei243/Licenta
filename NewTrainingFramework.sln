@@ -1,36 +1,99 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 14.0.25123.00
-# Visual Studio 2015
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NewTrainingFramework", "NewTrainingFramework\NewTrainingFramework.vcxproj", "{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Utilities", "Utilities\Utilities.vcxproj", "{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameExample", "GameExample\GameExample.vcxproj", "{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
 		Debug-ATI|Win32 = Debug-ATI|Win32
+		Debug-ATI|x64 = Debug-ATI|x64
 		Debug-Nvidia|Win32 = Debug-Nvidia|Win32
+		Debug-Nvidia|x64 = Debug-Nvidia|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
 		Release-ATI|Win32 = Release-ATI|Win32
+		Release-ATI|x64 = Release-ATI|x64
 		Release-Nvidia|Win32 = Release-Nvidia|Win32
+		Release-Nvidia|x64 = Release-Nvidia|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Debug|Win32.ActiveCfg = Debug-Nvidia|Win32
+		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Debug|Win32.Build.0 = Debug-Nvidia|Win32
+		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Debug|x64.ActiveCfg = Release-Nvidia|Win32
+		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Debug|x64.Build.0 = Release-Nvidia|Win32
 		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Debug-ATI|Win32.ActiveCfg = Debug-ATI|Win32
 		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Debug-ATI|Win32.Build.0 = Debug-ATI|Win32
+		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Debug-ATI|x64.ActiveCfg = Debug-ATI|Win32
 		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Debug-Nvidia|Win32.ActiveCfg = Debug-Nvidia|Win32
 		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Debug-Nvidia|Win32.Build.0 = Debug-Nvidia|Win32
+		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Debug-Nvidia|x64.ActiveCfg = Debug-Nvidia|Win32
+		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Release|Win32.ActiveCfg = Release-Nvidia|Win32
+		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Release|Win32.Build.0 = Release-Nvidia|Win32
+		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Release|x64.ActiveCfg = Release-Nvidia|Win32
+		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Release|x64.Build.0 = Release-Nvidia|Win32
 		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Release-ATI|Win32.ActiveCfg = Release-ATI|Win32
 		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Release-ATI|Win32.Build.0 = Release-ATI|Win32
+		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Release-ATI|x64.ActiveCfg = Release-ATI|Win32
 		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Release-Nvidia|Win32.ActiveCfg = Release-Nvidia|Win32
 		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Release-Nvidia|Win32.Build.0 = Release-Nvidia|Win32
+		{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}.Release-Nvidia|x64.ActiveCfg = Release-Nvidia|Win32
+		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Debug|Win32.ActiveCfg = Debug-Nvidia|Win32
+		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Debug|Win32.Build.0 = Debug-Nvidia|Win32
+		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Debug|x64.ActiveCfg = Release-Nvidia|Win32
+		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Debug|x64.Build.0 = Release-Nvidia|Win32
 		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Debug-ATI|Win32.ActiveCfg = Debug-ATI|Win32
 		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Debug-ATI|Win32.Build.0 = Debug-ATI|Win32
+		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Debug-ATI|x64.ActiveCfg = Debug-ATI|Win32
 		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Debug-Nvidia|Win32.ActiveCfg = Debug-Nvidia|Win32
 		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Debug-Nvidia|Win32.Build.0 = Debug-Nvidia|Win32
+		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Debug-Nvidia|x64.ActiveCfg = Debug-Nvidia|Win32
+		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Release|Win32.ActiveCfg = Release-Nvidia|Win32
+		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Release|Win32.Build.0 = Release-Nvidia|Win32
+		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Release|x64.ActiveCfg = Release-Nvidia|Win32
+		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Release|x64.Build.0 = Release-Nvidia|Win32
 		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Release-ATI|Win32.ActiveCfg = Release-ATI|Win32
 		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Release-ATI|Win32.Build.0 = Release-ATI|Win32
+		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Release-ATI|x64.ActiveCfg = Release-ATI|Win32
 		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Release-Nvidia|Win32.ActiveCfg = Release-Nvidia|Win32
 		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Release-Nvidia|Win32.Build.0 = Release-Nvidia|Win32
+		{0D44529E-F7DD-4454-8EAD-9AFD857F53B4}.Release-Nvidia|x64.ActiveCfg = Release-Nvidia|Win32
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Debug|Win32.ActiveCfg = Debug|Win32
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Debug|Win32.Build.0 = Debug|Win32
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Debug|x64.ActiveCfg = Debug|x64
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Debug|x64.Build.0 = Debug|x64
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Debug-ATI|Win32.ActiveCfg = Debug|Win32
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Debug-ATI|Win32.Build.0 = Debug|Win32
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Debug-ATI|x64.ActiveCfg = Debug|x64
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Debug-ATI|x64.Build.0 = Debug|x64
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Debug-Nvidia|Win32.ActiveCfg = Debug|Win32
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Debug-Nvidia|Win32.Build.0 = Debug|Win32
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Debug-Nvidia|x64.ActiveCfg = Debug|x64
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Debug-Nvidia|x64.Build.0 = Debug|x64
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Release|Win32.ActiveCfg = Release|Win32
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Release|Win32.Build.0 = Release|Win32
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Release|x64.ActiveCfg = Release|x64
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Release|x64.Build.0 = Release|x64
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Release-ATI|Win32.ActiveCfg = Release|Win32
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Release-ATI|Win32.Build.0 = Release|Win32
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Release-ATI|x64.ActiveCfg = Release|x64
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Release-ATI|x64.Build.0 = Release|x64
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Release-Nvidia|Win32.ActiveCfg = Release|Win32
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Release-Nvidia|Win32.Build.0 = Release|Win32
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Release-Nvidia|x64.ActiveCfg = Release|x64
+		{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}.Release-Nvidia|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3B2A03F-EAFD-4676-94E2-824E5AAB5137}
 	EndGlobalSection
 EndGlobal

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "utilities.h"
+#include <string>
 
 class Shader {
 	std::string vs;

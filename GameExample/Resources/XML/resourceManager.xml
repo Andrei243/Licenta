@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resourceManager>
+	<models>
+		<model id="1">
+			<path>../Resources/Models/croco.nfg</path>
+		</model>
+		<model id="5">
+			<path>../Resources/Models//bila.nfg</path>
+		</model>
+    <model id="7">
+      <path>../Resources/Models/bus.nfg</path>
+    </model>
+    <model id="8">
+      <path>../Resources/Models/SkyBox.nfg</path>
+    </model>
+    <model id="9">
+      <path>../Resources/Models/fire.nfg</path>
+    </model>
+		<!-- si aici se adauga toate modelele -->
+	</models>
+	<shaders>
+		<shader id="10">
+			<vs>../Resources/Shaders/TriangleShaderVS.vs</vs>
+			<fs>../Resources/Shaders/TriangleShaderFS.fs</fs>
+		</shader>
+
+    <shader id="11">
+      <vs>../Resources/Shaders/Fire.vs</vs>
+      <fs>../Resources/Shaders/Fire.fs</fs>
+    </shader>
+
+    <shader id="15">
+      <vs>../Resources/Shaders/TerrainShaderVS.vs</vs>
+      <fs>../Resources/Shaders/TerrainShaderFS.fs</fs>
+    </shader>
+
+    <shader id="17">
+      <vs>../Resources/Shaders/SkyboxShaderVS.vs</vs>
+      <fs>../Resources/Shaders/SkyboxShaderFS.fs</fs>
+    </shader>
+ 
+		<!-- si aici se adauga toate shaderele -->
+	</shaders>
+	<textures>
+    <texture id="1" type="2d">
+      <path>../Resources/Textures/House.tga</path>
+      <min_filter>LINEAR</min_filter>
+			<mag_filter>LINEAR</mag_filter>
+			<wrap_s>CLAMP_TO_EDGE</wrap_s>
+			<wrap_t>CLAMP_TO_EDGE</wrap_t>
+    </texture>
+      
+		<texture id="4" type="2d">
+			<path>../Resources/Textures/croco.tga</path>			
+			<min_filter>LINEAR</min_filter>
+			<mag_filter>LINEAR</mag_filter>
+			<wrap_s>CLAMP_TO_EDGE</wrap_s>
+			<wrap_t>CLAMP_TO_EDGE</wrap_t>
+		</texture>
+    <texture id="5" type="2d">
+      <path>../Resources/Textures/Bus.tga</path>
+    	<min_filter>LINEAR</min_filter>
+			<mag_filter>LINEAR</mag_filter>
+			<wrap_s>CLAMP_TO_EDGE</wrap_s>
+			<wrap_t>CLAMP_TO_EDGE</wrap_t>
+    </texture>
+
+    <texture id="6" type="2d">
+      <path>../Resources/Textures/fire3.tga</path>
+      <min_filter>LINEAR</min_filter>
+      <mag_filter>LINEAR</mag_filter>
+      <wrap_s>GL_REPEAT</wrap_s>
+      <wrap_t>GL_REPEAT</wrap_t>
+    </texture>
+
+    <texture id="7" type="2d">
+      <path>../Resources/Textures/fire_mask.tga</path>
+      <min_filter>LINEAR</min_filter>
+      <mag_filter>LINEAR</mag_filter>
+      <wrap_s>GL_REPEAT</wrap_s>
+      <wrap_t>GL_REPEAT</wrap_t>
+    </texture>
+
+    <texture id="8" type="2d">
+      <path>../Resources/Textures/DisplacementMap.tga</path>
+      <min_filter>LINEAR</min_filter>
+      <mag_filter>LINEAR</mag_filter>
+      <wrap_s>GL_REPEAT</wrap_s>
+      <wrap_t>GL_REPEAT</wrap_t>
+    </texture>
+      
+		<texture id="14" type="2d">
+			<path>../Resources/Textures/dirt.tga</path>			
+			<min_filter>LINEAR</min_filter>
+			<mag_filter>LINEAR</mag_filter>
+			<wrap_s>GL_REPEAT</wrap_s>
+			<wrap_t>GL_REPEAT</wrap_t>
+		</texture>
+		<texture id="15" type="2d">
+			<path>../Resources/Textures/rock.tga</path>			
+			<min_filter>LINEAR</min_filter>
+			<mag_filter>LINEAR</mag_filter>
+			<wrap_s>GL_REPEAT</wrap_s>
+			<wrap_t>GL_REPEAT</wrap_t>
+		</texture>	
+    <texture id="16" type="2d">
+			<path>../Resources/Textures/Grass.tga</path>			
+			<min_filter>LINEAR</min_filter>
+			<mag_filter>LINEAR</mag_filter>
+			<wrap_s>GL_REPEAT</wrap_s>
+			<wrap_t>GL_REPEAT</wrap_t>
+		</texture>
+    
+    <texture id="17" type="blend">
+      <path>../Resources/Textures/Terrain_blend_map.tga</path>
+    <min_filter>LINEAR</min_filter>
+			<mag_filter>LINEAR</mag_filter>
+			<wrap_s>GL_REPEAT</wrap_s>
+			<wrap_t>GL_REPEAT</wrap_t>
+    </texture>
+    <texture id="18" type="cube_map">
+      <path>../Resources/Textures/envMap.tga</path>
+      <min_filter>LINEAR</min_filter>
+      <mag_filter>LINEAR</mag_filter>
+      <wrap_s>GL_REPEAT</wrap_s>
+      <wrap_t>GL_REPEAT</wrap_t>
+    </texture>
+	</textures>
+  <sounds>
+    <sound id="1">../Resources/Sounds/hapciu.wav</sound>
+  </sounds>
+
+</resourceManager>

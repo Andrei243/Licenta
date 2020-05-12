@@ -31,8 +31,6 @@ Matrix Camera::generareR() {
 	return R;
 }
 
-void Camera::setDeltaTime(GLfloat _dt) { deltaTime = _dt; }
-GLfloat Camera::getDeltaTime() { return deltaTime; }
 void Camera::setposition(Vector3 _pos) { position = _pos; }
 Vector3 Camera::getposition() { return position; }
 void Camera::settarget(Vector3 _target) { target = _target; }
@@ -60,7 +58,7 @@ Matrix Camera::getviewMatrix() { return viewMatrix; }
 void Camera::setworldMatrix(Matrix _world) { worldMatrix = _world; }
 Matrix Camera::getworldMatrix() { return worldMatrix; }
 
-void Camera::MoveOz(GLfloat directie) {
+void Camera::MoveOz(GLfloat directie,GLfloat deltaTime) {
 	Vector3 forward = zAxis * directie;
 	Vector3 vectorDeplasare = forward * moveSpeed*deltaTime;
 	position += vectorDeplasare;
@@ -69,7 +67,7 @@ void Camera::MoveOz(GLfloat directie) {
 	updateWorldView();
 }
 
-void Camera::MoveOy(GLfloat directie) {
+void Camera::MoveOy(GLfloat directie,GLfloat deltaTime) {
 	Vector3 upward = yAxis * directie;
 	Vector3 vectorDeplasare = upward * moveSpeed*deltaTime;
 	position += vectorDeplasare;
@@ -78,7 +76,7 @@ void Camera::MoveOy(GLfloat directie) {
 	updateWorldView();
 }
 
-void Camera::MoveOx(GLfloat directie) {
+void Camera::MoveOx(GLfloat directie,GLfloat deltaTime) {
 	Vector3 right = xAxis * directie;
 	Vector3 vectorDeplasare = right * moveSpeed*deltaTime;
 	position += vectorDeplasare;
@@ -87,7 +85,7 @@ void Camera::MoveOx(GLfloat directie) {
 	updateWorldView();
 }
 
-void Camera::rotateOy(GLfloat directie) {
+void Camera::rotateOy(GLfloat directie,GLfloat deltaTime) {
 	Vector4 localTarget = Vector4(0.0f, 0.0f, -(target - position).Length(), 1.0f);
 	Matrix rotatie;
 	rotatie.SetRotationY(directie*deltaTime*rotateSpeed);
@@ -100,7 +98,7 @@ void Camera::rotateOy(GLfloat directie) {
 	updateWorldView();
 }
 
-void Camera::rotateOz(GLfloat directie) {
+void Camera::rotateOz(GLfloat directie,GLfloat deltaTime) {
 	Vector4 localup(0.0f, 1.0f, 0.0f, 0.0f);
 	Matrix rotatie;
 	rotatie.SetRotationZ(directie*deltaTime*rotateSpeed);
@@ -112,7 +110,7 @@ void Camera::rotateOz(GLfloat directie) {
 	updateWorldView();
 }
 
-void Camera::rotateOx(GLfloat directie) {
+void Camera::rotateOx(GLfloat directie,GLfloat deltaTime) {
 	Vector4 localup(0.0f, 1.0f, 0.0f, 0.0f);
 	Matrix rotatie;
 	rotatie.SetRotationX(directie*deltaTime*rotateSpeed);

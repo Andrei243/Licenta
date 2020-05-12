@@ -72,6 +72,7 @@ void Key(ESContext* context, unsigned char key, bool bIsPressed) {
 }
 
 void GameManager::Play() {
+	gameManager->setGameManager(this);
 	esInitContext(&context);
 	esCreateWindow(&context, title.c_str(), width, height, ES_WINDOW_RGB| ES_WINDOW_DEPTH);
 	Init(&context);
@@ -83,4 +84,5 @@ void GameManager::Play() {
 	for (SceneManager* sceneManager:scenes) {
 		delete sceneManager;
 	}
+	scenes.clear();
 }

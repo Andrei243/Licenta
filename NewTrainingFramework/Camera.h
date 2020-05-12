@@ -20,7 +20,6 @@ private:
 	GLfloat nears;
 	GLfloat fars;
 	GLfloat fov;
-	GLfloat deltaTime;
 	Vector3 xAxis;
 	Vector3 yAxis;
 	Vector3 zAxis;
@@ -40,11 +39,11 @@ public:
 
 	Camera(Vector3 _position, Vector3 _target) :position(_position), target(_target),nears(0.1),fars(1000),fov(_fov) {
 		perspectiveMatrix.SetPerspective(fov, ((GLfloat)Globals::screenWidth) / Globals::screenHeight, nears, fars);
-		deltaTime = dt;
 		moveSpeed = ms;
 		rotateSpeed = rs;
-
-		up = Vector3(0.0f, 1.0f, 0.0f);
+		up.x = 0.0f;
+		up.y = 1.0f;
+		up.z = 0.0f;
 		updateAxis();
 		updateWorldView();
 
@@ -52,7 +51,6 @@ public:
 
 	Camera(Vector3 _position, Vector3 _target, Vector3 _up) :position(_position), target(_target), up(_up),nears(0.1),fars(1000),fov(_fov) {
 		perspectiveMatrix.SetPerspective(fov, ((GLfloat)Globals::screenWidth) / Globals::screenHeight, nears, fars);
-		deltaTime = dt;
 		moveSpeed = ms;
 		rotateSpeed = rs;
 
@@ -73,8 +71,6 @@ public:
 		updateWorldView();
 	}
 
-	void setDeltaTime(GLfloat _dt);
-	GLfloat getDeltaTime();
 	void setposition(Vector3 _pos);
 	Vector3 getposition();
 	void settarget(Vector3 _target);
@@ -102,17 +98,17 @@ public:
 	void setworldMatrix(Matrix _world);
 	Matrix getworldMatrix();
 
-	void MoveOz(GLfloat directie);
+	void MoveOz(GLfloat directie,GLfloat deltaTime);
 
-	void MoveOy(GLfloat directie);
+	void MoveOy(GLfloat directie, GLfloat deltaTime);
 
-	void MoveOx(GLfloat directie);
+	void MoveOx(GLfloat directie, GLfloat deltaTime);
 
-	void rotateOy(GLfloat directie);
+	void rotateOy(GLfloat directie, GLfloat deltaTime);
 
-	void rotateOz(GLfloat directie);
+	void rotateOz(GLfloat directie, GLfloat deltaTime);
 
-	void rotateOx(GLfloat directie);
+	void rotateOx(GLfloat directie, GLfloat deltaTime);
 
 	void updateWorldView();
 

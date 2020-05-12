@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{76CD86A3-95CA-4A9F-AD70-D5FF1C70D105}</ProjectGuid>
+    <RootNamespace>GameExample</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Include\Nvidia;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\BIN-Nvidia;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(SolutionDir)BIN-Nvidia\NewTrainingFramework.lib;$(SolutionDir)BIN-Nvidia\Utilities.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\Resources\Modele\Bila.nfg" />
+    <None Include="..\Resources\Modele\bus.nfg" />
+    <None Include="..\Resources\Modele\Croco.nfg" />
+    <None Include="..\Resources\Modele\Exemplu.nfg" />
+    <None Include="..\Resources\Modele\fire.nfg" />
+    <None Include="..\Resources\Modele\Goliath.nfg" />
+    <None Include="..\Resources\Modele\House.nfg" />
+    <None Include="..\Resources\Modele\Marine.nfg" />
+    <None Include="..\Resources\Modele\Radar.nfg" />
+    <None Include="..\Resources\Modele\SCV.nfg" />
+    <None Include="..\Resources\Modele\SkyBox.nfg" />
+    <None Include="..\Resources\Modele\Teran_Command_Center.nfg" />
+    <None Include="..\Resources\Modele\Terrain.nfg" />
+    <None Include="..\Resources\Modele\train.nfg" />
+    <None Include="..\Resources\Modele\water.nfg" />
+    <None Include="..\Resources\Modele\witch.nfg" />
+    <None Include="..\Resources\Modele\Woman1.nfg" />
+    <None Include="..\Resources\Modele\Woman2.nfg" />
+    <None Include="..\Resources\Shaders\Fire.fs" />
+    <None Include="..\Resources\Shaders\Fire.vs" />
+    <None Include="..\Resources\Shaders\SkyboxShaderFS.fs" />
+    <None Include="..\Resources\Shaders\SkyboxShaderVS.vs" />
+    <None Include="..\Resources\Shaders\TerrainShaderFS.fs" />
+    <None Include="..\Resources\Shaders\TerrainShaderVS.vs" />
+    <None Include="..\Resources\Shaders\TriangleShaderFS.fs" />
+    <None Include="..\Resources\Shaders\TriangleShaderVS.vs" />
+    <None Include="..\Resources\Texturi\heightmap.raw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\Texturi\Bus.tga" />
+    <Image Include="..\Resources\Texturi\Croco.tga" />
+    <Image Include="..\Resources\Texturi\Dirt.tga" />
+    <Image Include="..\Resources\Texturi\DisplacementMap.tga" />
+    <Image Include="..\Resources\Texturi\envMap.tga" />
+    <Image Include="..\Resources\Texturi\fire3.tga" />
+    <Image Include="..\Resources\Texturi\fire_mask.tga" />
+    <Image Include="..\Resources\Texturi\Golitah.tga" />
+    <Image Include="..\Resources\Texturi\Grass.tga" />
+    <Image Include="..\Resources\Texturi\House.tga" />
+    <Image Include="..\Resources\Texturi\Marine.tga" />
+    <Image Include="..\Resources\Texturi\NormalMap.tga" />
+    <Image Include="..\Resources\Texturi\radar.tga" />
+    <Image Include="..\Resources\Texturi\Rock.tga" />
+    <Image Include="..\Resources\Texturi\SCV.tga" />
+    <Image Include="..\Resources\Texturi\Terrain_blend_map.tga" />
+    <Image Include="..\Resources\Texturi\Terran_Command_Center.tga" />
+    <Image Include="..\Resources\Texturi\Train.tga" />
+    <Image Include="..\Resources\Texturi\WaterNormal.tga" />
+    <Image Include="..\Resources\Texturi\Witch.tga" />
+    <Image Include="..\Resources\Texturi\Woman1.tga" />
+    <Image Include="..\Resources\Texturi\Woman2.tga" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\Resources\XML\resourceManager.xml">
+      <SubType>Designer</SubType>
+    </Xml>
+    <Xml Include="..\Resources\XML\sceneManager.xml">
+      <SubType>Designer</SubType>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CrocoObject.h" />
+    <ClInclude Include="ExampleGame.h" />
+    <ClInclude Include="Scene1.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NewTrainingFramework\NewTrainingFramework.vcxproj">
+      <Project>{fc024ec8-32f4-4657-a2cb-14d2b3a931f8}</Project>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.vcxproj">
+      <Project>{0d44529e-f7dd-4454-8ead-9afd857f53b4}</Project>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

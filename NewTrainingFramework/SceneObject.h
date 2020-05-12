@@ -22,6 +22,7 @@ protected:
 	bool depthTest;
 	virtual Paralelipiped setBoundTag(Paralelipiped par);
 	std::vector<int> lights;
+	bool isDrawnBySceneManager;
 
 public:
 	SceneObject(int _id,std::string _type, Vector3 _position, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*>texturi, bool _depthTest);
@@ -31,5 +32,8 @@ public:
 	virtual void Key(unsigned char key) {};
 	Paralelipiped getBoundingBox();
 	void addLight(int id) { lights.push_back(id); }
+	void setUndrawnBySceneManager();
+	void setDrawnBySceneManager();
+	bool getIsDrawnBySceneManager();
 
 };

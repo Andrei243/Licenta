@@ -25,12 +25,12 @@ GLint processString(std::string nume) {
 
 }
 
-Texture* generateSkyboxFromTGA(std::string path,
-	std::string type,
+Texture* ceutils::generateSkyboxFromTGA(
 	std::string min_filter,
 	std::string mag_filter,
 	std::string wrap_s,
-	std::string wrap_t) {
+	std::string wrap_t,
+	std::string path) {
 	GLuint id;
 	int width, height, bpp;
 	glGenTextures(1, &id);
@@ -81,7 +81,7 @@ Texture* generateSkyboxFromTGA(std::string path,
 	return new Texture(id);
 }
 
-Texture* GenerateFromTGA(std::string type, std::string min_filter, std::string mag_filter, std::string wrap_s, std::string wrap_t, std::string path) {
+Texture* ceutils::generateFromTGA( std::string min_filter, std::string mag_filter, std::string wrap_s, std::string wrap_t, std::string path) {
 	GLuint id;
 	int width, height,bpp;
 	glGenTextures(1, &id);
@@ -99,6 +99,7 @@ Texture* GenerateFromTGA(std::string type, std::string min_filter, std::string m
 	else if (bpp == 24) {
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, tga);
 	}
+	delete tga;
 	glBindTexture(GL_TEXTURE_2D, 0);
 	return new Texture(id);
 	

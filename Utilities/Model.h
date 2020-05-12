@@ -9,7 +9,6 @@ class Model {
 	GLuint vbold;
 	GLint nrindici;
 	Paralelipiped boundingBox;
-	std::vector<Vertex> vertexi;
 	
 public:
 	GLuint getid();
@@ -22,5 +21,7 @@ public:
 	~Model() {};
 	void cleanUp();
 };
-
-
+namespace ceutils {
+	Model* generateModelFromNFG(std::string path);
+	Model* generateSkyboxModel(float dim);
+}

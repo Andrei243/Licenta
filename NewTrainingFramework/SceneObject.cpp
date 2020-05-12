@@ -20,7 +20,7 @@ SceneObject::SceneObject(int _id,std::string _type, Vector3 _position, Vector3 _
 	shader = _shader;
 	texturi = _texturi;
 	depthTest = _depthTest;
-
+	isDrawnBySceneManager = true;
 }
 
 int fromlighttyetoint(tip_lumina tip) {
@@ -34,17 +34,29 @@ int fromlighttyetoint(tip_lumina tip) {
 	}
 }
 
+void SceneObject::setUndrawnBySceneManager() {
+	isDrawnBySceneManager = false;
+}
+
+void SceneObject::setDrawnBySceneManager() {
+	isDrawnBySceneManager = true;
+}
+
+bool SceneObject::getIsDrawnBySceneManager() {
+	return isDrawnBySceneManager;
+}
 
 void SceneObject::Draw(Matrix mat) {
 	Camera* camera = GameManager::getGameManager()->getCurrentScene()->getActiveCamera();
 	if (depthTest) { glEnable(GL_DEPTH_TEST); }
+	glUseProgram(shader->getid());
+	SpecificDraw(mat);
 	SceneManager* sceneManager = GameManager::getGameManager()->getCurrentScene();
 	GLuint vboId, indBuff, idTextura;
 	GLint nrIndici;
 	nrIndici = model->getnrIndici();
 	vboId = model->getid();
 	indBuff = model->getindid();
-	glUseProgram(shader->getid());
 	glBindBuffer(GL_ARRAY_BUFFER, vboId);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indBuff);
 	Matrix matrice;
@@ -138,7 +150,7 @@ void SceneObject::Draw(Matrix mat) {
 	for (int i = lights.size(); i < 5; i++) {
 		glUniform1i(shader->getTypes()[i], 0);
 	}
-	SpecificDraw(mat);
+	
 	glDrawElements(GL_TRIANGLES, nrIndici, GL_UNSIGNED_SHORT, 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);

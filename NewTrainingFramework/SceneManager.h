@@ -1,15 +1,16 @@
 #pragma once
 #include <map>
+#include <set>
 #include "Camera.h"
 #include "SceneObject.h"
 #include <vector>
 #include "Lights.h"
 #include <utility>
 #include "CollisionExecutor.h"
-#include <set>
 #include "ResourceManager.h"
 
 class SceneManager {
+protected:
 	std::map<int,Camera*> camere;
 	int currentCamera;
 	Vector3 backgroundColor;

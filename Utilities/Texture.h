@@ -14,3 +14,8 @@ public:
 	void cleanUp();
 };
 
+namespace ceutils {
+	Texture* generateFromTGA( ::std::string min_filter, ::std::string mag_filter, ::std::string wrap_s, ::std::string wrap_t, ::std::string path);
+	Texture* generateSkyboxFromTGA(::std::string path, ::std::string min_filter, ::std::string mag_filter, ::std::string wrap_s, ::std::string wrap_t);
+}
+

@@ -8,10 +8,10 @@ class GameManager {
 	static GameManager* gameManager;
 	std::vector<SceneManager*> scenes;
 	int sceneNumber;
-	int width, height;
-	std::string title;
 	ESContext context;
 protected:
+	int width, height;
+	std::string title;
 	GameManager();
 public:
 	SceneManager* getCurrentScene();

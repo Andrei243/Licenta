@@ -22,7 +22,7 @@ GLint Model::getnrIndici() {
 }
 
 
-Model* generateModelFromNFG(std::string path) {
+Model* ceutils::generateModelFromNFG(std::string path) {
 	int nrVertecsi;
 	Vertex* verticesData;
 	
@@ -59,9 +59,6 @@ Model* generateModelFromNFG(std::string path) {
 Model::Model(std::vector<Vertex> vertices, std::vector<unsigned short> indices) :Model(&vertices[0], vertices.size(), &indices[0], indices.size()) {};
 
 Model::Model(Vertex* verticesData, int nrVertexi, unsigned short* indici, int nrIndici) {
-	for (int i = 0; i < nrVertexi; i++) {
-		vertexi.push_back(verticesData[i]);
-	}
 	this->nrindici = nrIndici;
 	glGenBuffers(1, &vbold);
 	glBindBuffer(GL_ARRAY_BUFFER, vbold);
@@ -94,4 +91,25 @@ Paralelipiped Model::getBoundingBox(Vector3 rotation,Vector3 scale,Vector3 posit
 void Model::cleanUp() {
 	glDeleteBuffers(1, &vbold);
 	glDeleteBuffers(1, &ibold);
+}
+Model* ceutils::generateSkyboxModel(float dim) {
+	Vertex* vertexi = new Vertex[8];
+	unsigned short indici[36] = { 0,1,2,1,2,3,    //fata de sus
+							  0,1,4,1,4,5,    //fata din fata
+							  1,3,5,3,5,7,    //fata din dreapta
+							  0,2,4,2,4,6,    //fata din stanga
+							  2,3,6,6,3,7,    //fata din spate
+							  4,6,5,6,5,7 };   //fata de jos
+
+
+	vertexi[0].pos = Vector3(dim, dim, dim);
+	vertexi[1].pos = Vector3(-dim, dim, dim);
+	vertexi[2].pos = Vector3(dim, dim, -dim);
+	vertexi[3].pos = Vector3(-dim, dim, -dim);
+	vertexi[4].pos = Vector3(dim, -dim, dim);
+	vertexi[5].pos = Vector3(-dim, -dim, dim);
+	vertexi[6].pos = Vector3(dim, -dim, -dim);
+	vertexi[7].pos = Vector3(-dim, -dim, -dim);
+
+	return new Model(vertexi, 8, indici, 36);
 }

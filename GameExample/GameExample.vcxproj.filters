@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\Modele">
+      <UniqueIdentifier>{0b207ccd-4fd6-48ec-8e73-9445dc3d68c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shaders">
+      <UniqueIdentifier>{0004b22d-f1d6-4bac-ad72-57d9a6fb3398}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Texturi">
+      <UniqueIdentifier>{fe4beec9-560b-493e-9223-836872a5183e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\XML">
+      <UniqueIdentifier>{ca9e8f00-8ec3-4bcb-8273-cf240e191c43}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\Modele\Bila.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\bus.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\Croco.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\Exemplu.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\fire.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\Goliath.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\House.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\Marine.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\Radar.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\SCV.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\SkyBox.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\Teran_Command_Center.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\Terrain.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\train.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\water.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\witch.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\Woman1.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Modele\Woman2.nfg">
+      <Filter>Resource Files\Modele</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\Fire.fs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\Fire.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\SkyboxShaderVS.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\SkyboxShaderFS.fs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\TerrainShaderFS.fs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\TerrainShaderVS.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\TriangleShaderFS.fs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\TriangleShaderVS.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Texturi\heightmap.raw">
+      <Filter>Resource Files\Texturi</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\Texturi\Bus.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\Croco.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\Dirt.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\DisplacementMap.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\envMap.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\fire3.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\fire_mask.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\Golitah.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\Grass.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\House.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\Marine.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\NormalMap.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\radar.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\Rock.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\SCV.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\Terrain_blend_map.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\Terran_Command_Center.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\Train.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\WaterNormal.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\Witch.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\Woman1.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+    <Image Include="..\Resources\Texturi\Woman2.tga">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\Resources\XML\resourceManager.xml">
+      <Filter>Resource Files\XML</Filter>
+    </Xml>
+    <Xml Include="..\Resources\XML\sceneManager.xml">
+      <Filter>Resource Files\XML</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Scene1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExampleGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CrocoObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -8,10 +8,9 @@
 
 
 
-Terrain::Terrain(int _id, std::string _type, Vector3 _position, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*>texturi, bool _depthTest, int _nr_celule, int _dimensiuneCelula, int _offSetY, Vector3 height):SceneObject(_id, _type, _position, _rotation, _scale, _model, _shader, texturi, _depthTest) {
-	position = GameManager::getGameManager()->getCurrentScene()->getActiveCamera()->getposition();
-	model = Terrain::generateModel(_offSetY, _dimensiuneCelula, _nr_celule);
-	nr_celule = _nr_celule;
+Terrain::Terrain(int _id, std::string _type, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*>texturi, bool _depthTest,int _nrCelule,  int _dimensiuneCelula, int _offSetY, Vector3 height):
+	SceneObject(_id, _type, GameManager::getGameManager()->getCurrentScene()->getActiveCamera()->getposition(), _rotation, _scale, _model, _shader, texturi, _depthTest) {
+	nr_celule = _nrCelule;
 	dimensiuneCelula = _dimensiuneCelula;
 	heightr = height.x;
 	heightg = height.y;
@@ -58,7 +57,7 @@ Model* Terrain::generateModel(int offsetY, int dimensiuneCelula,int nr_celule) {
 
 }
 void Terrain::SpecificDraw(Matrix mat) {
-
+	glUseProgram(shader->getid());
 	glUniform1i(shader->getVarUn()[0], nr_celule);
 	glUniform1i(shader->getVarUn()[1], heightr);
 	glUniform1i(shader->getVarUn()[2], heightg);

@@ -4,6 +4,7 @@
 #include "Texture.h"
 #include <iostream>
 #include "TGA.h"
+#include <IL/il_wrap.h>
 
 GLuint Texture::getid() {
 	return id;
@@ -104,6 +105,47 @@ Texture* ceutils::generateFromTGA( std::string min_filter, std::string mag_filte
 	return new Texture(id);
 	
 }
+
+Texture* ceutils::generateFromPhoto(std::string min_filter, std::string mag_filter, std::string wrap_s, std::string wrap_t, std::string path) {
+	ILuint imageName = ilGenImage();
+	ilBindImage(imageName);
+	ilLoadImage(path.c_str());
+	int type, width, height, format;
+	width = ilGetInteger(IL_IMAGE_WIDTH);
+	height = ilGetInteger(IL_IMAGE_HEIGHT);
+	type = ilGetInteger(IL_IMAGE_TYPE);
+	format = ilGetInteger(IL_IMAGE_FORMAT);
+	GLvoid* file = ilGetData();
+		
+	GLuint id;
+	glGenTextures(1, &id);
+	glBindTexture(GL_TEXTURE_2D, id);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, processString(min_filter));
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, processString(mag_filter));
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, processString(wrap_s));
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, processString(wrap_t));
+
+	glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, type, file);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	ilDeleteImage(imageName);
+	return new Texture(id);
+}
+
+void ceutils::takeScreenshot(std::string path) {
+	ILuint imageName = ilGenImage();
+	ilBindImage(imageName);
+	ILboolean succesful = ilutGLScreen();
+	int type, width, height, format;
+	width = ilGetInteger(IL_IMAGE_WIDTH);
+	height = ilGetInteger(IL_IMAGE_HEIGHT);
+	type = ilGetInteger(IL_IMAGE_TYPE);
+	format = ilGetInteger(IL_IMAGE_FORMAT);
+	ilEnable(IL_FILE_OVERWRITE);
+	ilSaveImage(path.c_str());
+	ilDeleteImage(imageName);
+}
+
 Texture::Texture(std::string type, std::string min_filter, std::string mag_filter, std::string wrap_s, std::string wrap_t, GLvoid* data, int width, int height, int pixelType) {
 	GLuint idTex;
 	glGenTextures(1, &idTex);

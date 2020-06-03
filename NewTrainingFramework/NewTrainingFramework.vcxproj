@@ -99,7 +99,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)BIN-Nvidia;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>fmod_vc.lib;fmodL_vc.lib;Utilities.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Utilities.lib;DevIL.lib;ILU.lib;ILUT.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-Nvidia|Win32'">
@@ -167,14 +167,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Utilities\Model.cpp" />
-    <ClCompile Include="..\Utilities\Shader.cpp" />
-    <ClCompile Include="..\Utilities\Texture.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DirectionalLight.cpp" />
     <ClCompile Include="Fire.cpp" />
     <ClCompile Include="GameManager.cpp" />
-    <ClCompile Include="Paralelipiped.cpp" />
     <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -207,7 +203,6 @@
     <ClInclude Include="Header.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Lights.h" />
-    <ClInclude Include="Paralelipiped.h" />
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ResourceManager.h" />

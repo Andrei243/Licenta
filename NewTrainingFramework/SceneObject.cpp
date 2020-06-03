@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "GameManager.h"
 #include <string>
-#include "Vertex.h"
+#include "../Utilities/Vertex.h"
 #include "../Utilities/utilities.h"
 #include "../Utilities/Shader.h"
 #include "../Utilities/Model.h"

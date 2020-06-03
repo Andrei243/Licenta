@@ -1,6 +1,6 @@
 #pragma once
-#include "../NewTrainingFramework/Vertex.h"
-#include "../NewTrainingFramework/Paralelipiped.h"
+#include "Vertex.h"
+#include "Paralelipiped.h"
 #include <vector>
 
 
@@ -24,4 +24,5 @@ public:
 namespace ceutils {
 	Model* generateModelFromNFG(std::string path);
 	Model* generateSkyboxModel(float dim);
+	Model* generateModelFromObj(std::string path);
 }

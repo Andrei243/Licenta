@@ -22,6 +22,8 @@ public:
 	virtual void Key(ESContext* esContext, unsigned char key, bool bIsPressed) = 0;
 	virtual void Init(ESContext* esContext);
 	virtual void Mouse(Vector2 position,MouseButton button, bool isPressed) = 0;
+	int getWidth();
+	int getHeight();
 	void addScene(SceneManager* scene);
 	void Play();
 	static GameManager* getGameManager();

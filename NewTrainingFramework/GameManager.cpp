@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "GameManager.h"
+#include <IL/il_wrap.h>
 
 GameManager* GameManager::gameManager = NULL;
 
@@ -71,7 +72,17 @@ void Key(ESContext* context, unsigned char key, bool bIsPressed) {
 	GameManager::getGameManager()->Key(context, key, bIsPressed);
 }
 
+int GameManager::getWidth() {
+	return width;
+}
+
+int GameManager::getHeight() {
+	return height;
+}
+
 void GameManager::Play() {
+	ilInit();
+	ilutEnable(ILUT_OPENGL_CONV);
 	gameManager->setGameManager(this);
 	esInitContext(&context);
 	esCreateWindow(&context, title.c_str(), width, height, ES_WINDOW_RGB| ES_WINDOW_DEPTH);

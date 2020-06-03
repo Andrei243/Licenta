@@ -93,7 +93,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\BIN-Nvidia;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(SolutionDir)BIN-Nvidia\NewTrainingFramework.lib;$(SolutionDir)BIN-Nvidia\Utilities.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)BIN-Nvidia\NewTrainingFramework.lib;$(SolutionDir)BIN-Nvidia\Utilities.lib;$(SolutionDir)BIN-Nvidia\DevIL.lib;$(SolutionDir)BIN-Nvidia\ILU.lib;$(SolutionDir)BIN-Nvidia\ILUT.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -192,6 +192,7 @@
     <Image Include="..\Resources\Texturi\Witch.tga" />
     <Image Include="..\Resources\Texturi\Woman1.tga" />
     <Image Include="..\Resources\Texturi\Woman2.tga" />
+    <Image Include="Resources\Textures\profil.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\Resources\XML\resourceManager.xml">

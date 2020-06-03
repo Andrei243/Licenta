@@ -176,6 +176,9 @@
     <Image Include="..\Resources\Texturi\Woman2.tga">
       <Filter>Resource Files\Texturi</Filter>
     </Image>
+    <Image Include="Resources\Textures\profil.jpg">
+      <Filter>Resource Files\Texturi</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\Resources\XML\resourceManager.xml">

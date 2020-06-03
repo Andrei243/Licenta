@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Utilities/utilities.h"
-#include "Globals.h"
 
 
 const GLfloat dt = 0.5f;
@@ -37,8 +36,8 @@ public:
 
 	Camera() {};
 
-	Camera(Vector3 _position, Vector3 _target) :position(_position), target(_target),nears(0.1),fars(1000),fov(_fov) {
-		perspectiveMatrix.SetPerspective(fov, ((GLfloat)Globals::screenWidth) / Globals::screenHeight, nears, fars);
+	Camera(Vector3 _position, Vector3 _target,GLfloat width,GLfloat heigth) :position(_position), target(_target),nears(0.1),fars(1000),fov(_fov) {
+		perspectiveMatrix.SetPerspective(fov, width / heigth, nears, fars);
 		moveSpeed = ms;
 		rotateSpeed = rs;
 		up.x = 0.0f;
@@ -49,8 +48,8 @@ public:
 
 	};
 
-	Camera(Vector3 _position, Vector3 _target, Vector3 _up) :position(_position), target(_target), up(_up),nears(0.1),fars(1000),fov(_fov) {
-		perspectiveMatrix.SetPerspective(fov, ((GLfloat)Globals::screenWidth) / Globals::screenHeight, nears, fars);
+	Camera(Vector3 _position, Vector3 _target, Vector3 _up, GLfloat width, GLfloat heigth) :position(_position), target(_target), up(_up),nears(0.1),fars(1000),fov(_fov) {
+		perspectiveMatrix.SetPerspective(fov, width / heigth, nears, fars);
 		moveSpeed = ms;
 		rotateSpeed = rs;
 
@@ -59,9 +58,9 @@ public:
 
 	};
 
-	Camera(Vector3 _position, Vector3 _target, Vector3 _up, GLfloat _movespeed, GLfloat _rotatespeed, GLfloat _fov, GLfloat _near, GLfloat _far):position(_position),target(_target),up(_up) {
+	Camera(Vector3 _position, Vector3 _target, Vector3 _up, GLfloat _movespeed, GLfloat _rotatespeed, GLfloat _fov, GLfloat _near, GLfloat _far, GLfloat width, GLfloat heigth):position(_position),target(_target),up(_up) {
 		_fov = (PI * _fov) / 180;
-		perspectiveMatrix.SetPerspective(_fov, ((GLfloat)Globals::screenWidth) / Globals::screenHeight, _near, _far);
+		perspectiveMatrix.SetPerspective(_fov, width / heigth, _near, _far);
 		nears = _near;
 		fars = _far;
 		fov = _fov;

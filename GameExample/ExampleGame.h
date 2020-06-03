@@ -90,7 +90,10 @@ public:
 				getCurrentScene()->getActiveCamera()->rotateOz(1, deltaTime);
 				break;
 			}
-
+			case 32:
+			{
+				ceutils::takeScreenshot("out.png");
+			}
 
 
 

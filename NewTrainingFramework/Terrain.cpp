@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "Terrain.h"
-#include "Vertex.h"
+#include "../Utilities/Vertex.h"
 #include "GameManager.h"
 
 #include <iostream>

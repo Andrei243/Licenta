@@ -9,6 +9,7 @@ class GameManager {
 	std::vector<SceneManager*> scenes;
 	int sceneNumber;
 	ESContext context;
+	static void setGameManager(GameManager* manager);
 protected:
 	int width, height;
 	std::string title;
@@ -27,6 +28,5 @@ public:
 	void addScene(SceneManager* scene);
 	void Play();
 	static GameManager* getGameManager();
-	static void setGameManager(GameManager* manager);
-
+	~GameManager();
 };

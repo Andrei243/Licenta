@@ -25,19 +25,22 @@ private:
 	Matrix viewMatrix;
 	Matrix worldMatrix;
 	Matrix perspectiveMatrix;
+	GLfloat displayWidth;
+	GLfloat displayHeight;
 
 	void updateAxis();
-	Matrix generareR();
-	void refacereAxis();
+	Matrix generateR();
+	void repairAxis();
 	
 
 public:
-	void refacereVector3(Vector3 &);
+	void repairVector3(Vector3 &);
 
 	Camera() {};
 
 	Camera(Vector3 _position, Vector3 _target,GLfloat width,GLfloat heigth) :position(_position), target(_target),nears(0.1),fars(1000),fov(_fov) {
 		perspectiveMatrix.SetPerspective(fov, width / heigth, nears, fars);
+		displayWidth = width;
 		moveSpeed = ms;
 		rotateSpeed = rs;
 		up.x = 0.0f;
@@ -52,7 +55,7 @@ public:
 		perspectiveMatrix.SetPerspective(fov, width / heigth, nears, fars);
 		moveSpeed = ms;
 		rotateSpeed = rs;
-
+		displayHeight = heigth;
 		updateAxis();
 		updateWorldView();
 

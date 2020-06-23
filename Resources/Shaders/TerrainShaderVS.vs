@@ -18,9 +18,6 @@ uniform mat4 model;
 varying vec3 pos;
 void main()
 {
-//vec2 aux2=a_uv;
-//aux2.x+=float(u_var4)/float(u_var0);
-//aux2.y+=float(u_var5)/float(u_var0);
 v_uv=a_uv;
 vec2 aux=a_uv;
 aux.x=aux.x/float(u_var0);
@@ -28,7 +25,6 @@ aux.y=aux.y/float(u_var0);
 aux.x+=float(u_var4)/float(u_var0);
 aux.y+=float(u_var5)/float(u_var0);
 
-//aux=aux/float(u_var0);
 v_uv2=aux;
 
 

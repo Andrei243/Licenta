@@ -11,7 +11,7 @@
 
 class SceneManager {
 protected:
-	std::map<int,Camera*> camere;
+	std::map<int,Camera*> cameras;
 	int currentCamera;
 	Vector3 backgroundColor;
 	std::map<int,SceneObject*>objects;
@@ -19,12 +19,15 @@ protected:
 	std::map<int, Light*> lights;
 	AmbientLight* ambientLight;
 	ResourceManager* resourceManager;
-	std::map<std::pair<int, int>, std::vector<CollisionExecutor> > collisions;
+	std::map<std::pair<int, int>, std::vector<CollisionExecutor*> > collisions;
+	void deleteObjectInternal(int id);
+	std::vector<int> objectsToBeDeleted;
+	void deleteObjects();
 
+	void verifyCollisions();
 public:
 	float r, R;
 	Vector3 fogcol;
-	void verifyCollisions();
 	ResourceManager* getResourceManager();
 	void setBackgroundColor(Vector3 color);
 	void setFogColor(Vector3 color);
@@ -40,8 +43,10 @@ public:
 	virtual void Init() = 0;
 	void deleteObject(int id);
 	void cleanUp();
+	void addCollisionBetween(int object1, int object2, CollisionExecutor* executor);
 	Vector3 ambientColor() { return ambientLight->diff; };
 	double ratio() { return ambientLight->ratio; }
 	Light* getLight(int id) { return lights.at(id); }
 	SceneManager();
+	~SceneManager();
 };

@@ -87,6 +87,14 @@ Vector2 & Vector2::operator = (Vector2 & vector)
 	return *this;
 }
 
+bool Vector2::operator!=(Vector2& vector) {
+	return x != vector.x || y != vector.y;
+}
+
+bool Vector2::operator==(Vector2& vector) {
+	return x == vector.x && y == vector.y;
+}
+
 GLfloat Vector2::operator [] (unsigned int idx)
 {
 	return (&x)[idx];
@@ -391,59 +399,6 @@ Matrix & Matrix::SetRotationZ(GLfloat angle)
 	m[2][0] = 0.0f; m[2][1] = 0.0f; m[2][2] = 1.0f; m[2][3] = 0.0f;
 	m[3][0] = 0.0f; m[3][1] = 0.0f; m[3][2] = 0.0f; m[3][3] = 1.0f;
 	return *this;
-}
-
-Matrix & Matrix::SetRotationAngleAxis( float angle, float x, float y, float z )
-{
-	float sinAngle, cosAngle;
-	float mag = sqrtf(x * x + y * y + z * z);
-
-	sinAngle = sinf ( angle );
-	cosAngle = cosf ( angle );
-	if ( mag > 0.0f )
-	{
-		float xx, yy, zz, xy, yz, zx, xs, ys, zs;
-		float oneMinusCos;
-		float magInv = 1.0f / mag;
-
-		x *= magInv;
-		y *= magInv;
-		z *= magInv;
-
-		xx = x * x;
-		yy = y * y;
-		zz = z * z;
-		xy = x * y;
-		yz = y * z;
-		zx = z * x;
-		xs = x * sinAngle;
-		ys = y * sinAngle;
-		zs = z * sinAngle;
-		oneMinusCos = 1.0f - cosAngle;
-
-		m[0][0] = (oneMinusCos * xx) + cosAngle;
-		m[1][0] = (oneMinusCos * xy) - zs;
-		m[2][0] = (oneMinusCos * zx) + ys;
-		m[3][0] = 0.0F; 
-
-		m[0][1] = (oneMinusCos * xy) + zs;
-		m[1][1] = (oneMinusCos * yy) + cosAngle;
-		m[2][1] = (oneMinusCos * yz) - xs;
-		m[3][1] = 0.0F;
-
-		m[0][2] = (oneMinusCos * zx) - ys;
-		m[1][2] = (oneMinusCos * yz) + xs;
-		m[2][2] = (oneMinusCos * zz) + cosAngle;
-		m[3][2] = 0.0F; 
-
-		m[0][3] = 0.0F;
-		m[1][3] = 0.0F;
-		m[2][3] = 0.0F;
-		m[3][3] = 1.0F;
-		return * this;
-	}
-	else
-		return SetIdentity();
 }
 
 

@@ -3,6 +3,7 @@
 #include "../NewTrainingFramework/SceneManager.h"
 #include "../NewTrainingFramework/Terrain.h"
 #include "../NewTrainingFramework/SkyBox.h"
+#include "../NewTrainingFramework/Fire.h"
 #include "CrocoObject.h"
 
 class Scene1 :public SceneManager {
@@ -13,7 +14,6 @@ class Scene1 :public SceneManager {
 		resourceManager->addModel(2, ceutils::generateModelFromNFG("Resources/Models/bus.nfg"));
 		resourceManager->addModel(3, ceutils::generateModelFromNFG("Resources/Models/fire.nfg"));
 		resourceManager->addModel(4, ceutils::generateSkyboxModel(500));
-		resourceManager->addModel(5, Terrain::generateModel(-50, 500, 10));
 
 		resourceManager->addShader(1, new Shader("Resources/Shaders/TriangleShaderVS.vs", "Resources/Shaders/TriangleShaderFS.fs"));
 		resourceManager->addShader(2, new Shader("Resources/Shaders/Fire.vs", "Resources/Shaders/Fire.fs"));
@@ -41,9 +41,17 @@ class Scene1 :public SceneManager {
 		addCamera(1, new Camera(Vector3(0, 0, 1), Vector3(0, 0, -1), Vector3(0, 1, 0), 500, 4, 45, 0.2, 100000,GameManager::getGameManager()->getWidth(), GameManager::getGameManager()->getHeight()));
 		setActiveCamera(1);
 		setAmbientLight(Vector3(1, 1, 1), 0.5);
-		addObject(1, new Crocodil(1, "normal", Vector3(20, 20, -800), Vector3(0, 3.14f, 0), Vector3(100, 100, 100), resourceManager->getModel(1), resourceManager->getShader(1), std::vector<Texture*>(1, resourceManager->getTexture(1)), true));
-		addObject(2, new Terrain(2, "terrain", Vector3(0, 0, 0), Vector3(1, 1, 1), resourceManager->getModel(5), resourceManager->getShader(3), std::vector<Texture*>{resourceManager->getTexture(6), resourceManager->getTexture(7), resourceManager->getTexture(8), resourceManager->getTexture(9)}, true, 10, 500, -100, Vector3(50, -20, 30)));
-		addObject(3, new SkyBox(3, "skybox", Vector3(0, 0, 0), Vector3(180, 0, 0), Vector3(5, 5, 5), resourceManager->getModel(4), resourceManager->getShader(4), std::vector<Texture*>{resourceManager->getTexture(10)}, true));
+		addObject(1, new Crocodil(1, Vector3(20, 20, -800), Vector3(0, 3.14f, 0), Vector3(100, 100, 100), resourceManager->getModel(1), resourceManager->getShader(1), std::vector<Texture*>(1, resourceManager->getTexture(1)), true));
+		addObject(2, new Terrain(2, Vector3(0, 0, 0), Vector3(1, 1, 1),  resourceManager->getShader(3), std::vector<Texture*>{resourceManager->getTexture(6), resourceManager->getTexture(7), resourceManager->getTexture(8), resourceManager->getTexture(9)}, true, 10, 500, -100, Vector3(50, -20, 30)));
+		addObject(3, new SkyBox(3, Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(50, 50, 50), resourceManager->getModel(2), resourceManager->getShader(4), std::vector<Texture*>{resourceManager->getTexture(10)}, true));
+		addObject(4, new Fire(4, Vector3(2, 2, 2), Vector3(0, 0, 0), Vector3(1, 1, 1), resourceManager->getModel(3), resourceManager->getShader(2), std::vector<Texture*>{resourceManager->getTexture(4), resourceManager->getTexture(3), resourceManager->getTexture(5)}, true, 0.1));
 	}
 
+	void Update(float deltaTime) {
+		for (auto obiect : objects) {
+			obiect.second->Update(deltaTime);
+		}
+		resourceManager->Update();
+		this->verifyCollisions();
+	}
 };

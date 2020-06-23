@@ -26,7 +26,7 @@ class Shader {
 	GLint diffUniform[5];
 	GLint posUniform[5];
 	GLint dirUniform[5];
-	GLint deschidereUniform[5];
+	GLint openingUniform[5];
 	void cleanUp();
 	
 public:
@@ -53,6 +53,6 @@ public:
 	GLint* getDiff();
 	GLint* getPos();
 	GLint* getDir();
-	GLint* getDeschidere();
+	GLint* getOpening();
 };
 

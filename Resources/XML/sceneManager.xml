@@ -172,7 +172,7 @@
       <type>terrain</type>
       <wired/>
       <nrCelule>100</nrCelule>
-      <dimensiuneCelula>100</dimensiuneCelula>
+      <cellDimension>100</cellDimension>
       <offSetY>-200</offSetY>
       <blend>true</blend>
       <name>Teren</name>

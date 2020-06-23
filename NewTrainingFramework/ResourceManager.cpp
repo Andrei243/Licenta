@@ -1,7 +1,6 @@
 #pragma once
 
 #include "stdafx.h"
-#include "../Utilities/rapidxml.hpp"
 #include "ResourceManager.h"
 #include "../Utilities/Model.h"
 #include "../Utilities/Shader.h"
@@ -27,12 +26,21 @@ void ResourceManager::Update() {
 }
 
 void ResourceManager::addModel(int id, Model* model) {
+	if (models.find(id) != models.end()) {
+		delete models[id];
+	}
 	models.insert(std::make_pair(id, model));
 }
 void ResourceManager::addShader(int id, Shader* shader) {
+	if (shaders.find(id) != shaders.end()) {
+		delete shaders[id];
+	}
 	shaders.insert(std::make_pair(id, shader));
 }
 void ResourceManager::addTexture(int id, Texture* texture) {
+	if (textures.find(id) != textures.end()) {
+		delete textures[id];
+	}
 	textures.insert(std::make_pair(id, texture));
 }
 
@@ -40,36 +48,73 @@ void ResourceManager::cleanUp() {
 	for (auto model : models) {
 		delete model.second;
 	}
+	models.clear();
 	for (auto texture : textures) {
 		delete texture.second;
 	}
+	textures.clear();
 	for (auto shader:shaders) {
 		delete shader.second;
 	}
+	shaders.clear();
 }
 
 ResourceManager::~ResourceManager() {
 	cleanUp();
 	fmodSystem->close();
-	delete fmodSystem;
+}
+
+void ResourceManager::releaseModel(int id) {
+	if (models.find(id) == models.end())return;
+	delete models[id];
+	models.erase(id);
+}
+void ResourceManager::releaseShader(int id) {
+	if (shaders.find(id) != shaders.end())return;
+	delete shaders[id];
+	shaders.erase(id);
+}
+void ResourceManager::releaseTexture(int id) {
+	if (textures.find(id) != textures.end())return;
+	delete textures[id];
+	textures.erase(id);
+}
+void ResourceManager::releaseSound(int id) {
+	delete sounds[id];
+	sounds.erase(id);
 }
 
 void ResourceManager::addSound(int id, std::string path,FMOD_MODE mode) {
 	FMOD::Sound* sound;
 	fmodSystem->createSound(path.c_str(), mode, 0,&sound);
+	if (sounds.find(id) != sounds.end()) {
+		delete sounds[id];
+	}
 	sounds.insert(std::make_pair(id, sound));
 }
 
 Model* ResourceManager::getModel(int id) {
-	return models[id];
+	Model* model = models[id];
+	if (model == NULL) {
+		throw std::string("Model with id ") + std::to_string(id) + std::string(" could not be found");
+	}
+	return model;
 }
 
 Texture* ResourceManager::getTexture(int id) {
-	return textures[id];
+	Texture* texture = textures[id];
+	if (texture == NULL) {
+		throw std::string("Model with id ") + std::to_string(id) + std::string(" could not be found");
+	}
+	return texture;
 }
 
 Shader* ResourceManager::getShader(int id) {
-	return shaders[id];
+	Shader* shader = shaders[id];
+	if (shader == NULL) {
+		throw std::string("Model with id ") + std::to_string(id) + std::string(" could not be found");
+	}
+	return shader;
 }
 
 ResourceManager::ResourceManager() {

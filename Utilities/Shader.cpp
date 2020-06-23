@@ -92,11 +92,11 @@ void Shader::Load() {
 	dirUniform[3] = glGetUniformLocation(id_prog, "dir3");
 	dirUniform[4] = glGetUniformLocation(id_prog, "dir4");
 
-	deschidereUniform[0] = glGetUniformLocation(id_prog, "deschidere0");
-	deschidereUniform[1] = glGetUniformLocation(id_prog, "deschidere1");
-	deschidereUniform[2] = glGetUniformLocation(id_prog, "deschidere2");
-	deschidereUniform[3] = glGetUniformLocation(id_prog, "deschidere3");
-	deschidereUniform[4] = glGetUniformLocation(id_prog, "deschidere4");
+	openingUniform[0] = glGetUniformLocation(id_prog, "opening0");
+	openingUniform[1] = glGetUniformLocation(id_prog, "opening1");
+	openingUniform[2] = glGetUniformLocation(id_prog, "opening2");
+	openingUniform[3] = glGetUniformLocation(id_prog, "opening3");
+	openingUniform[4] = glGetUniformLocation(id_prog, "opening4");
 }
 
 Shader::Shader(std::string vsPath,std::string fsPath) {
@@ -170,6 +170,6 @@ GLint* Shader::getDir() {
 	return dirUniform;
 }
 
-GLint* Shader::getDeschidere() {
-	return deschidereUniform;
+GLint* Shader::getOpening() {
+	return openingUniform;
 }

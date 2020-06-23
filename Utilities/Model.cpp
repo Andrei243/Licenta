@@ -20,6 +20,44 @@ GLuint Model::getindid() {
 GLint Model::getnrIndici() {
 	return nrindici;
 }
+
+Model* ceutils::generateTerrain(int offsetY, int cellDimension, int nrCells) {
+	Vertex* vertexi;
+	int nr_vertexi;
+	nr_vertexi = (nrCells + 1) * (nrCells + 1);
+	vertexi = new Vertex[nr_vertexi];
+
+	for (int i = 0; i <= nrCells; i++)
+		for (int j = 0; j <= nrCells; j++) {
+			Vector3 poz;
+			poz.x = (float)cellDimension * (i - nrCells / 2);
+			poz.z = (float)cellDimension * (j - nrCells / 2);
+			poz.y = offsetY;
+			vertexi[i * nrCells + j].pos = poz;
+			vertexi[i * nrCells + j].uv = Vector2(i /*/ (float)nrCells*/, j /*/ (float)nrCells*/);
+		}
+
+
+	int nrindiciter = 6 * nrCells * nrCells;
+	unsigned short* indici = new unsigned short[nrindiciter];
+	int indice_act = 0;
+	for (int i = 0; i < nrCells; i++) {
+		for (int j = 0; j < nrCells; j++) {
+			indici[indice_act++] = i * nrCells + j;
+			indici[indice_act++] = (i + 1) * nrCells + j;
+			indici[indice_act++] = i * nrCells + j + 1;
+
+			indici[indice_act++] = (i + 1) * nrCells + j;
+			indici[indice_act++] = i * nrCells + j + 1;
+			indici[indice_act++] = (i + 1) * nrCells + j + 1;
+		}
+	}
+
+
+
+	return new Model(vertexi, nr_vertexi, indici, nrindiciter);
+}
+
 Model* ceutils::generateModelFromObj(std::string path) {
 	int noVertexes;
 	std::stringstream ss;
@@ -148,9 +186,9 @@ Model::Model(Vertex* verticesData, int nrVertexi, unsigned short* indici, int nr
 
 }
 
-Paralelipiped Model::getBoundingBox(Vector3 rotation,Vector3 scale,Vector3 position) {
+BoundingBox Model::getBoundingBox(Vector3 rotation,Vector3 scale,Vector3 position) {
 	
-	return boundingBox.calculeazaParalelipiped(rotation,scale,position);
+	return boundingBox.calculateBoundingBox(rotation,scale,position);
 }
 
 void Model::cleanUp() {

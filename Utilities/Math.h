@@ -29,6 +29,8 @@ public:
 	Vector2 operator / (GLfloat k);
 	Vector2 & operator /= (GLfloat k);
 	Vector2 & operator = (Vector2 & vector);
+	bool operator ==(Vector2& vector);
+	bool operator !=(Vector2& vector);
 	Vector2 Modulate(Vector2 & vector);
 	GLfloat Dot(Vector2 & vector);
 	GLfloat GetAngle() const;
@@ -143,7 +145,6 @@ public:
 	Matrix & SetRotationX(GLfloat angle);
 	Matrix & SetRotationY(GLfloat angle);
 	Matrix & SetRotationZ(GLfloat angle);
-	Matrix & SetRotationAngleAxis( float angle, float x, float y, float z );
 
 	Matrix & SetScale(GLfloat scale);
 	Matrix & SetScale(GLfloat scaleX, GLfloat scaleY, GLfloat scaleZ);

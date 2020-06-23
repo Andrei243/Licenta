@@ -132,19 +132,6 @@ Texture* ceutils::generateFromPhoto(std::string min_filter, std::string mag_filt
 	return new Texture(id);
 }
 
-void ceutils::takeScreenshot(std::string path) {
-	ILuint imageName = ilGenImage();
-	ilBindImage(imageName);
-	ILboolean succesful = ilutGLScreen();
-	int type, width, height, format;
-	width = ilGetInteger(IL_IMAGE_WIDTH);
-	height = ilGetInteger(IL_IMAGE_HEIGHT);
-	type = ilGetInteger(IL_IMAGE_TYPE);
-	format = ilGetInteger(IL_IMAGE_FORMAT);
-	ilEnable(IL_FILE_OVERWRITE);
-	ilSaveImage(path.c_str());
-	ilDeleteImage(imageName);
-}
 
 Texture::Texture(std::string type, std::string min_filter, std::string mag_filter, std::string wrap_s, std::string wrap_t, GLvoid* data, int width, int height, int pixelType) {
 	GLuint idTex;

@@ -5,8 +5,9 @@
 
 class ExampleGame :public GameManager {
 	GLfloat deltaTime;
+	Vector2 mousePosition;
 public:
-	ExampleGame(int width, int height, std::string title) :GameManager() {
+	ExampleGame(int width, int height, std::string title) :GameManager(), mousePosition(0, 0) {
 		this->width = width;
 		this->height = height;
 		this->title = title;
@@ -14,6 +15,7 @@ public:
 	}
 	void Update(ESContext* escontext, float deltaTime) {
 		this->deltaTime = deltaTime;
+		this->getCurrentScene()->Update(deltaTime);
 	}
 
 	void Key(ESContext* esContext, unsigned char key, bool bIsPressed)
@@ -90,13 +92,6 @@ public:
 				getCurrentScene()->getActiveCamera()->rotateOz(1, deltaTime);
 				break;
 			}
-			case 32:
-			{
-				ceutils::takeScreenshot("out.png");
-			}
-
-
-
 
 
 			}
@@ -105,5 +100,16 @@ public:
 
 
 	}
-	void Mouse(Vector2 position, MouseButton button, bool isPressed) {}
+	void Mouse(Vector2 position, MouseButton button, bool isPressed) {
+		if (position.x<0 || position.x>width || position.y<0 || position.y>height) {
+			return;
+		}
+
+
+		if (position != mousePosition) {
+			getCurrentScene()->getActiveCamera()->rotateOy((-position.x + mousePosition.x) / 30, deltaTime);
+			getCurrentScene()->getActiveCamera()->rotateOx((-position.y + mousePosition.y) / 30, deltaTime);
+			mousePosition = position;
+		}
+	}
 };

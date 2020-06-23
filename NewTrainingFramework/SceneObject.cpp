@@ -10,20 +10,19 @@
 #include <vector>
 #include "SceneObject.h"
 
-SceneObject::SceneObject(int _id,std::string _type, Vector3 _position, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*> _texturi, bool _depthTest) {
+SceneObject::SceneObject(int _id, Vector3 _position, Vector3 _rotation, Vector3 _scale, Model* _model, Shader* _shader, std::vector<Texture*> _textures, bool _depthTest) {
 	id = _id;
-	type = _type;
 	position = _position;
 	rotation = _rotation;
 	scale = _scale;
 	model = _model;
 	shader = _shader;
-	texturi = _texturi;
+	textures = _textures;
 	depthTest = _depthTest;
 	isDrawnBySceneManager = true;
 }
 
-int fromlighttyetoint(tip_lumina tip) {
+int fromlighttyetoint(typeLight tip) {
 	switch(tip) {
 	case point:
 		return 1;
@@ -50,7 +49,6 @@ void SceneObject::Draw(Matrix mat) {
 	Camera* camera = GameManager::getGameManager()->getCurrentScene()->getActiveCamera();
 	if (depthTest) { glEnable(GL_DEPTH_TEST); }
 	glUseProgram(shader->getid());
-	SpecificDraw(mat);
 	SceneManager* sceneManager = GameManager::getGameManager()->getCurrentScene();
 	GLuint vboId, indBuff, idTextura;
 	GLint nrIndici;
@@ -70,9 +68,9 @@ void SceneObject::Draw(Matrix mat) {
 	matrice = scalare * rotatie * translatie;
 	Matrix model = matrice * mat;
 	matrice = matrice * camera->getmat();
-	for (unsigned int i = 0; i < texturi.size(); i++) {
+	for (unsigned int i = 0; i < textures.size(); i++) {
 		glActiveTexture(GL_TEXTURE0 + i);
-		glBindTexture(GL_TEXTURE_2D, texturi[i]->getid());
+		glBindTexture(GL_TEXTURE_2D, textures[i]->getid());
 		if (shader->getTexUn()[i] != -1) {
 			glUniform1i(shader->getTexUn()[i], i);
 		}
@@ -142,7 +140,7 @@ void SceneObject::Draw(Matrix mat) {
 		if (lumina->tip == spotlight) {
 			glUniform3f(shader->getPos()[i], lumina->pos.x, lumina->pos.y, lumina->pos.z);
 			glUniform3f(shader->getPos()[1], lumina->dir.x, lumina->dir.y, lumina->dir.z);
-			glUniform1f(shader->getDeschidere()[i], lumina->unghiDeschidere);
+			glUniform1f(shader->getOpening()[i], lumina->openingAngle);
 
 		}
 
@@ -150,7 +148,8 @@ void SceneObject::Draw(Matrix mat) {
 	for (int i = lights.size(); i < 5; i++) {
 		glUniform1i(shader->getTypes()[i], 0);
 	}
-	
+
+	SpecificDraw(mat);
 	glDrawElements(GL_TRIANGLES, nrIndici, GL_UNSIGNED_SHORT, 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -162,14 +161,9 @@ void SceneObject::Draw(Matrix mat) {
 void SceneObject::SpecificDraw(Matrix mat) {
 
 }
-Paralelipiped SceneObject::setBoundTag(Paralelipiped par) {
-	par.tag = "Obiect";
-	return par;
-}
 
-Paralelipiped SceneObject::getBoundingBox() {
-	Paralelipiped paralelipiped = model->getBoundingBox(rotation,scale,position);
+BoundingBox SceneObject::getBoundingBox() {
+	BoundingBox BoundingBox = model->getBoundingBox(rotation,scale,position);
 
-	paralelipiped=setBoundTag(paralelipiped);
-	return paralelipiped;
+	return BoundingBox;
 }

@@ -149,7 +149,7 @@
     <ClCompile Include="esUtil_win.cpp" />
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="Paralelipiped.cpp" />
+    <ClCompile Include="BoundingBox.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug-ATI|Win32'">Create</PrecompiledHeader>
@@ -163,16 +163,12 @@
   <ItemGroup>
     <ClInclude Include="esUtil.h" />
     <ClInclude Include="esUtil_win.h" />
-    <ClInclude Include="Paralelipiped.h" />
+    <ClInclude Include="BoundingBox.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="memDbg.h" />
-    <ClInclude Include="rapidxml.hpp" />
-    <ClInclude Include="rapidxml_iterators.hpp" />
-    <ClInclude Include="rapidxml_print.hpp" />
-    <ClInclude Include="rapidxml_utils.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TGA.h" />

@@ -5,9 +5,9 @@
 class SpotLight : public Light {
 
 public:
-	SpotLight(Vector3 spec, Vector3 diff, int id, double _unghiDeschidere, Vector3 _pos, Vector3 _dir) :
+	SpotLight(Vector3 spec, Vector3 diff, int id, double _openingAngle, Vector3 _pos, Vector3 _dir) :
 		Light(spec, diff, id) {
-		unghiDeschidere = _unghiDeschidere;
+		openingAngle = _openingAngle;
 		pos = _pos;
 		dir = _dir;
 		tip = spotlight;

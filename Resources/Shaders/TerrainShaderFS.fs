@@ -10,9 +10,9 @@ uniform float R;
 uniform vec3 fogcol;
 uniform vec3 camera;
 varying vec3 pos;
+
 void main()
 {
-//gl_FragColor=texture2D(u_texture,v_uv);
 vec4 color1=texture2D(u_texture0,v_uv);
 vec4 color2=texture2D(u_texture1,v_uv);
 vec4 color3=texture2D(u_texture2,v_uv);
@@ -26,5 +26,4 @@ float alpha=(cl - r)/(R-r);
 color=alpha * vec4(fogcol,1.0) + (1.0 - alpha )* color;
 
 gl_FragColor=color;
-//gl_FragColor=vec4(0.0,0.0,1.0,1.0);
 }

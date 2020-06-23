@@ -24,7 +24,6 @@ void GameManager::Draw(ESContext* context) {
 
 void GameManager::Update(ESContext* esContext, float deltaTime) {
 	scenes[sceneNumber]->Update(deltaTime);
-	scenes[sceneNumber]->verifyCollisions();
 }
 
 SceneManager* GameManager::getCurrentScene() {
@@ -81,18 +80,26 @@ int GameManager::getHeight() {
 }
 
 void GameManager::Play() {
-	ilInit();
-	ilutEnable(ILUT_OPENGL_CONV);
 	gameManager->setGameManager(this);
 	esInitContext(&context);
 	esCreateWindow(&context, title.c_str(), width, height, ES_WINDOW_RGB| ES_WINDOW_DEPTH);
+	
+	ilInit();
+	iluInit();
+	ilutRenderer(ILUT_OPENGL);
+	ilutEnable(ILUT_OPENGL_CONV);
 	Init(&context);
+
 	esRegisterDrawFunc(&context, ::Draw);
 	esRegisterUpdateFunc(&context, ::Update);
 	esRegisterKeyFunc(&context, ::Key);
 	esMainLoop(&context);
 
-	for (SceneManager* sceneManager:scenes) {
+}
+
+GameManager::~GameManager() {
+
+	for (SceneManager* sceneManager : scenes) {
 		delete sceneManager;
 	}
 	scenes.clear();

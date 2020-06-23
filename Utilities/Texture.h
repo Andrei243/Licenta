@@ -1,5 +1,5 @@
 #pragma once
-#include "../Utilities/utilities.h"
+#include "utilities.h"
 #include <string>
 
 class Texture {
@@ -18,6 +18,5 @@ namespace ceutils {
 	Texture* generateFromTGA( ::std::string min_filter, ::std::string mag_filter, ::std::string wrap_s, ::std::string wrap_t, ::std::string path);
 	Texture* generateSkyboxFromTGA(::std::string path, ::std::string min_filter, ::std::string mag_filter, ::std::string wrap_s, ::std::string wrap_t);
 	Texture* generateFromPhoto(::std::string min_filter, ::std::string mag_filter, ::std::string wrap_s, ::std::string wrap_t, ::std::string path);
-	void takeScreenshot(::std::string path);
 }
 

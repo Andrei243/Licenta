@@ -3,25 +3,25 @@
 #include "Camera.h"
 
 
-void Camera::refacereVector3(Vector3 &a) {
+void Camera::repairVector3(Vector3 &a) {
 	if (a.x == -0.0f)a.x = 0.0f;
 	if (a.y == -0.0f)a.y = 0.0f;
 	if (a.z == -0.0f)a.z = 0.0f;
 }
-void Camera::refacereAxis() {
-	refacereVector3(xAxis);
-	refacereVector3(yAxis);
-	refacereVector3(zAxis);
+void Camera::repairAxis() {
+	repairVector3(xAxis);
+	repairVector3(yAxis);
+	repairVector3(zAxis);
 }
 
 void Camera::updateAxis() {
 	zAxis = -(target - position).Normalize();
 	yAxis = up.Normalize();
 	xAxis = zAxis.Cross(yAxis).Normalize();
-	refacereAxis();
+	repairAxis();
 };
 
-Matrix Camera::generareR() {
+Matrix Camera::generateR() {
 	Matrix R;
 	R.m[0][0] = xAxis.x; R.m[0][1] = xAxis.y; R.m[0][2] = xAxis.z; R.m[0][3] = 0;
 	R.m[1][0] = yAxis.x; R.m[1][1] = yAxis.y; R.m[1][2] = yAxis.z; R.m[1][3] = 0;
@@ -41,11 +41,18 @@ void Camera::setMoveSpeed(GLfloat _speed) { moveSpeed = _speed; }
 GLfloat Camera::getMoveSpeed() { return moveSpeed; }
 void Camera::setRotateSpeed(GLfloat _speed) { rotateSpeed = _speed; }
 GLfloat Camera::getRotateSpeed() { return rotateSpeed; }
-void Camera::setNear(GLfloat _near) { nears = _near; }
+void Camera::setNear(GLfloat _near) { nears = _near; 
+perspectiveMatrix.SetPerspective(fov, displayWidth / displayHeight, nears, fars);
+}
 GLfloat Camera::getNear() { return nears; }
-void Camera::setFar(GLfloat _far) { fars = _far; }
+void Camera::setFar(GLfloat _far) { fars = _far; 
+perspectiveMatrix.SetPerspective(fov, displayWidth / displayHeight, nears, fars);
+}
 GLfloat Camera::getFar() { return fars; }
-void Camera::setFOV(GLfloat _fov) { fov = _fov; }
+void Camera::setFOV(GLfloat _fov) { fov = _fov; 
+perspectiveMatrix.SetPerspective(fov, displayWidth / displayHeight, nears, fars);
+
+}
 GLfloat Camera::getFOV() { return fov; }
 void Camera::setxAxis(Vector3 _x) { xAxis = _x; }
 Vector3 Camera::getxAxis() { return xAxis; }
@@ -127,7 +134,7 @@ void Camera::rotateOx(GLfloat directie,GLfloat deltaTime) {
 }
 
 void Camera::updateWorldView() {
-	Matrix R = generareR();
+	Matrix R = generateR();
 	Matrix translatie;
 	translatie.SetTranslation(position.x, position.y, position.z);
 	worldMatrix = R * translatie;

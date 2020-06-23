@@ -27,6 +27,10 @@ public:
 	void addShader(int id, Shader* shader);
 	void addTexture(int id, Texture* texture);
 	void addSound(int id, std::string path, FMOD_MODE mode);
+	void releaseModel(int id);
+	void releaseShader(int id);
+	void releaseTexture(int id);
+	void releaseSound(int id);
 	Model* getModel(int id);
 	Shader* getShader(int id);
 	Texture* getTexture(int id);

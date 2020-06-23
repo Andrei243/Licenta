@@ -42,11 +42,11 @@ uniform vec3 dir2;
 uniform vec3 dir3;
 uniform vec3 dir4;
 
-uniform vec3 deschidere0;
-uniform vec3 deschidere1;
-uniform vec3 deschidere2;
-uniform vec3 deschidere3;
-uniform vec3 deschidere4;
+uniform vec3 opening0;
+uniform vec3 opening1;
+uniform vec3 opening2;
+uniform vec3 opening3;
+uniform vec3 opening4;
 
 float maxim(in float a,in float b){
 if(a>b){

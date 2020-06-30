@@ -7,10 +7,11 @@ enum MouseButton { LeftClick, RightClick };
 class GameManager {
 	static GameManager* gameManager;
 	std::vector<SceneManager*> scenes;
-	int sceneNumber;
 	ESContext context;
 	static void setGameManager(GameManager* manager);
 protected:
+
+	int sceneNumber;
 	int width, height;
 	std::string title;
 	GameManager();

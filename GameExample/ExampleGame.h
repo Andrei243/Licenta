@@ -2,16 +2,20 @@
 
 #include "../NewTrainingFramework/GameManager.h"
 #include "Scene1.h"
+#include "Scene2.h"
 
 class ExampleGame :public GameManager {
 	GLfloat deltaTime;
 	Vector2 mousePosition;
+	bool mouseWasInScreen;
+	int numberOfBuses;
 public:
-	ExampleGame(int width, int height, std::string title) :GameManager(), mousePosition(0, 0) {
-		this->width = width;
-		this->height = height;
-		this->title = title;
-		addScene(new Scene1());
+	ExampleGame(int width, int height, std::string title);
+
+	static ExampleGame* GetExampleGame() {
+		GameManager* game = GameManager::getGameManager();
+		ExampleGame* actualGame = dynamic_cast<ExampleGame*>(game);
+		return actualGame;
 	}
 	void Update(ESContext* escontext, float deltaTime) {
 		this->deltaTime = deltaTime;
@@ -20,6 +24,10 @@ public:
 
 	void Key(ESContext* esContext, unsigned char key, bool bIsPressed)
 	{
+		if (sceneNumber == 1) {
+			getCurrentScene()->Key(key);
+			return;
+		}
 
 		if (bIsPressed) {
 			getCurrentScene()->Key(key);
@@ -101,10 +109,17 @@ public:
 
 	}
 	void Mouse(Vector2 position, MouseButton button, bool isPressed) {
-		if (position.x<0 || position.x>width || position.y<0 || position.y>height) {
+		if (sceneNumber == 1) {
 			return;
 		}
-
+		if (position.x<0 || position.x>width || position.y<0 || position.y>height) {
+			mouseWasInScreen = false;
+			return;
+		}
+		if (!mouseWasInScreen) {
+			mouseWasInScreen = true;
+			mousePosition = position;
+		}
 
 		if (position != mousePosition) {
 			getCurrentScene()->getActiveCamera()->rotateOy((-position.x + mousePosition.x) / 30, deltaTime);
@@ -112,4 +127,16 @@ public:
 			mousePosition = position;
 		}
 	}
+	void addABus() {
+		numberOfBuses++;
+	}
+
+	int getBuses() {
+		return numberOfBuses;
+	}
+
+	void resetBuses() {
+		numberOfBuses = 0;
+	}
+
 };

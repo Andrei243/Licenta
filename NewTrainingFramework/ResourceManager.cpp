@@ -57,6 +57,10 @@ void ResourceManager::cleanUp() {
 		delete shader.second;
 	}
 	shaders.clear();
+	for (auto sound : sounds) {
+		sound.second->release();
+	}
+	sounds.clear();
 }
 
 ResourceManager::~ResourceManager() {

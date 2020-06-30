@@ -39,12 +39,16 @@ void SceneManager::Key(unsigned char key) {
 	for (auto obiect : objects) {
 		obiect.second->Key(key);
 	}
-	
+
 }
 
 void SceneManager::verifyCollisions() {
-	
-	for (auto collision : collisions) {
+	int size = collisions.size();
+	if (size <= 0) {
+		return;
+	}
+	for (auto it = collisions.begin();it!=collisions.end();++it) {
+		std::pair<const std::pair<int, int>, std::vector<CollisionExecutor*>> collision = *it;
 		bool colizionat = BoundingBox::verifyCollision(objects[collision.first.first]->getBoundingBox(), objects[collision.first.second]->getBoundingBox());
 		if (colizionat) {
 			if (isCollided.find(collision.first) != isCollided.end()) {
@@ -98,23 +102,42 @@ void SceneManager::addObject(int id, SceneObject* object) {
 	if (objects.find(id) != objects.end()) {
 		delete objects[id];
 		objects.erase(id);
+		if (collisions.size() > 0) {
+
+			for (auto it = collisions.begin(); it != collisions.end(); ) {
+				if (it->first.first == id || it->first.second == id) {
+					for (auto collision : it->second) {
+						delete collision;
+					}
+					it->second.clear();
+					it = collisions.erase(it);
+				}
+				else {
+					++it;
+				}
+			}
+		}
 	}
 	objects.insert(std::make_pair(id, object));
 }
 
-void SceneManager::setAmbientLight( Vector3 diff, double ratio) {
+void SceneManager::setAmbientLight(Vector3 diff, double ratio) {
 	ambientLight = new AmbientLight();
 	ambientLight->diff = diff;
 	ambientLight->spec = ambientLight->diff;
 	ambientLight->ratio = ratio;
 }
 void SceneManager::addCollisionBetween(int object1, int object2, CollisionExecutor* executor) {
-	for (auto it = collisions.begin();; it != collisions.end()) {
+	for (auto it = collisions.begin(); it != collisions.end(); ) {
 		if ((it->first.first == object1 && it->first.second == object2) || (it->first.first == object2 && it->first.second == object1)) {
 			it->second.push_back(executor);
 			return;
 		}
+		else {
+			++it;
+		}
 	}
+
 
 	collisions.insert(std::make_pair(std::make_pair(object1, object2), std::vector<CollisionExecutor*>{ executor }));
 }
@@ -134,7 +157,7 @@ void SceneManager::deleteObject(int id) {
 void SceneManager::deleteObjectInternal(int id) {
 	delete objects[id];
 	objects.erase(id);
-	for (auto it = collisions.begin();; it != collisions.end()) {
+	for (auto it = collisions.begin(); it != collisions.end(); ) {
 		if (it->first.first == id || it->first.second == id) {
 			for (auto collision : it->second) {
 				delete collision;

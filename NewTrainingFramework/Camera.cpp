@@ -31,11 +31,13 @@ Matrix Camera::generateR() {
 	return R;
 }
 
-void Camera::setposition(Vector3 _pos) { position = _pos; }
+void Camera::setposition(Vector3 _pos) { position = _pos; updateAxis(); }
 Vector3 Camera::getposition() { return position; }
-void Camera::settarget(Vector3 _target) { target = _target; }
+void Camera::settarget(Vector3 _target) { target = _target; updateAxis();
+}
 Vector3 Camera::gettarget() { return target; }
-void Camera::setup(Vector3 _up) { up = _up; }
+void Camera::setup(Vector3 _up) { up = _up; updateAxis();
+}
 Vector3 Camera::getup() { return up; }
 void Camera::setMoveSpeed(GLfloat _speed) { moveSpeed = _speed; }
 GLfloat Camera::getMoveSpeed() { return moveSpeed; }

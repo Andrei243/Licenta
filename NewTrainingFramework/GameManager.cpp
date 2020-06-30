@@ -31,7 +31,9 @@ SceneManager* GameManager::getCurrentScene() {
 }
 
 void GameManager::setCurrentScene(int id) {
+	scenes[sceneNumber]->cleanUp();
 	sceneNumber = id;
+	scenes[sceneNumber]->Init();
 }
 
 ResourceManager* GameManager::getCurrentResourceManager() {

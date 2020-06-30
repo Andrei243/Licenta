@@ -40,6 +40,7 @@ public:
 
 	Camera(Vector3 _position, Vector3 _target,GLfloat width,GLfloat heigth) :position(_position), target(_target),nears(0.1),fars(1000),fov(_fov) {
 		perspectiveMatrix.SetPerspective(fov, width / heigth, nears, fars);
+		displayHeight = heigth;
 		displayWidth = width;
 		moveSpeed = ms;
 		rotateSpeed = rs;
@@ -56,6 +57,7 @@ public:
 		moveSpeed = ms;
 		rotateSpeed = rs;
 		displayHeight = heigth;
+		displayWidth = width;
 		updateAxis();
 		updateWorldView();
 
@@ -67,6 +69,8 @@ public:
 		nears = _near;
 		fars = _far;
 		fov = _fov;
+		displayHeight = heigth;
+		displayWidth = width;
 		moveSpeed = _movespeed;
 		rotateSpeed = _rotatespeed;
 		updateAxis();

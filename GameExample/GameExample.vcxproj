@@ -93,7 +93,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\BIN-Nvidia;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(SolutionDir)BIN-Nvidia\NewTrainingFramework.lib;$(SolutionDir)BIN-Nvidia\Utilities.lib;$(SolutionDir)BIN-Nvidia\DevIL.lib;$(SolutionDir)BIN-Nvidia\ILU.lib;$(SolutionDir)BIN-Nvidia\ILUT.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)BIN-Nvidia\CrocoEngine.lib;$(SolutionDir)BIN-Nvidia\Utilities.lib;$(SolutionDir)BIN-Nvidia\DevIL.lib;$(SolutionDir)BIN-Nvidia\ILU.lib;$(SolutionDir)BIN-Nvidia\ILUT.lib;$(SolutionDir)BIN-Nvidia\fmod64_vc.lib;$(SolutionDir)BIN-Nvidia\fmodL64_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -203,12 +203,20 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BusCrocoCollider.cpp" />
+    <ClCompile Include="ExampleGame.cpp" />
+    <ClCompile Include="ExpiringFire.h" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Scene1.cpp" />
+    <ClCompile Include="Scene2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bus.h" />
+    <ClInclude Include="BusCrocoCollider.h" />
     <ClInclude Include="CrocoObject.h" />
     <ClInclude Include="ExampleGame.h" />
     <ClInclude Include="Scene1.h" />
+    <ClInclude Include="Scene2.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NewTrainingFramework\NewTrainingFramework.vcxproj">
